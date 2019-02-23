@@ -15,7 +15,9 @@
 </head>
 
 <?php
-    require "header.php"
+    require "header.php";
+    session_start();
+    
 ?>
     <main>
     <div class="jumbotron text-center" style="margin-bottom:0">
@@ -42,13 +44,9 @@
       <hr class="d-sm-none">
     </div>
 
-  </div>
-</div>
-
-
-<div class="jumbotron text-center" style="margin-bottom:0">
-  <p>Footer</p>
-</div>
+    <?php if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true ){
+            echo("Welcome,".$_SESSION["login_user"]."!");
+        }   ?>
     </main>
     </html>
 <?php

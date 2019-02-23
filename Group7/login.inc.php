@@ -50,6 +50,7 @@
                 else{
                     session_start();
                     
+                    $_SESSION['logged_in'] = true;
                     $_SESSION['login_user'] = $username;
     
                     header("Location: ../index.php?error=success&user=".$username);
