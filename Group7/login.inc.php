@@ -11,7 +11,7 @@
         $password = $_POST['pwd'];
         // All error messages when logging in - not many
         // check if any empty input
-        if (empty($username) || empty($email) )
+        if (empty($email) || empty($password) )
         {
             header("Location: ../login.php?error=emptyfields&mail=".$email);
             exit();
