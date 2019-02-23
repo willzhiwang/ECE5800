@@ -3,7 +3,7 @@
 ?>
 
 <?php
-    if (isset($_POST['signup-submit']))
+    if (isset($_POST['i']))
     {
         require 'configDB.php';
 
