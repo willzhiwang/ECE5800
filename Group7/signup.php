@@ -5,7 +5,7 @@
       <div>
          <section>
             <h1>SignUp</h1>
-            <form class="form-signup"  action = "signup.inc.php" method = "post">
+            <form action = "signup.inc.php" method = "post">
                <input type="text" name="uid" placehold="Username">
                <input type="text" name="mail" placehold="email">
                <input type="password" name="pwd" placehold="Password">
