@@ -12,8 +12,8 @@ Password saved in database is already hashed using php method
 
 
 \
-TODO List: 
+TODO List: \
 more Frontend features;\
 login error cases in login.inc.php;\
 Add password regrex in signup.inc.php (similar to username regrex); \
-Logout to actually logout;\
+Logout to actually logout;
