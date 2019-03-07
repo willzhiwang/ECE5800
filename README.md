@@ -14,10 +14,16 @@ Password saved in database is already hashed using php method
 \
 TODO List: \
 General:\
-more Frontend features;\
+more Frontend features, move login,signup and logout to the right of header;\
 login:\
 Frontend work show string text to user how he failed to create a account ( ex: "username cannot be empty");\
 signup:\
 Add password regrex in signup.inc.php (similar to username regrex); \
 Frontend work show string text to user how he failed to create a account ( ex: "username cannot be empty");\
 Created two checked boxes (driver, passenger) frontend when signup, needs to implement it in database;\
+Database:\
+Need a new table to set up user's info? To set up a successful account setting include detailed info\
+
+Developed:\
+Login,SignUp and Logout (able to hide each other after logged in or logged out)
+some forntend features
