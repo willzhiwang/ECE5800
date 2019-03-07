@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,12 +35,21 @@
     <li class="nav-item"> <a class="nav-link" href = "index.php">Passenger</a></li>
     <li class="nav-item"> <a class="nav-link" href = "index.php">Driver</a></li>
     <li class="nav-item"> <a class="nav-link" href = "index.php">About Us</a></li>
+    <?php
+        if(isset($_SESSION['userId']))//hide or show logout
+        {
+            echo ' <form action = "logout.php" method = "post">
+            <button class="btn btn-secondary" type = "submit" name = "logout-submit">Log out</a></button>
+            </form>';
+        }
+        else{
+            echo '<li class="nav-item"><a class="nav-link" href="login.php">Log in</a></li>
+            <li class="nav-item"><a class="nav-link" href="signup.php">Sign Up</a></li>';
+        }
+    ?>
+ 
 
-    <li class="nav-item"><a class="nav-link" href="login.php">Log in</a></li>
-    <li class="nav-item"><a class="nav-link" href="signup.php">Sign Up</a></li>
 
-    <form action = "logout.php" method = "post">
-    <button class="btn btn-secondary" type = "submit" name = "logout">Log out</a></button>
 
     </ul>
     </div>

@@ -1,3 +1,8 @@
+
+<?php
+//start session before login post
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,10 +23,10 @@
     <div class="container">
          <section>
             <h1>Login</h1>
-            <form action = "login.php" method = "post">
-            <div class="form-group"><input type="text" name="mail" placehold="email"></div>
-            <div class="form-group"><input type="password" name="pwd" placehold="Password"></div>
-            <div class="form-group"><button type="submit" name="login-submit">Log In</button></div>
+            <form action = "login.inc.php" method = "post">
+            <div class="form-group"><input type="text" name="mail" placeholder="email"></div>
+            <div class="form-group"><input type="password" name="pwd" placeholder="Password"></div>
+            <div class="form-group"><button type="submit" class="btn btn-primary" name="login-submit">LogIn</button></div>
          </section></div>
       </div>
     </main>

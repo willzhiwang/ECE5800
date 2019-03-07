@@ -6,54 +6,61 @@
     if (isset($_POST['login-submit']))
     {
         require 'configDB.php';
-
-        $email = $_POST['mail'];
+        $mailuid = $_POST['mail'];
         $password = $_POST['pwd'];
         // All error messages when logging in - not many
         // check if any empty input
-        if (empty($email) || empty($password) )
+        if (empty($mailuid) )
         {
-            header("Location: ../login.php?error=emptyfields&mail=".$email);
+            header("Location: login.php?error=emptyemail");
             exit();
         }
+        if (empty($password) )
+        {
+            header("Location: login.php?error=emptypwd");
+            exit();
+        }
+        //check sql errors
         else
         {
-            $sql = "SELECT uidUsers, emailUsers, pwdUsers FROM users WHERE emailUsers=?";
+            $sql = "SELECT * FROM users WHERE uidUsers=? OR emailUsers=?;";
             $stmt = mysqli_stmt_init($conn);
+            //checking $sql statement error
             if (!mysqli_stmt_prepare($stmt,$sql))
             {
-                header("Location: ../login.php?error=sqlerror");
+                header("Location: login.php?error=sqlerror");
                 exit();
             }
             else{
-                mysqli_stmt_bind_param($stmt, "s",$email);
+                //pass in mailuid only not password yet
+                mysqli_stmt_bind_param($stmt, "ss", $mailuid, $mailuid);
                 mysqli_stmt_execute($stmt);
-                mysqli_stmt_store_result($stmt);
-                
-                $resultCheck= mysqli_stmt_num_rows($stmt);
-                
-                mysqli_stmt_bind_result($stmt,$username,$otheremail,$hashedPwd);
-                mysqli_stmt_fetch($stmt);
-                // User not found with that name
-                if ($resultCheck == 0){
-                    header("Location: ../login.php?error=notauser&mail=".$email);
-                    
-                    exit();
-                }
-                // Wrong password
-                else if (!password_verify($password,$hashedPwd)){
-                    header("Location: ../login.php?error=wrongpass&mail=".$email);
-                    
-                    exit();
-
+                $result= mysqli_stmt_get_result($stmt);
+                //checking if the password matches the user
+                if ($row = mysqli_fetch_assoc($result))
+                {
+                    $pwdCheck = password_verify($password,$row['pwdUsers']);
+                    if (pwdCheck == false) // when match is false, wrong password
+                    {
+                        header("Location: login.php?error=wrongPWD");
+                        exit();
+                    }
+                    else if (pwdCheck == true) // approved login
+                    {
+                        session_start();
+                        $_SESSION['userId'] = $row['idUsers'];
+                        $_SESSION['userUid'] = $row['uidUsers'];
+                        header("Location: index.php?login=success=.$mailuid");
+                    }
+                    else 
+                    {
+                        header("Location: login.php?error=wrongPWD");
+                        exit();
+                    }
                 }
                 else{
-                    session_start();
-                    
-                    $_SESSION['logged_in'] = true;
-                    $_SESSION['login_user'] = $username;
-    
-                    header("Location: ../index.php?error=success&user=".$username);
+   
+                    header("Location: index.php?error=success&user=".$mailuid);
                 }
             }
         }
@@ -61,7 +68,7 @@
         mysqli_close($conn);
     }
     else{
-        header("Location: ../index.php?error=success");
+        header("Location: index.php?error=success");
         exit();
     }
 ?>

@@ -1,15 +1,7 @@
 <?php    
-    require "header.php";
-?>
-    <main>
-    <?php $_SESSION["logged_in"] = false; ?>
-      <div>
-         <section>
-            <p>You are logged out</p>
-         </section>
-      </div>
-    </main>
-    
-<?php
-    require "footer.php"
+
+    session_start();
+    session_unset();
+    session_destroy();
+    header("Location: index.php");
 ?>   
