@@ -16,8 +16,8 @@ TODO List: \
 General:\
 more Frontend features;\
 login:\
-create login error cases in login.inc.php;\
+Frontend work show string text to user how he failed to create a account ( ex: "username cannot be empty");\
 signup:\
 Add password regrex in signup.inc.php (similar to username regrex); \
-Frontend work to string text to user how he failed to create a account ( ex: "username cannot be empty");\
-Created two checked boxes (driver, passenger) frontend when signup, needs to implement it to database;\
+Frontend work show string text to user how he failed to create a account ( ex: "username cannot be empty");\
+Created two checked boxes (driver, passenger) frontend when signup, needs to implement it in database;\
