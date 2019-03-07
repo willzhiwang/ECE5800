@@ -16,14 +16,14 @@ TODO List: \
 General:\
 more Frontend features, move login,signup and logout to the right of header;\
 login:\
-Frontend work show string text to user how he failed to create a account ( ex: "username cannot be empty");\
+Frontend work show string text to user how he failed to login ( ex: "username cannot be empty");\
 signup:\
-Add password regrex in signup.inc.php (similar to username regrex); \
+Add password regrex in signup.inc.php (similar to username regrex) (Do it the last); \
 Frontend work show string text to user how he failed to create a account ( ex: "username cannot be empty");\
 Created two checked boxes (driver, passenger) frontend when signup, needs to implement it in database;\
 Database:\
-Need a new table to set up user's info? To set up a successful account setting include detailed info\
+Need a new table to set up user's info? After that set up a account setting includes detailed info\
 
 Developed:\
-Login,SignUp and Logout (able to hide each other after logged in or logged out)
-some forntend features
+Login,SignUp and Logout (able to hide each other after logged in or logged out);\
+some forntend features;\
