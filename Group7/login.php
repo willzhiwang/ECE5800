@@ -1,8 +1,4 @@
 
-<?php
-//start session before login post
-    session_start();
-?>
 <!DOCTYPE html>
 <html>
 <head>

@@ -40,7 +40,7 @@
               echo '<p class="login-status"> You are logged in </p>';
             }
             else{
-              echo '<p class="login-status"> You are logged out </p>';
+              echo '<p class="login-status"> Please login </p>';
             }
           ?>
         </li>
