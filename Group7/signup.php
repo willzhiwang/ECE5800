@@ -46,7 +46,7 @@
                         echo '<small class="text-danger"> Username is already taken! </small>';
                     }
                 }
-                else if ( $_GET['signup'] == "success") {
+                else if ( isset($_GET['signup']) && $_GET['signup'] == "success") {
                     echo '<small class="text-success"> Success! </small>';
                 }
             ?>
