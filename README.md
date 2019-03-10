@@ -25,5 +25,5 @@ Need a new table to set up user's info? To set up a successful account setting i
 
 Developed:\
 Login,SignUp and Logout (able to hide each other after logged in or logged out);\
-google map(need to pay), cost saving tables, from to, search;\
+Frontend: google map(need to pay), cost saving tables, from to, search;\
 some forntend features
