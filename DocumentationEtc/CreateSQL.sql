@@ -1,12 +1,13 @@
---Not 100% sure where exactly to put this.
---Let me know if there are any errors. There probably are - I'll work on debugging and polishing this on Wednesday.
 
+/*
+Not 100% sure where exactly to put this.
+Let me know if there are any errors. There probably are - I'll work on debugging and polishing this on Wednesday.
+*/
 
 CREATE DATABASE `Group7Vanpool`;
 
 CREATE TABLE `Group7Vanpool`.`Address` ( 
 `ID` INT NOT NULL AUTO_INCREMENT , 
---"Name" refers to a person's name, if it's a part of the address.
 `Name` VARCHAR(61) NULL,
 `Street` INT(127) NOT NULL , 
 `City` VARCHAR(31) NOT NULL , 
@@ -32,8 +33,8 @@ CREATE TABLE `Group7Vanpool`.`PaymentInfo` (
 `CardType` INT NOT NULL , 
 `BillingAddress` INT NOT NULL , 
 PRIMARY KEY (`ID`),
-FOREIGN KEY (`CardType`) REFERENCES `CardType`(`ID`)
-FOREIGN KEY (`BillingAddress`) REFERENCES `Address`(`ID`),
+FOREIGN KEY (`CardType`) REFERENCES `CardType`(`ID`),
+FOREIGN KEY (`BillingAddress`) REFERENCES `Address`(`ID`)
 )
 ENGINE = InnoDB;
 
@@ -62,7 +63,7 @@ CREATE TABLE `Group7Vanpool`.`Person` (
 `DateOfBirth` DATE NOT NULL , 
 `PhoneNumber` VARCHAR(16) NOT NULL ,
 `Address` INT NOT NULL , 
-PRIMARY KEY (`ID`)
+PRIMARY KEY (`ID`),
 FOREIGN KEY (`Address`) REFERENCES `Address`(`ID`)
 )
 ENGINE = InnoDB;
@@ -123,7 +124,7 @@ CREATE TABLE `Group7Vanpool`.`PassengerToRoutes` (
 `UserID` INT NOT NULL , 
 `RouteID` INT NOT NULL , 
 PRIMARY KEY (`UserID`, `RouteID`) ,
-FOREIGN KEY (`UserID`) REFERENCES `Users`(`ID`),
+FOREIGN KEY (`UserID`) REFERENCES `User`(`ID`),
 FOREIGN KEY (`RouteID`) REFERENCES `Route`(`ID`)
 )
 ENGINE = InnoDB;
@@ -132,8 +133,7 @@ CREATE TABLE `Group7Vanpool`.`DriverToRoutes` (
 `UserID` INT NOT NULL , 
 `RouteID` INT NOT NULL , 
 PRIMARY KEY (`UserID`, `RouteID`) ,
-FOREIGN KEY (`UserID`) REFERENCES `Users`(`ID`),
+FOREIGN KEY (`UserID`) REFERENCES `User`(`ID`),
 FOREIGN KEY (`RouteID`) REFERENCES `Route`(`ID`)
 )
 ENGINE = InnoDB;
-
