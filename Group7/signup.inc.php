@@ -44,6 +44,7 @@
         }
         else
         {
+            //TODO: refactor SQL queries to work with new database
             $sql = "SELECT uidUsers FROM users WHERE uidUsers=?";
             $stmt = mysqli_stmt_init($conn);
             if (!mysqli_stmt_prepare($stmt,$sql))
