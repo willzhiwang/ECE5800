@@ -2,46 +2,37 @@
     require "header.php"
 ?>
 
+
 <?php
-    if (isset($_POST['signup-submit']))
+    if (isset($_POST['billing-submit']))
     {
         require 'configDB.php';
 
-        $username = $_POST['uid'];
-        $email = $_POST['mail'];
-        $password = $_POST['pwd'];
-        $passwordRepeat = $_POST['pwd-r'];
+        $firstname = $_POST['B-fname'];
+        $lastname = $_POST['B-lname'];
+        $address = $_POST['B-address'];
+        $city = $_POST['B-city'];
+        $state = $_POST['B-state'];
+        $zip = $_POST['B-zip'];
+
+        $cardNu = $_POST['cardNu'];
+        $cvv = $_POST['cvv'];
+        $eMonth = $_POST['eMonth'];
+        $eYear = $_POST['eYear'];
+
         // All error messages when create an account
         //check if any empty input
-        if (empty($username) || empty($email) ||empty($password) ||empty($passwordRepeat))
+        if (empty($fname) || empty($lname) ||empty($address) ||empty($city) ||empty($state)||empty($zip) )
         {
-            header("Location: signup.php?error=emptyfields&uid=".$username."&mail=".$email);
+            header("Location: signup.php?error=emptypaymentaddress");
             exit();
         }
-        //both invalid email and password
-        else if (!filter_var($email,FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$/",$username))
-        {   
-            header("Location: signup.php?error=invalidmailuid");
-            exit();
-        }
-        //check vlalid email
-        else if (!filter_var($email,FILTER_VALIDATE_EMAIL))
-        {   
-            header("Location: signup.php?error=invalidmail&uid=".$username);
-            exit();
-        }
-        //check password pattern
-        else if ( !preg_match("/^[a-zA-Z0-9]*$/",$username))
+        if (empty($cardNu) || empty($cvv) ||empty($eMonth) ||empty($eYear) )
         {
-            header("Location: signup.php?error=invaliduid&mail=".$email);
+            header("Location: signup.php?error=emptypayment");
             exit();
         }
-        //check password match or not
-        else if ($password != $passwordRepeat)
-        {
-            header("Location: signup.php?error=passwordcheck&uid=".$username."&mail=".$email);
-            exit();
-        }
+
         else
         {
             $sql="SELECT uidUsers FROM users WHERE uidUsers=?";

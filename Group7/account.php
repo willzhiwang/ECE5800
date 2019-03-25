@@ -24,7 +24,7 @@
             <div class="form-group"><input type="text" name="zip" placeholder="Zip Code"></div>
             <div class="form-group"><input type="checkbox" name="userType" value="passenger"checked> I am a passenger<br>
             <div class="form-group"><input type="checkbox" name="userType" value="driver" > I am a driver<br>
-            <div class="form-group"><button type="submit" class="btn btn-primary" name="signup-submit">SignUp</button></div>
+            <div class="form-group"><button type="submit" class="btn btn-primary" name="signup-submit">Save</button></div>
             </form>
         </section>
     </div>

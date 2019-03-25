@@ -3,43 +3,30 @@
 ?>
 
 <?php
-    if (isset($_POST['signup-submit']))
+    if (isset($_POST['account-submit']))
     {
         require 'configDB.php';
 
-        $username = $_POST['uid'];
-        $email = $_POST['mail'];
-        $password = $_POST['pwd'];
-        $passwordRepeat = $_POST['pwd-r'];
+        $firstname = $_POST['fname'];
+        $lastname = $_POST['lname'];
+        $address = $_POST['address'];
+        $city = $_POST['city'];
+        $state = $_POST['state'];
+        $zip = $_POST['zip'];
+        $driver = $_POST['driver'];
+        $passanger = $_POST['passenger'];
+
+
         // All error messages when create an account
         //check if any empty input
-        if (empty($username) || empty($email) ||empty($password) ||empty($passwordRepeat))
+        if (empty($fname) || empty($lname) ||empty($address) ||empty($city) ||empty($state)||empty($zip) )
         {
-            header("Location: signup.php?error=emptyfields&uid=".$username."&mail=".$email);
+            header("Location: signup.php?error=emptyfields");
             exit();
         }
-        //both invalid email and password
-        else if (!filter_var($email,FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$/",$username))
-        {   
-            header("Location: signup.php?error=invalidmailuid");
-            exit();
-        }
-        //check vlalid email
-        else if (!filter_var($email,FILTER_VALIDATE_EMAIL))
-        {   
-            header("Location: signup.php?error=invalidmail&uid=".$username);
-            exit();
-        }
-        //check password pattern
-        else if ( !preg_match("/^[a-zA-Z0-9]*$/",$username))
+        if (empty($driver) && empty($passanger) )
         {
-            header("Location: signup.php?error=invaliduid&mail=".$email);
-            exit();
-        }
-        //check password match or not
-        else if ($password != $passwordRepeat)
-        {
-            header("Location: signup.php?error=passwordcheck&uid=".$username."&mail=".$email);
+            header("Location: signup.php?error=emptyfields");
             exit();
         }
         else

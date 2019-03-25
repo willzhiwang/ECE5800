@@ -44,10 +44,17 @@
                     else if ($_GET['error'] == "usertaken")
                     {
                         echo '<small class="text-danger"> Username is already taken! </small>';
+                    }                    
+                    else if ($_GET['error'] == "emailtaken")
+                    {
+                        echo '<small class="text-danger"> email is already taken! </small>';
                     }
                 }
-                else if ( $_GET['signup'] == "success") {
+                else if (isset($_GET['signup']))
+                {
+                    if ( $_GET['signup'] == "success") {
                     echo '<small class="text-success"> Success! </small>';
+                    }
                 }
             ?>
             <form action = "signup.inc.php" method = "post">
