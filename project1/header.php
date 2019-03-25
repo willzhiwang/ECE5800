@@ -23,7 +23,7 @@ session_start();
     <header>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 
-    <a class="navbar-brand" href="#">Navigation</a>
+    <a class="navbar-brand" href="index.php">Navigation</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
@@ -36,6 +36,7 @@ session_start();
     <li class="nav-item"> <a class="nav-link" href = "costandsave.php">Cost and Savings</a></li>
     <li class="nav-item"> <a class="nav-link" href = "Fromto.php">From and To</a></li>
     <li class="nav-item"> <a class="nav-link" href = "search.php">Search</a></li>
+    
     </ul>
 
     <ul class="navbar-nav ml-auto">

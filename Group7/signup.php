@@ -64,6 +64,9 @@
             <div class="form-group"><input type="password" name="pwd-r" placeholder="Repeat Password"></div>
             <div class="form-group"><input type="checkbox" name="userType" value="passenger"checked> I am a passenger<br>
             <div class="form-group"><input type="checkbox" name="userType" value="driver" > I am a driver<br>
+            <!-- TODO: Add 3 dropdown menus for security questions, and text boxes after each for answers
+            Will need to gather list of questions from database, to populate the dropdown menus
+            (Only the 1st should be required)-->
             <div class="form-group"><button type="submit" class="btn btn-primary" name="signup-submit">SignUp</button></div>
             </form>
             
