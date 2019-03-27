@@ -1,7 +1,7 @@
 
 /*
 Not 100% sure where exactly to put this.
-Let me know if there are any errors. There probably are - I'll work on debugging and polishing this on Wednesday.
+Let me know if there are any errors.
 */
 
 CREATE DATABASE `Group7Vanpool`;
@@ -58,11 +58,11 @@ ENGINE = InnoDB;
 
 CREATE TABLE `Group7Vanpool`.`Person` ( 
 `ID` INT NOT NULL AUTO_INCREMENT , 
-`FirstName` VARCHAR(20) NOT NULL , 
-`LastName` VARCHAR(20) NOT NULL , 
-`DateOfBirth` DATE NOT NULL , 
-`PhoneNumber` VARCHAR(16) NOT NULL ,
-`Address` INT NOT NULL , 
+`FirstName` VARCHAR(20) NULL , 
+`LastName` VARCHAR(20) NULL , 
+`DateOfBirth` DATE NULL , 
+`PhoneNumber` VARCHAR(16) NULL ,
+`Address` INT NULL , 
 PRIMARY KEY (`ID`),
 FOREIGN KEY (`Address`) REFERENCES `Address`(`ID`)
 )
