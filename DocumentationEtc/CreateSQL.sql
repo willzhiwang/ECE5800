@@ -45,6 +45,9 @@ PRIMARY KEY  (`ID`)
 ) 
 ENGINE = InnoDB;
 
+INSERT INTO `securityquestion`(`Question`) VALUES ("What is your mother's maiden name?");
+INSERT INTO `securityquestion`(`Question`) VALUES ("What was the name of your elementary school?");
+
 CREATE TABLE `Group7Vanpool`.`User` (
 `ID` INT NOT NULL AUTO_INCREMENT , 
 `IsDriver` BOOLEAN NOT NULL , 
@@ -80,7 +83,7 @@ CREATE TABLE `Group7Vanpool`.`Account` (
 `SecQuestion3` INT NULL , 
 `SecAnswer3` VARCHAR(50) NULL ,
 `UserID` INT NOT NULL,
-`PersonID` INT NOT NULL,
+`PersonID` INT NULL,
 PRIMARY KEY (`ID`),
 FOREIGN KEY (`SecQuestion1`) REFERENCES `SecurityQuestion`(`ID`),
 FOREIGN KEY (`SecQuestion2`) REFERENCES `SecurityQuestion`(`ID`),
