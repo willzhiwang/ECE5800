@@ -9,7 +9,7 @@ CREATE DATABASE `Group7Vanpool`;
 CREATE TABLE `Group7Vanpool`.`Address` ( 
 `ID` INT NOT NULL AUTO_INCREMENT , 
 `Name` VARCHAR(61) NULL,
-`Street` INT(127) NOT NULL , 
+`Street` VARCHAR(127) NOT NULL , 
 `City` VARCHAR(31) NOT NULL , 
 `State` VARCHAR(2) NOT NULL , 
 `ZipCode` VARCHAR(10) NOT NULL ,  
