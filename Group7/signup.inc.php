@@ -11,6 +11,26 @@
         $email = $_POST['mail'];
         $password = $_POST['pwd'];
         $passwordRepeat = $_POST['pwd-r'];
+        $isDriver = $_POST['isDriver'];
+        $question1 = $_POST['question1'];
+        $answer1 = $_POST['answer1'];
+        
+        if ($_POST['question2'] != 0){
+            $question2 = $_POST['question2'];
+            $answer2 = $_POST['answer2'];
+        }else{
+            $question2 = NULL;
+            $answer2 = NULL;
+        }
+        
+        if ($_POST['question3'] != 0){
+            $question3 = $_POST['question3'];
+            $answer3 = $_POST['answer3'];
+        }else{
+            $question3 = NULL;
+            $answer3 = NULL;
+        }
+
         // All error messages when create an account
         //check if any empty input
         if (empty($username) || empty($email) ||empty($password) ||empty($passwordRepeat))
@@ -24,7 +44,7 @@
             header("Location: signup.php?error=invalidmailuid");
             exit();
         }
-        //check vlalid email
+        //check valid email
         else if (!filter_var($email,FILTER_VALIDATE_EMAIL))
         {   
             header("Location: signup.php?error=invalidmail&uid=".$username);
@@ -44,11 +64,12 @@
         }
         else
         {
-            $sql="SELECT uidUsers FROM users WHERE uidUsers=?";
-            $sql2="SELECT emailUsers FROM users WHERE emailUsers=?";
+            $sql="SELECT `Username` FROM account WHERE `Username`=?";
+            $sql2="SELECT `Email` FROM account WHERE `Email`=?";
             $stmt = mysqli_stmt_init($conn);
             $stmt2 = mysqli_stmt_init($conn);
             //check if email is taken
+            //TODO: make sure it's case insensitive
             if(!mysqli_stmt_prepare($stmt2,$sql2)){
                 header("Location: signup.php?error=sqlerror");
                 exit();
@@ -77,22 +98,54 @@
                     exit();
                 }
                 else{
-                    $sql = "INSERT INTO users (uidUsers, emailUsers, pwdUsers) VALUES (?,?,?)";
-                    $stmt = mysqli_stmt_init($conn);
-                    if (!mysqli_stmt_prepare($stmt,$sql))
+                    //We start a transaction so that if one query succeeds
+                    //  but the next fails, the first query has no effect
+                    //  (That way we don't have a User entry with no Account)
+                    if (mysqli_begin_transaction($conn))
                     {
-                        header("Location: signup.php?error=sqlerror");
-                        exit();
-                    }
-                    else{
-                        //password security
-                        //this following method make it safe!
-                        $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
+                        //First we make the User entry
+                        $sql3 = "INSERT INTO user (`IsDriver`, `IsAdmin`, `Balance`) VALUES (?,?,?)";
+                        $stmt3 = mysqli_stmt_init($conn);
+                        if (!mysqli_stmt_prepare($stmt3,$sql3))
+                        {
+                            header("Location: signup.php?error=sqlerror");
+                            mysqli_rollback($conn);
+                            exit();
+                        }
+                        else{
+                            $isAdmin = 0;
+                            $balance = 0.00;
+                            mysqli_stmt_bind_param($stmt3, "iid",$isDriver,$isAdmin,$balance);
+                            
+                            mysqli_stmt_execute($stmt3);
+                        }
 
-                        mysqli_stmt_bind_param($stmt, "sss",$username,$email,$hashedPwd);
+                        //We store the ID for the new User entry
+                        $user_id = mysqli_insert_id($conn);
+
+                        //Then we make the Account entry
+                        $sql2 = "INSERT INTO account (`Email`, `Username`, `Password`,`SecQuestion1`,`SecAnswer1`,
+                        `SecQuestion2`,`SecAnswer2`,`SecQuestion3`,`SecAnswer3`,`UserID`) VALUES (?,?,?,?,?,?,?,?,?,?)";
+                        $stmt2 = mysqli_stmt_init($conn);
+                        if (!mysqli_stmt_prepare($stmt2,$sql2))
+                        {
+                            header("Location: signup.php?error=sqlerror");
+                            mysqli_rollback($conn);
+                            exit();
+                        }
+                        else{
+                            //password security
+                            //this following method makes it safe!
+                            $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
+
+                            mysqli_stmt_bind_param($stmt2, "sssisisisi",$email,$username,$hashedPwd,$question1,$answer1,
+                            $question2,$answer2,$question3,$answer3,$user_id);
                         
-                        mysqli_stmt_execute($stmt);
+                            mysqli_stmt_execute($stmt2);
+                        }
+                        
                         header("Location: signup.php?signup=success");
+                        mysqli_commit($conn);
                         exit();
                     }
                 }
