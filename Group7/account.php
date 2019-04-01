@@ -24,7 +24,7 @@
 					<a class="nav-link" style="color:rgba(255,255,255,255)" href="Map.php">Map</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" style="color:rgba(255,255,255,255);width:100px" href="fromto.php">From To</a>
+					<a class="nav-link" style="color:rgba(255,255,255,255);width:100px" href="Fromto.php">From To</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" style="color:rgba(255,255,255,255)" href="search.php">Search</a>
@@ -32,14 +32,14 @@
 				<button type="button" class="btn bg-white" style="margin-left:1rem;color:rgba(0,0,0,255);width:120px">Contact Us</button>
 			</ul>
 		</nav>
-	<header>
+	</header>
 	<main>
 		<div class="container-fluid" style="background-image: linear-gradient(rgb(49,182,246),rgb(115,232,255)">
 		<br>
 		<br>
-			<div class="container bg-white" style="width:500px;border-radius:25px;border-style:inset;border-width:large">
+			<div class="container bg-white" style="width:800px;border-radius:25px;border-style:inset;border-width:large">
 				<section>
-					<h1 style="margin-left:5rem">Account Settings</h1>
+					<h1 style="margin-left:15rem">Account Settings</h1>
 					<br>
 						<form action="account.inc.php" method="post">
 							<div class="form-group" style="margin-left:2rem">

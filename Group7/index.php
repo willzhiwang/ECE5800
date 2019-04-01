@@ -31,7 +31,7 @@
 					<a class="nav-link" style="color:rgba(255,255,255,255)" href="Map.php">Map</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" style="color:rgba(255,255,255,255);width:100px" href="fromto.php">From To</a>
+					<a class="nav-link" style="color:rgba(255,255,255,255);width:100px" href="Fromto.php">From To</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" style="color:rgba(255,255,255,255)" href="search.php">Search</a>
@@ -39,12 +39,12 @@
 				<button type="button" class="btn bg-white" style="margin-left:1rem;color:rgba(0,0,0,255);width:120px">Contact Us</button>
 			</ul>
 		</nav>
-	<header>
+	</header>
     <main>
 		<div class="container-fluid" style="background-image: linear-gradient(rgb(49,182,246),rgb(115,232,255)">
 			<br>
-			<div class="container bg-white" style="width:500px;height:800px;border-radius:25px;border-style:inset;border-width:large">
-				<h2 style="margin-left:10rem">About Us</h2>
+			<div class="container bg-white" style="width:800px;height:800px;border-radius:25px;border-style:inset;border-width:large">
+				<h2 style="margin-left:18rem">About Us</h2>
 				<br>
 				<img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/2017-03-07_Geneva_Motor_Show_1177.JPG" class="rounded" alt="Cinque Terre" width="450" height="265" style="margin-left:10px">
 				<p style="margin-top:1rem">We are a vanpool company in Iowa City</p>

@@ -28,7 +28,7 @@
 					<a class="nav-link" style="color:rgba(255,255,255,255)" href="map.php">Map</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" style="color:rgba(255,255,255,255);width:100px" href="fromto.php">From To</a>
+					<a class="nav-link" style="color:rgba(255,255,255,255);width:100px" href="Fromto.php">From To</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" style="color:rgba(255,255,255,255)" href="search.php">Search</a>
