@@ -6,6 +6,8 @@ Let me know if there are any errors.
 
 CREATE DATABASE `Group7Vanpool`;
 
+USE `Group7Vanpool`;
+
 CREATE TABLE `Group7Vanpool`.`Address` ( 
 `ID` INT NOT NULL AUTO_INCREMENT , 
 `Name` VARCHAR(61) NULL,
@@ -45,8 +47,8 @@ PRIMARY KEY  (`ID`)
 ) 
 ENGINE = InnoDB;
 
-INSERT INTO `securityquestion`(`Question`) VALUES ("What is your mother's maiden name?");
-INSERT INTO `securityquestion`(`Question`) VALUES ("What was the name of your elementary school?");
+INSERT INTO `Group7Vanpool`.`SecurityQuestion`(`Question`) VALUES ("What is your mother's maiden name?");
+INSERT INTO `Group7Vanpool`.`SecurityQuestion`(`Question`) VALUES ("What was the name of your elementary school?");
 
 CREATE TABLE `Group7Vanpool`.`User` (
 `ID` INT NOT NULL AUTO_INCREMENT , 
