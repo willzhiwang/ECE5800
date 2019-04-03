@@ -21,21 +21,22 @@ session_start();
 
 <body>
     <header>
+
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 
-    <a class="navbar-brand" href="#">Navigation</a>
+    <a class="navbar-brand" style="width:100px" href="index.php">Home</a>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <button class="navbar-toggler" type="button"  data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
 
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav"> 
 
-    <li class="nav-item"> <a class="nav-link" href = "Map.php">Map</a></li>
-    <li class="nav-item"> <a class="nav-link" href = "costandsave.php">Cost and Savings</a></li>
-    <li class="nav-item"> <a class="nav-link" href = "Fromto.php">From and To</a></li>
-    <li class="nav-item"> <a class="nav-link" href = "search.php">Search</a></li>
+    <li class="nav-item"> <a class="nav-link" style="width:70px" href = "Map.php">Map</a></li>
+    <li class="nav-item"> <a class="nav-link" style="width:160px" href = "costandsave.php">Cost and Savings</a></li>
+    <li class="nav-item"> <a class="nav-link" style="width:130px" href = "Fromto.php">From and To</a></li>
+    <li class="nav-item"> <a class="nav-link" style="width:100px" href = "search.php">Search</a></li>
     </ul>
 
     <ul class="navbar-nav ml-auto">

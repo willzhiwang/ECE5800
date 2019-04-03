@@ -15,28 +15,6 @@
     require "header.php"
 ?>
 <body>
-	<header>
-		<nav class="navbar navbar-expand-sm" style="background-color:rgba(0,134,195,255)">
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link" style="color:rgba(255,255,255,255)" href="#">Home</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" style="color:rgba(255,255,255,255);width:150px" href="costandsavings.php">Cost and Savings</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" style="color:rgba(255,255,255,255)" href="Map.php">Map</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" style="color:rgba(255,255,255,255);width:100px" href="Fromto.php">From To</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" style="color:rgba(255,255,255,255)" href="search.php">Search</a>
-				</li>
-				<button type="button" class="btn bg-white" style="margin-left:1rem;color:rgba(0,0,0,255);width:120px">Contact Us</button>
-			</ul>
-		</nav>
-	</header>
 	<main>
 		<div class="container-fluid" style="background-image: linear-gradient(rgb(49,182,246),rgb(115,232,255)">
 		<br>
