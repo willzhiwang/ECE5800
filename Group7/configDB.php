@@ -4,7 +4,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "group7vanpool";
+$dbname = "Group7Vanpool";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
