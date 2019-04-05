@@ -13,83 +13,85 @@
         $city = $_POST['city'];
         $state = $_POST['state'];
         $zip = $_POST['zip'];
-        $driver = $_POST['driver'];
-        $passanger = $_POST['passenger'];
+        $birthdate = $_POST['dateofbirth'];
+        $phone = $_POST['phone'];
 
+
+        $sql2 = "SELECT `PersonID` FROM Account";
+        $result = mysqli_query($conn, $sql2);
 
         // All error messages when create an account
         //check if any empty input
-        if (empty($fname) || empty($lname) ||empty($address) ||empty($city) ||empty($state)||empty($zip) )
+        if ( empty($firstname) || empty($lastname) ||empty($address) ||empty($city) ||empty($state)||empty($zip))
         {
-            header("Location: signup.php?error=emptyfields");
+            header("Location: account.php?error=emptyfields");
             exit();
         }
-        if (empty($driver) && empty($passanger) )
-        {
-            header("Location: signup.php?error=emptyfields");
-            exit();
-        }
+
         else
         {
-            $sql="SELECT uidUsers FROM users WHERE uidUsers=?";
-            $sql2="SELECT emailUsers FROM users WHERE emailUsers=?";
-            $stmt = mysqli_stmt_init($conn);
-            $stmt2 = mysqli_stmt_init($conn);
-            //check if email is taken
-            if(!mysqli_stmt_prepare($stmt2,$sql2)){
-                header("Location: signup.php?error=sqlerror");
-                exit();
-            }
+            if (mysqli_num_rows($result) > 0) {
+                // output data of each row
+                $row = mysqli_fetch_assoc($result);
+                if ($row["PersonID"]==NULL)//when it's null
+                {
+                    $sql="SELECT `FirstName` FROM Person WHERE `FirstName`=?";
+                    $stmt = mysqli_stmt_init($conn);
+
+                    echo "      id: " . $row["PersonID"]. "<br>";
+
+                    //check if email is taken
+                    if(!mysqli_stmt_prepare($stmt,$sql)){
+                        header("Location: account.php?error=sqlerror");
+                        exit();
+                    }
             else{
-                mysqli_stmt_bind_param($stmt2, "s",$email);
-                mysqli_stmt_execute($stmt2);
-                mysqli_stmt_store_result($stmt2);
-                $resultCheck2= mysqli_stmt_num_rows($stmt2);
-                if ($resultCheck2 > 0){
-                    header("Location: signup.php?error=emailtaken");
-                    exit();
-                }
-            }
-            if(!mysqli_stmt_prepare($stmt,$sql)){
-                header("Location: signup.php?error=sqlerror");
-                exit();
-            }
-            else{
-                mysqli_stmt_bind_param($stmt, "s",$username);
+                mysqli_stmt_bind_param($stmt, "s",$firstname);
                 mysqli_stmt_execute($stmt);
                 mysqli_stmt_store_result($stmt);
                 $resultCheck= mysqli_stmt_num_rows($stmt);
                 if ($resultCheck > 0){
-                    header("Location: signup.php?error=usertaken&mail=".$email);
-                    exit();
+                    //header("Location: account.php?error=usertaken&mail=".$firstname);
+                    //exit();
                 }
                 else{
-                    $sql = "INSERT INTO users (uidUsers, emailUsers, pwdUsers) VALUES (?,?,?)";
+                    $sql = "INSERT INTO Person (`FirstName`, `LastName`, `DateOfBirth`,`PhoneNumber`) VALUES (?,?,?,?)";
                     $stmt = mysqli_stmt_init($conn);
                     if (!mysqli_stmt_prepare($stmt,$sql))
                     {
-                        header("Location: signup.php?error=sqlerror");
+                        header("Location: account.php?error=sqlerror");
                         exit();
                     }
                     else{
                         //password security
                         //this following method make it safe!
-                        $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
-
-                        mysqli_stmt_bind_param($stmt, "sss",$username,$email,$hashedPwd);
+                        mysqli_stmt_bind_param($stmt, "ssss",$firstname,$lastname,$birthdate,$phone);
                         
                         mysqli_stmt_execute($stmt);
-                        header("Location: signup.php?signup=success");
+                        header("Location: account.php?account=success");
+
                         exit();
+                        }
                     }
                 }
+                    
             }
+                else{
+                    
+    
+                }
+                
+            } else {
+                header("Location: account.php?error=PersonIDerror");
+            }
+    
+            
         }
         mysqli_stmt_close($stmt);
         mysqli_close($conn);
     }
     else{
-        header("Location: signup.php");
+        header("Location: account.php");
         exit();
     }
 ?>

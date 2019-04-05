@@ -35,7 +35,7 @@
 							<div class="form-group" style="margin-left:2rem">
 								<label for="addressInput">Address</label>
 								<div class="row" style="margin-right:1rem">
-									<input type="text" class="form-control" name="Address" id="addressInput" placeholder="Address">
+									<input type="text" class="form-control" name="address" id="addressInput" placeholder="Address">
 								</div>
 							</div>
 							<div class="form-group" style="margin-left:2rem">
@@ -62,7 +62,23 @@
 									</div>
 								</div>
 							</div>
-							<h5>Type of User</h5>
+							<div class="form-group" style="margin-left:2rem">
+								<label for="dateOfBirthInput">Date of Birth</label>
+								<div class="row">
+									<div class="col-xs-3">
+										<input type="text" class="form-control" name="dateofbirth" id="dateOfBirthInput" placeholder="Date of Birth">
+									</div>
+								</div>
+							</div>
+							<div class="form-group" style="margin-left:2rem">
+								<label for="phoneInput">Phone Number</label>
+								<div class="row">
+									<div class="col-xs-3">
+										<input type="text" class="form-control" name="phone" id="phoneInput" placeholder="Phone Number">
+									</div>
+								</div>
+							</div>
+							<!--h5>Type of User</h5>
 							<div class="checkbox">
 								<label>
 									<input type="checkbox" name="userType" value="passenger" checked>
@@ -74,9 +90,9 @@
 									<input type="checkbox" name="userType" value="driver">
 									I am a driver
 								</label>
-							</div>
+							</div-->
 							<div class="form-group">
-								<button type="submit" class="btn btn-lg btn-primary" name="signup-submit">Save</button>
+								<button type="submit" class="btn btn-lg btn-primary" name="account-submit">Save</button>
 							</div>
 							<br>
 						</form>
