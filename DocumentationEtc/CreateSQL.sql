@@ -26,6 +26,9 @@ PRIMARY KEY (`ID`)
 ) 
 ENGINE = InnoDB;
 
+INSERT INTO `Group7Vanpool`.`CardType`(`CardName`) VALUES ("Mastercard");
+INSERT INTO `Group7Vanpool`.`CardType`(`CardName`) VALUES ("Visa");
+
 CREATE TABLE `Group7Vanpool`.`PaymentInfo` (
 `ID` INT NOT NULL AUTO_INCREMENT , 
 `CreditCardNumber` VARCHAR(255) NOT NULL , 
