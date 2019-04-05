@@ -25,10 +25,10 @@
 					<br>
 						<form action="login.inc.php" method="post">
 							<div class="form-group" style="margin-left:8rem">
-								<label for="emailinput">Email</label>
+								<label for="emailinput">Email or Username</label>
 								<div class="row">
 									<div class="col-xs-3">
-										<input type="text" class="form-control" name="mail" id="emailinput" placeholder="Email">
+										<input type="text" class="form-control" name="mail" id="emailinput" placeholder="Email or Username">
 									</div>
 								</div>
 							</div>

@@ -64,21 +64,21 @@
         }
         else
         {
-            $sql="SELECT `Username` FROM account WHERE `Username`=?";
-            $sql2="SELECT `Email` FROM account WHERE `Email`=?";
+            $sql="SELECT `Username` FROM Account WHERE `Username`=?";
+            $sql0="SELECT `Email` FROM Account WHERE `Email`=?";
             $stmt = mysqli_stmt_init($conn);
-            $stmt2 = mysqli_stmt_init($conn);
+            $stmt0 = mysqli_stmt_init($conn);
             //check if email is taken
             //TODO: make sure it's case insensitive
-            if(!mysqli_stmt_prepare($stmt2,$sql2)){
-                header("Location: signup.php?error=sqlerror");
+            if(!mysqli_stmt_prepare($stmt0,$sql0)){
+                header("Location: signup.php?error=sqlerror0");
                 exit();
             }
             else{
-                mysqli_stmt_bind_param($stmt2, "s",$email);
-                mysqli_stmt_execute($stmt2);
-                mysqli_stmt_store_result($stmt2);
-                $resultCheck2= mysqli_stmt_num_rows($stmt2);
+                mysqli_stmt_bind_param($stmt0, "s",$email);
+                mysqli_stmt_execute($stmt0);
+                mysqli_stmt_store_result($stmt0);
+                $resultCheck2= mysqli_stmt_num_rows($stmt0);
                 if ($resultCheck2 > 0){
                     header("Location: signup.php?error=emailtaken");
                     exit();
@@ -104,11 +104,11 @@
                     if (mysqli_begin_transaction($conn))
                     {
                         //First we make the User entry
-                        $sql3 = "INSERT INTO user (`IsDriver`, `IsAdmin`, `Balance`) VALUES (?,?,?)";
+                        $sql3 = "INSERT INTO User (`IsDriver`, `IsAdmin`, `Balance`) VALUES (?,?,?)";
                         $stmt3 = mysqli_stmt_init($conn);
                         if (!mysqli_stmt_prepare($stmt3,$sql3))
                         {
-                            header("Location: signup.php?error=sqlerror");
+                            header("Location: signup.php?error=sqlerror3");
                             mysqli_rollback($conn);
                             exit();
                         }
@@ -124,12 +124,12 @@
                         $user_id = mysqli_insert_id($conn);
 
                         //Then we make the Account entry
-                        $sql2 = "INSERT INTO account (`Email`, `Username`, `Password`,`SecQuestion1`,`SecAnswer1`,
+                        $sql2 = "INSERT INTO Account (`Email`, `Username`, `Password`,`SecQuestion1`,`SecAnswer1`,
                         `SecQuestion2`,`SecAnswer2`,`SecQuestion3`,`SecAnswer3`,`UserID`) VALUES (?,?,?,?,?,?,?,?,?,?)";
                         $stmt2 = mysqli_stmt_init($conn);
                         if (!mysqli_stmt_prepare($stmt2,$sql2))
                         {
-                            header("Location: signup.php?error=sqlerror");
+                            header("Location: signup.php?error=sqlerror2");
                             mysqli_rollback($conn);
                             exit();
                         }

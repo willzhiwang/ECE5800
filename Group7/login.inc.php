@@ -23,7 +23,7 @@
         //check sql errors
         else
         {
-            $sql = "SELECT * FROM account WHERE `Username`=? OR `Email`=?;";
+            $sql = "SELECT * FROM Account WHERE `Username`=? OR `Email`=?";
             $stmt = mysqli_stmt_init($conn);
             //checking $sql statement error
             if (!mysqli_stmt_prepare($stmt,$sql))
