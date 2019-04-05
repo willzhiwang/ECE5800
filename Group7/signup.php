@@ -88,7 +88,7 @@
 								<label for="passwordInput">Password</label>
 								<div class="row">
 									<div class="col-xs-3">
-										<input type="text" class="form-control" name="pwd" id="passwordInput" placeholder="Password">
+										<input type="password" class="form-control" name="pwd" id="passwordInput" placeholder="Password">
 									</div>
 								</div>
 							</div>
@@ -96,14 +96,14 @@
 								<label for="passwordRepeatInput">Repeat Password</label>
 								<div class="row">
 									<div class="col-xs-3">
-										<input type="text" class="form-control" name="pwd-r" id="passwordRepeatInput" placeholder="Repeat Password">
+										<input type="password" class="form-control" name="pwd-r" id="passwordRepeatInput" placeholder="Repeat Password">
 									</div>
 								</div>
 							</div>
 							<h5>Type of User</h5>
 							<div class="form-group">
 								<label>
-									<input type="radio" name="isPassenger" value="0" checked>
+									<input type="radio" name="isDriver" value="0" checked>
 									I am a passenger
 								<label>
 							</div>
@@ -134,7 +134,7 @@
 									<div class="col-xs-5">
 										<label for="security2">Security Question 2</label>
 										<select name="question2" id="security2">
-											<option value="0">Select a security question...</option>
+											<option value="0">(Optional) Select a security question...</option>
 											<option value="1">Example question 1</option>
 											<option value="2">Example question 2</option>
 										</select>
@@ -150,7 +150,7 @@
 									<div class="col-xs-5">
 										<label for="security3">Security Question 3</label>
 										<select name="question3" id="security3">
-											<option value="0">Select a security question...</option>
+											<option value="0">(Optional) Select a security question...</option>
 											<option value="1">Example question 1</option>
 											<option value="2">Example question 2</option>
 										</select>
