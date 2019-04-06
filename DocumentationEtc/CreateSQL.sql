@@ -105,6 +105,7 @@ CREATE TABLE `Group7Vanpool`.`Vehicle` (
 `Year` VARCHAR(5) NOT NULL , 
 `Model` VARCHAR(31) NOT NULL , 
 `Color` VARCHAR(15) NOT NULL , 
+`MaxCapacity` INT NOT NULL ,
 PRIMARY KEY (`VehicleID`),
 FOREIGN KEY (`OwnerUser`) REFERENCES `User`(`UserID`)
 ) 
@@ -115,12 +116,19 @@ CREATE TABLE `Group7Vanpool`.`Route` (
 `Vehicle` INT NOT NULL , 
 `FromAddress` INT NOT NULL , 
 `ToAddress` INT NOT NULL , 
-`DaysOfWeek` VARCHAR(7) NOT NULL , 
 `DepartureTime` TIME NOT NULL , 
 `ArrivalTime` TIME NOT NULL , 
 `MileDistance` DECIMAL(6,2) NOT NULL ,
-`MaxCapacity` INT NOT NULL ,
-`CurrCapacity` INT NOT NULL , 
+  --For capacities:
+  --A NULL capacity means the van doesn't run on that day.
+  --A numeric capacity shows how many seats are still empty.
+`MonCapacity` INT NULL ,
+`TueCapacity` INT NULL ,
+`WedCapacity` INT NULL ,
+`ThuCapacity` INT NULL ,
+`FriCapacity` INT NULL ,
+`SatCapacity` INT NULL ,
+`SunCapacity` INT NULL , 
 PRIMARY KEY (`RouteID`),
 FOREIGN KEY (`Vehicle`) REFERENCES `Vehicle`(`VehicleID`),
 FOREIGN KEY (`FromAddress`) REFERENCES `Address`(`AddressID`),
