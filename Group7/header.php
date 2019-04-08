@@ -47,9 +47,9 @@ session_start();
             <div class="dropdown dropleft float-right">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> Settings </button>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="account.php">My Account</a>
+              <a class="dropdown-item" href="account.php">My Account Setting</a>
               <a class="dropdown-item" href="rides.php">My Rides</a>
-              <a class="dropdown-item" href="billing.php">Billing</a>
+              <a class="dropdown-item" href="billing.php">My Billing Setting</a>
             </div>
             </div>
             <form action = "logout.php" method = "post">

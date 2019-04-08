@@ -8,7 +8,53 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <?php
-    require "header.php"
+	require "header.php";
+	require 'configDB.php';
+	$currentAccountID=$_SESSION['userId'];
+	$sql = "SELECT `UserID` FROM `Account` WHERE `AccountID`=$currentAccountID";
+	$result = mysqli_query($conn, $sql);
+	if (mysqli_num_rows($result) > 0) {
+		$row = mysqli_fetch_assoc($result);
+		$currentUserID = $row["UserID"];
+		//echo "\n Person id from Account table: " . $currentPersonID. "<br>";
+		if ($currentUserID==NULL)//when it's null
+		{
+			echo " UserID is NULL!";
+		}
+		else // if User ID is correct
+		{
+			$sql1 = "SELECT `PaymentInfo` FROM `User` WHERE `UserID`=$currentUserID";
+			$result1 = mysqli_query($conn, $sql1);
+			if (mysqli_num_rows($result1) > 0) {
+				$row = mysqli_fetch_assoc($result1);
+				$currentPaymentID = $row["PaymentInfo"];
+				echo "\n Person id from Account table: " . $currentPaymentID. "<br>";
+				if ($currentPaymentID==NULL)//when it's null
+				{
+					$cardNu="";
+					$name="";
+					$eDate = "";
+					$cvv="";
+					$cardType = "";
+				}
+				else // if User ID is correct
+				{
+					$sql2 = "SELECT `CreditCardNumber`,`NameOnCard`,`ExpirationDate`,`SecurityCode`,`CardType` FROM `PaymentInfo` WHERE `PaymentInfoID`=$currentPaymentID";
+					$result2 = mysqli_query($conn, $sql2);
+					if (mysqli_num_rows($result2) > 0) {
+						$row2 = mysqli_fetch_assoc($result2);
+		
+						//$PersonID = $row2["ID"];
+						$cardNu = $row2["CreditCardNumber"];
+						$name = $row2["NameOnCard"];
+						$eDate = $row2["ExpirationDate"];
+						$cvv=$row2["SecurityCode"];
+						$cardType = $row2["CardType"];
+					}
+				}
+			}
+		}
+	}
 ?>
 <body>
 	<main>
@@ -25,7 +71,7 @@
 							<div class="row">
 								<div class="col-xs-3">
 									<label for="creditCardInput">Credit Card Number</label>
-									<input type="text" class="form-control" name="cardNu" id="creditCardInput" placeholder="Credit Card Number">
+									<input type="text" class="form-control" name="cardNu" id="creditCardInput" placeholder="Credit Card Number" value= "<?php echo $cardNu; ?>">
 								</div>
 							</div>
 						</div>
@@ -33,43 +79,35 @@
 							<div class="row">
 								<div class="col-xs-3">
 									<label for="cvvInput">CCV</label>
-									<input type="text" class="form-control" name="cvv" id="ccvInput" placeholder="CCV">
+									<input type="text" class="form-control" name="cvv" id="ccvInput" placeholder="CCV" value= "<?php echo $cvv; ?>">
 								</div>
 							</div>
 						</div>
 						<div class="form-group" style="margin-left:2rem">
 							<div class="row">
 								<div class="col-xs-3">
-									<label for="expMonthInput">Expiration Month</label>
-									<input type="text" class="form-control" name="eMonth" id="expMonthInput" placeholder="Expiration Month">
+									<label for="cvvInput">Card Type</label>
+									<input type="text" class="form-control" name="ctype" id="cardType" placeholder="Visa" value= "<?php echo $cardType; ?>">
 								</div>
 							</div>
 						</div>
 						<div class="form-group" style="margin-left:2rem">
 							<div class="row">
 								<div class="col-xs-3">
-									<label for="expYearInput">Expiration Year</label>
-									<input type="text" class="form-control" name="eYear" id="expYearInput" placeholder="Expiration Year">
+									<label for="expMonthInput">Expiration Date</label>
+									<input type="text" class="form-control" name="eDate" id="expDateInput" placeholder="Expiration Date" value= "<?php echo $eDate; ?>">
+								</div>
+							</div>
+						</div>
+						<div class="form-group" style="margin-left:2rem">
+							<div class="row">
+								<div class="col-xs-3">
+									<label for="billingFirstNameInput">Name</label>
+									<input type="text" class="form-control" name="B-name" id="billingFirstNameInput" placeholder="Name" value= "<?php echo $name; ?>">
 								</div>
 							</div>
 						</div>
 						<h4>Billing Address</h4>
-						<div class="form-group" style="margin-left:2rem">
-							<div class="row">
-								<div class="col-xs-3">
-									<label for="billingFirstNameInput">First Name</label>
-									<input type="text" class="form-control" name="B-fname" id="billingFirstNameInput" placeholder="First Name">
-								</div>
-							</div>
-						</div>
-						<div class="form-group" style="margin-left:2rem">
-							<div class="row">
-								<div class="col-xs-3">
-									<label for="billingLastNameInput">Last Name</label>
-									<input type="text" class="form-control" name="B-lname" id="billingLastNameInput" placeholder="Last Name">
-								</div>
-							</div>
-						</div>
 						<div class="form-group" style="margin-left:2rem">
 							<div class="row">
 								<div class="col-xs-3">
