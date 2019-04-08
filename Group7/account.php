@@ -8,8 +8,39 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <?php
-    require "header.php"
+	require "header.php";
+	require 'configDB.php';
+	$currentID=$_SESSION['userId'];
+	$sql2 = "SELECT `PersonID` FROM `Account` WHERE `AccountID`=$currentID";
+	$result = mysqli_query($conn, $sql2);
+	if (mysqli_num_rows($result) > 0) {
+		$row = mysqli_fetch_assoc($result);
+		$currentPersonID = $row["PersonID"];
+		//echo "\n Person id from Account table: " . $currentPersonID. "<br>";
+		if ($row["PersonID"]==NULL)//when it's null
+		{
+			$firstname = "";
+			$lastname = "";
+			$birthdate = "";
+			$phone = "";
+		}
+		else
+		{
+			$sql3 = "SELECT `FirstName`,`LastName`,`DateOfBirth`,`PhoneNumber` FROM `Person` WHERE `PersonID`=$currentPersonID";
+			$result2 = mysqli_query($conn, $sql3);
+			if (mysqli_num_rows($result2) > 0) {
+				$row2 = mysqli_fetch_assoc($result2);
+
+				//$PersonID = $row2["ID"];
+				$firstname = $row2["FirstName"];
+				$lastname = $row2["LastName"];
+				$birthdate = $row2["DateOfBirth"];
+				$phone = $row2["PhoneNumber"];
+			}
+		}
+	}
 ?>
+
 <body>
 	<main>
 		<div class="container-fluid" style="background-image: linear-gradient(rgb(49,182,246),rgb(115,232,255)">
@@ -24,11 +55,11 @@
 								<div class="row">
 									<div class="col-xs-3">
 										<label for="firstNameInput">First Name</label>
-										<input type="text" class="form-control" name="fname" id="firstNameInput" placeholder="First Name">
+										<input type="text" class="form-control" name="fname" id="firstNameInput" placeholder="First Name" value= "<?php echo $firstname; ?>">
 									</div>
 									<div class="col-xs-3" style="margin-left:1.5rem">
 										<label for="lastNameInput">Last Name</label>
-										<input type="text" class="form-control" name="lname" id="lastNameInput" placeholder="Last Name">
+										<input type="text" class="form-control" name="lname" id="lastNameInput" placeholder="Last Name" value= "<?php echo $lastname; ?>">
 									</div>
 								</div>
 							</div>
@@ -66,7 +97,7 @@
 								<label for="dateOfBirthInput">Date of Birth</label>
 								<div class="row">
 									<div class="col-xs-3">
-										<input type="text" class="form-control" name="dateofbirth" id="dateOfBirthInput" placeholder="Date of Birth">
+										<input type="text" class="form-control" name="dateofbirth" id="dateOfBirthInput" placeholder="Date of Birth" value= "<?php echo $birthdate; ?>">
 									</div>
 								</div>
 							</div>
@@ -74,23 +105,12 @@
 								<label for="phoneInput">Phone Number</label>
 								<div class="row">
 									<div class="col-xs-3">
-										<input type="text" class="form-control" name="phone" id="phoneInput" placeholder="Phone Number">
+										<input type="text" class="form-control" name="phone" id="phoneInput" placeholder="Phone Number" value= "<?php echo $phone; ?>">
 									</div>
 								</div>
 							</div>
-							<!--h5>Type of User</h5>
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" name="userType" value="passenger" checked>
-									I am a passenger
-								<label>
-							</div>
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" name="userType" value="driver">
-									I am a driver
-								</label>
-							</div-->
+
+
 							<div class="form-group">
 								<button type="submit" class="btn btn-lg btn-primary" name="account-submit">Save</button>
 							</div>

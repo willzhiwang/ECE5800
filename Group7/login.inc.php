@@ -1,8 +1,4 @@
 <?php
-    require "header.php"
-?>
-
-<?php
     if (isset($_POST['login-submit']))
     {
         require 'configDB.php';
@@ -49,7 +45,7 @@
                     else if ($pwdCheck == true) // approved login
                     {
                         session_start();
-                        $_SESSION['userId'] = $row['ID'];
+                        $_SESSION['userId'] = $row['AccountID'];
                         $_SESSION['userUid'] = $row['Username'];
                         header("Location: index.php?login=success=.$mailuid");
                     }
