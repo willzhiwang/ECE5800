@@ -1,0 +1,198 @@
+{
+  "id": "e889ffd0-0212-4050-a4ea-3d3edf37489f",
+  "version": "2.0",
+  "name": "Group7Vanpool",
+  "url": "http://localhost",
+  "tests": [{
+    "id": "ee3b78ed-64a5-461b-98f3-47453e05626f",
+    "name": "sign up - same email",
+    "commands": [{
+      "id": "557f1d3f-e8e9-4806-8876-7ce5984370e6",
+      "comment": "",
+      "command": "open",
+      "target": "/index.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2f419fe0-c801-4f88-b609-7673c8de5593",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1022x784",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6ce74e19-03af-4b70-ad62-12d0c8161b8c",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Sign Up",
+      "targets": [
+        ["linkText=Sign Up", "linkText"],
+        ["css=.ml-auto > .nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Sign Up')]", "xpath:link"],
+        ["xpath=//div[@id='collapsibleNavbar']/ul[2]/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'signup.php')]", "xpath:href"],
+        ["xpath=//ul[2]/li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Sign Up')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e3a27b35-3456-4e7b-bc86-515ce6a3562c",
+      "comment": "",
+      "command": "click",
+      "target": "id=usernameInput",
+      "targets": [
+        ["id=usernameInput", "id"],
+        ["name=uid", "name"],
+        ["css=#usernameInput", "css:finder"],
+        ["xpath=//input[@id='usernameInput']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ce22ad84-71e2-406f-9e5a-a6985546c2e8",
+      "comment": "",
+      "command": "type",
+      "target": "id=usernameInput",
+      "targets": [
+        ["id=usernameInput", "id"],
+        ["name=uid", "name"],
+        ["css=#usernameInput", "css:finder"],
+        ["xpath=//input[@id='usernameInput']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Robert"
+    }, {
+      "id": "0ab6fe49-9c6f-47e6-b9ef-99fb5edb54a5",
+      "comment": "",
+      "command": "type",
+      "target": "id=emailInput",
+      "targets": [
+        ["id=emailInput", "id"],
+        ["name=mail", "name"],
+        ["css=#emailInput", "css:finder"],
+        ["xpath=//input[@id='emailInput']", "xpath:attributes"],
+        ["xpath=//div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "a@a.a"
+    }, {
+      "id": "61730dff-2938-42e2-9add-de93c803a0cb",
+      "comment": "",
+      "command": "type",
+      "target": "id=passwordInput",
+      "targets": [
+        ["id=passwordInput", "id"],
+        ["name=pwd", "name"],
+        ["css=#passwordInput", "css:finder"],
+        ["xpath=//input[@id='passwordInput']", "xpath:attributes"],
+        ["xpath=//div[3]/div/div/input", "xpath:position"]
+      ],
+      "value": "a@a.a"
+    }, {
+      "id": "04f5dc99-2e20-4a22-a923-53dc1cc80028",
+      "comment": "",
+      "command": "type",
+      "target": "id=passwordRepeatInput",
+      "targets": [
+        ["id=passwordRepeatInput", "id"],
+        ["name=pwd-r", "name"],
+        ["css=#passwordRepeatInput", "css:finder"],
+        ["xpath=//input[@id='passwordRepeatInput']", "xpath:attributes"],
+        ["xpath=//div[4]/div/div/input", "xpath:position"]
+      ],
+      "value": "a@a.a"
+    }, {
+      "id": "7290cfa5-da43-409f-bf41-1b0e18a6f973",
+      "comment": "",
+      "command": "click",
+      "target": "id=security1",
+      "targets": [
+        ["id=security1", "id"],
+        ["name=question1", "name"],
+        ["css=#security1", "css:finder"],
+        ["xpath=//select[@id='security1']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4ca5c3e0-a3ce-4f38-8776-44c37106588e",
+      "comment": "",
+      "command": "select",
+      "target": "id=security1",
+      "targets": [],
+      "value": "label=Example question 1"
+    }, {
+      "id": "e0781c6b-b5ea-4585-af0b-dbdd7df8364a",
+      "comment": "",
+      "command": "click",
+      "target": "id=security1",
+      "targets": [
+        ["id=security1", "id"],
+        ["name=question1", "name"],
+        ["css=#security1", "css:finder"],
+        ["xpath=//select[@id='security1']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "43c77fa8-0ebc-4fac-af79-fa09fbd96e3d",
+      "comment": "",
+      "command": "click",
+      "target": "id=response1",
+      "targets": [
+        ["id=response1", "id"],
+        ["name=answer1", "name"],
+        ["css=#response1", "css:finder"],
+        ["xpath=//input[@id='response1']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "947444d2-50c1-4655-923e-e4082871db76",
+      "comment": "",
+      "command": "type",
+      "target": "id=response1",
+      "targets": [
+        ["id=response1", "id"],
+        ["name=answer1", "name"],
+        ["css=#response1", "css:finder"],
+        ["xpath=//input[@id='response1']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "something"
+    }, {
+      "id": "c583b328-e673-4361-b8ce-6ce4e952aad4",
+      "comment": "",
+      "command": "click",
+      "target": "name=signup-submit",
+      "targets": [
+        ["name=signup-submit", "name"],
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@name='signup-submit']", "xpath:attributes"],
+        ["xpath=//div[10]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Sign Up')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "55b1ab93-a0bc-4ad5-b2c2-9e588a70eaec",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=.text-danger",
+      "targets": [
+        ["css=.text-danger", "css:finder"],
+        ["xpath=//small", "xpath:position"],
+        ["xpath=//small[contains(.,'email is already taken!')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "93659fc7-579b-4ca9-bacb-408e9e6f8334",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["ee3b78ed-64a5-461b-98f3-47453e05626f"]
+  }],
+  "urls": ["http://localhost/"],
+  "plugins": []
+}

@@ -15,7 +15,7 @@
         $question1 = $_POST['question1'];
         $answer1 = $_POST['answer1'];
         
-        if ($_POST['question2'] != 0){
+        if ($_POST['question2'] != "0"){
             $question2 = $_POST['question2'];
             $answer2 = $_POST['answer2'];
         }else{
@@ -23,7 +23,7 @@
             $answer2 = NULL;
         }
         
-        if ($_POST['question3'] != 0){
+        if ($_POST['question3'] != "0"){
             $question3 = $_POST['question3'];
             $answer3 = $_POST['answer3'];
         }else{
