@@ -113,14 +113,22 @@
 									I am a driver
 								</label>
 							</div>
+
+							<!-- TODO: The following dropdown menu should be pulled from the database,
+							not hardcoded here.-->
 							<div class="form-group" style="margin-left:1rem">
 								<div class="row">
 									<div class="col-xs-5">
 										<label for="security1">Security Question 1</label>
 										<select name="question1" id="security1">
 											<option value="0">Select a security question...</option>
-											<option value="1">Example question 1</option>
-											<option value="2">Example question 2</option>
+											<option value="1">What is your maternal grandmother's maiden name?</option>
+											<option value="2">What was the name of your elementary school?</option>
+											<option value="3">What is your favorite football team?</option>
+											<option value="4">What was the last name of your favorite elementary school teacher?</option>
+											<option value="5">In which town or city did your parents meet?</option>
+											<option value="6">What was your favorite food as a child?</option>
+											<option value="7">What was the name of the company where you had your first job?</option>
 										</select>
 									</div>
 									<div class="col-xs-5" style="margin-left:2rem">
@@ -134,9 +142,14 @@
 									<div class="col-xs-5">
 										<label for="security2">Security Question 2</label>
 										<select name="question2" id="security2">
-											<option value="0">(Optional) Select a security question...</option>
-											<option value="1">Example question 1</option>
-											<option value="2">Example question 2</option>
+										<option value="0">(Optional) Select a security question...</option>
+											<option value="1">What is your maternal grandmother's maiden name?</option>
+											<option value="2">What was the name of your elementary school?</option>
+											<option value="3">What is your favorite football team?</option>
+											<option value="4">What was the last name of your favorite elementary school teacher?</option>
+											<option value="5">In which town or city did your parents meet?</option>
+											<option value="6">What was your favorite food as a child?</option>
+											<option value="7">What was the name of the company where you had your first job?</option>
 										</select>
 									</div>
 									<div class="col-xs-5" style="margin-left:2rem">
@@ -151,8 +164,13 @@
 										<label for="security3">Security Question 3</label>
 										<select name="question3" id="security3">
 											<option value="0">(Optional) Select a security question...</option>
-											<option value="1">Example question 1</option>
-											<option value="2">Example question 2</option>
+											<option value="1">What is your maternal grandmother's maiden name?</option>
+											<option value="2">What was the name of your elementary school?</option>
+											<option value="3">What is your favorite football team?</option>
+											<option value="4">What was the last name of your favorite elementary school teacher?</option>
+											<option value="5">In which town or city did your parents meet?</option>
+											<option value="6">What was your favorite food as a child?</option>
+											<option value="7">What was the name of the company where you had your first job?</option>
 										</select>
 									</div>
 									<div class="col-xs-5" style="margin-left:2rem">
