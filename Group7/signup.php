@@ -114,8 +114,8 @@
 								</label>
 							</div>
 
-							<!-- TODO: The following dropdown menu should be pulled from the database,
-							not hardcoded here.-->
+							<!-- TODO: The following dropdown menu should be pulled from the database
+							with their respective values, not hardcoded here.-->
 							<div class="form-group" style="margin-left:1rem">
 								<div class="row">
 									<div class="col-xs-5">
