@@ -4,6 +4,8 @@ Not 100% sure where exactly to put this.
 Let me know if there are any errors.
 */
 
+DROP DATABASE IF EXISTS `Group7Vanpool`;
+
 CREATE DATABASE `Group7Vanpool`;
 
 USE `Group7Vanpool`;
@@ -50,8 +52,13 @@ PRIMARY KEY  (`SecurityQuestionID`)
 ) 
 ENGINE = InnoDB;
 
-INSERT INTO `Group7Vanpool`.`SecurityQuestion`(`Question`) VALUES ("What is your mother's maiden name?");
+INSERT INTO `Group7Vanpool`.`SecurityQuestion`(`Question`) VALUES ("What is your maternal grandmother's maiden name?");
 INSERT INTO `Group7Vanpool`.`SecurityQuestion`(`Question`) VALUES ("What was the name of your elementary school?");
+INSERT INTO `Group7Vanpool`.`SecurityQuestion`(`Question`) VALUES ("What is your favorite football team?");
+INSERT INTO `Group7Vanpool`.`SecurityQuestion`(`Question`) VALUES ("What was the last name of your favorite elementary school teacher?");
+INSERT INTO `Group7Vanpool`.`SecurityQuestion`(`Question`) VALUES ("In which town or city did your parents meet?");
+INSERT INTO `Group7Vanpool`.`SecurityQuestion`(`Question`) VALUES ("What was your favorite food as a child?");
+INSERT INTO `Group7Vanpool`.`SecurityQuestion`(`Question`) VALUES ("What was the name of the company where you had your first job?");
 
 CREATE TABLE `Group7Vanpool`.`User` (
 `UserID` INT NOT NULL AUTO_INCREMENT , 
@@ -119,9 +126,11 @@ CREATE TABLE `Group7Vanpool`.`Route` (
 `DepartureTime` TIME NOT NULL , 
 `ArrivalTime` TIME NOT NULL , 
 `MileDistance` DECIMAL(6,2) NOT NULL ,
-  --For capacities:
-  --A NULL capacity means the van doesn't run on that day.
-  --A numeric capacity shows how many seats are still empty.
+  /*
+  For capacities:
+  A NULL capacity means the van doesn't run on that day.
+  A numeric capacity shows how many seats are still empty.
+  */
 `MonCapacity` INT NULL ,
 `TueCapacity` INT NULL ,
 `WedCapacity` INT NULL ,
