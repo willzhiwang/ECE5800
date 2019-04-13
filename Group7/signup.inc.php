@@ -33,7 +33,7 @@
 
         // All error messages when create an account
         //check if any empty input
-        if (empty($username) || empty($email) ||empty($password) ||empty($passwordRepeat))
+        if (empty($username) || empty($email) ||empty($password) ||empty($passwordRepeat) || $question1 == "0" ||empty($answer1) )
         {
             header("Location: signup.php?error=emptyfields&uid=".$username."&mail=".$email);
             exit();
