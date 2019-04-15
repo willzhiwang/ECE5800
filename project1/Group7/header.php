@@ -32,10 +32,9 @@ session_start();
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav">
 
-    <li class="nav-item"> <a class="nav-link" href = "Map.php">Routes List</a></li>
+    
     <li class="nav-item"> <a class="nav-link" href = "costandsave.php">Cost and Savings</a></li>
-    <li class="nav-item"> <a class="nav-link" href = "Fromto.php">From and To</a></li>
-    <li class="nav-item"> <a class="nav-link" href = "search.php">Search</a></li>
+    <li class="nav-item"> <a class="nav-link" href = "admin.php">admin</a></li>
     
     </ul>
 
