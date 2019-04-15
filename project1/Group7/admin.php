@@ -17,45 +17,44 @@
 ?>
 <html>
 <head>
-<style>
-table, td {
-  border: 1px solid black;
-}
-</style>
+    <title>HTML dynamic table using JavaScript</title>
+    <script type="text/javascript" src="app.js"></script>
 </head>
-<body>
-
-<p>Click the button to add a new row at the first position of the table and then add cells and content.</p>
-
-<table id="myTable">
-  <tr>
-    <td>Row1 cell1</td>
-    <td>Row1 cell2</td>
-  </tr>
-  <tr>
-    <td>Row2 cell1</td>
-    <td>Row2 cell2</td>
-  </tr>
-  <tr>
-    <td>Row3 cell1</td>
-    <td>Row3 cell2</td>
-  </tr>
+<body onload="load()">
+<div id="myform">
+<b>Simple form with name and age ...</b>
+<table>
+    <tr>
+        <td>Name:</td>
+        <td><input type="text" id="name"></td>
+    </tr>
+    <tr>
+        <td>Age:</td>
+        <td><input type="text" id="age">
+        <input type="button" id="add" value="Add" onclick="Javascript:addRow()"></td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
 </table>
-<br>
-
-<button onclick="myFunction()">Try it</button>
-
-<script>
-function myFunction() {
-  var table = document.getElementById("myTable");
-  var row = table.insertRow(0);
-  var cell1 = row.insertCell(0);
-  var cell2 = row.insertCell(1);
-  cell1.innerHTML = "NEW CELL1";
-  cell2.innerHTML = "NEW CELL2";
-}
-</script>
-
+</div>
+<div id="mydata">
+<b>Current data in the system ...</b>
+<table id="myTableData"  border="1" cellpadding="2">
+    <tr>
+        <td>&nbsp;</td>
+        <td><b>Name</b></td>
+        <td><b>Age</b></td>
+    </tr>
+</table>
+&nbsp;
+ 
+</div>
+<div id="myDynamicTable">
+<input type="button" id="create" value="Click here" onclick="Javascript:addTable()">
+to create a Table and add some data using JavaScript
+</div>
 </body>
 </html>
     
