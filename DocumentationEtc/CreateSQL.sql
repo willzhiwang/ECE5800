@@ -110,6 +110,7 @@ CREATE TABLE `Group7Vanpool`.`Vehicle` (
 `OwnerUser` INT NULL , 
 `LicensePlate` VARCHAR(9) NOT NULL , 
 `Year` VARCHAR(5) NOT NULL , 
+`Make` VARCHAR(31) NOT NULL ,
 `Model` VARCHAR(31) NOT NULL , 
 `Color` VARCHAR(15) NOT NULL , 
 `MaxCapacity` INT NOT NULL ,
@@ -126,18 +127,11 @@ CREATE TABLE `Group7Vanpool`.`Route` (
 `DepartureTime` TIME NOT NULL , 
 `ArrivalTime` TIME NOT NULL , 
 `MileDistance` DECIMAL(6,2) NOT NULL ,
-  /*
-  For capacities:
-  A NULL capacity means the van doesn't run on that day.
-  A numeric capacity shows how many seats are still empty.
-  */
-`MonCapacity` INT NULL ,
-`TueCapacity` INT NULL ,
-`WedCapacity` INT NULL ,
-`ThuCapacity` INT NULL ,
-`FriCapacity` INT NULL ,
-`SatCapacity` INT NULL ,
-`SunCapacity` INT NULL , 
+`SeatsLeft` INT NULL ,
+  /* DaysOfWeek should be a bitstring,
+  e.g. 0111110 means Monday-Friday,
+  0101010 means Monday, Wednesday, Friday.*/
+`DaysOfWeek` VARCHAR(7) NOT NULL,
 PRIMARY KEY (`RouteID`),
 FOREIGN KEY (`Vehicle`) REFERENCES `Vehicle`(`VehicleID`),
 FOREIGN KEY (`FromAddress`) REFERENCES `Address`(`AddressID`),
