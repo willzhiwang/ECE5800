@@ -7,33 +7,32 @@
     {
         require 'configDB.php';
         $cardNu = $_POST['cardNu'];
-        $name = $_POST['B-name'];
+        $name = $_POST['Bname'];
         $eDate = $_POST['eDate'];
         $cvv = $_POST['cvv'];
         $cardType = $_POST['ctype'];
-        //$lastname = $_POST['B-lname'];
-        $address = $_POST['B-address'];
-        $city = $_POST['B-city'];
-        $state = $_POST['B-state'];
-        $zip = $_POST['B-zip'];
 
+        $billingname = $_POST['Aname'];
+        $street = $_POST['Baddress'];
+        $city = $_POST['Bcity'];
+        $state = $_POST['Bstate'];
+        $zip = $_POST['Bzip'];
         //$eMonth = $_POST['eMonth'];
         //$eYear = $_POST['eYear'];
-
         $currentAccountID=$_SESSION['userId'];
-        echo "\nCurrent loggedin user id: " . $currentAccountID. "<br>";
+        echo "\nCurrent loggedin Account id: " . $currentAccountID. "<br>";
         // find the current login Account ID
         $sql = "SELECT `UserID` FROM `Account` WHERE `AccountID`=$currentAccountID";
         $result = mysqli_query($conn, $sql);
 
         // All error messages when create an account
         //check if any empty input
-        if (empty($address) ||empty($city) ||empty($state)||empty($zip) )
+        if (empty($street)||empty($city)||empty($state)||empty($zip)||empty($name) )
         {
             header("Location: billing.php?error=emptypaymentaddress");
             exit();
         }
-        if (empty($cardNu) ||empty($name) || empty($cvv) ||empty($eDate)||empty($cardType) )
+        if (empty($cardNu)||empty($cvv)||empty($eDate)||empty($cardType) )
         {
             header("Location: billing.php?error=emptypayment");
             exit();
@@ -43,10 +42,11 @@
             if (mysqli_num_rows($result) > 0) {
                 $row = mysqli_fetch_assoc($result);
                 $currentUserID = $row["UserID"];
-                echo "\n Person id from Account table: " . $currentUserID. "<br>";
+                echo "\n User id from Account table: " . $currentUserID. "<br>";
                 if ($currentUserID==NULL)//when it's null
                 {
                     echo " UserID is NULL!";
+                    header("Location: billing.php?error=sqlerroruserid");
                 }
                 else // if User ID is correct
                 {
@@ -55,21 +55,40 @@
                     if (mysqli_num_rows($result1) > 0) {
                         $row = mysqli_fetch_assoc($result1);
                         $currentPaymentID = $row["PaymentInfo"];
-                        echo "\n Payment id from Account table: ". $currentPaymentID. "<br>";
+                        echo "\n Payment id from User table: ". $currentPaymentID. "<br>";
                         if ($currentPaymentID==NULL)//when current payment null
                         {
-                            $sql2 = "INSERT INTO PaymentInfo (`CreditCardNumber`, `NameOnCard`, `ExpirationDate`,`SecurityCode`,`CardType`) VALUES (?,?,?,?,?)";
-                            $stmt = mysqli_stmt_init($conn);
                             echo " Payment id is NULL";
-                             if (!mysqli_stmt_prepare($stmt,$sql2))
+                            //create address first
+                            $sql5 = "INSERT INTO `Address` (`Name`, `Street`,`City`,`State`,`ZipCode`) VALUES (?,?,?,?,?)";
+                            $stmt = mysqli_stmt_init($conn);
+                            if (!mysqli_stmt_prepare($stmt,$sql5))
                             {
-                                header("Location: billing.php?error=sqlerror");
-                                //echo "\n sql 2 error ";
+                                //header("Location: billing.php?error=sqlerror");
+                                echo "\n sql5 error ";
                                 exit();
                             }
                             else{
-                                mysqli_stmt_bind_param($stmt, "ssssi",$cardNu,$name,$eDate,$cvv,$cardType);
+                                mysqli_stmt_bind_param($stmt, "ssssi",$billingname,$street,$city,$state,$zip);
                                 mysqli_stmt_execute($stmt);
+                                $currentAddressID = mysqli_insert_id($conn);
+                            }
+                            /*
+                            create the payment afterward
+                            */
+
+                            $sql2 = "INSERT INTO PaymentInfo (`CreditCardNumber`, `NameOnCard`, `ExpirationDate`,`SecurityCode`,`CardType`,`BillingAddress`) VALUES (?,?,?,?,?,?)";
+                            $stmt = mysqli_stmt_init($conn);
+                            if (!mysqli_stmt_prepare($stmt,$sql2))
+                            {
+                                //header("Location: billing.php?error=sqlerror");
+                                echo "\n sql 2 error ";
+                                exit();
+                            }
+                            else{
+                                mysqli_stmt_bind_param($stmt, "ssssii",$cardNu,$name,$eDate,$cvv,$cardType,$currentAddressID);
+                                mysqli_stmt_execute($stmt);
+
                                 $AutoPaymentID = mysqli_insert_id($conn);
                                 //Update personID in Account table
                                 $sql3 = "UPDATE User SET `PaymentInfo`=$AutoPaymentID WHERE `UserID`=$currentUserID";
@@ -83,30 +102,49 @@
                                 }
                                 
                                 mysqli_stmt_execute($stmt3);
-                                    //header("Location: billing.php?account=success");
+                                header("Location: billing.php?account=success");
 
                                 exit();
                             } 
                         }
-                        else // if User ID is correct
+                        else // if Payment ID is correct
                         {
-                            $sql4 = "UPDATE `Person` SET `FirstName`= '$firstname',`LastName`='$lastname',`DateOfBirth`='$birthdate',`PhoneNumber`='$phone' WHERE `Person`.`PersonID`=$currentPersonID";
+                            echo "\nCurrent Payment id: " . $currentPaymentID. "<br>";
+                            $sql7 = "SELECT `BillingAddress` FROM `PaymentInfo` WHERE `PaymentInfoID`=$currentPaymentID";
+                            $result7 = mysqli_query($conn, $sql7);
+                            if (mysqli_num_rows($result7) > 0) {
+                                $row = mysqli_fetch_assoc($result7);
+                                $currentAddressID = $row["BillingAddress"];
+                            }
+
+                            echo "\nCurrent Address id: " . $currentAddressID. "<br>";
+
+                            $sql4 = "UPDATE `Address` SET `Name`= '$billingname',`Street`='$street',`City`='$city',`State`='$state',`ZipCode`='$zip' WHERE `AddressID`=$currentAddressID";
                             $stmt = mysqli_stmt_init($conn);
-                            /*$statement = mysqli_prepare($conn, $sql4);
-                            if($statement == false) {
-                                die("<pre>".mysqli_error($conn).PHP_EOL.$query."</pre>");
-                            }*/
-                            header("Location: billing.php?account=success");
                             if(!mysqli_stmt_prepare($stmt,$sql4))
                             {
                                 header("Location: billing.php?error=sqlerror4");
                                 //echo "sql4 is Error";
                                 mysqli_rollback($conn);
-                                //exit();
+                                exit();
                             }
                             mysqli_stmt_execute($stmt);
+                            /*$statement = mysqli_prepare($conn, $sql4);
+                            if($statement == false) {
+                                die("<pre>".mysqli_error($conn).PHP_EOL.$query."</pre>");
+                            }*/
+                            $sql6 = "UPDATE `PaymentInfo` SET `CreditCardNumber`= '$cardNu',`NameOnCard`='$name',`ExpirationDate`='$eDate',`SecurityCode`='$cvv',`CardType`=$cardType WHERE `PaymentInfoID`=$currentPaymentID";
+
+                            if(!mysqli_stmt_prepare($stmt,$sql6))
+                            {
+                                header("Location: billing.php?error=sqlerror6");
+                                //echo "sql6 is Error";
+                                mysqli_rollback($conn);
+                                exit();
+                            }
+                            header("Location: billing.php?account=success");
+                            mysqli_stmt_execute($stmt);
                             exit();
-                            //mysqli_stmt_close($stmt);
                         }
                     }
                 }

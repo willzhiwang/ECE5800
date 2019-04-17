@@ -45,6 +45,7 @@
                     else if ($pwdCheck == true) // approved login
                     {
                         session_start();
+                        // add user is admin session
                         $_SESSION['userId'] = $row['AccountID'];
                         $_SESSION['userUid'] = $row['Username'];
                         header("Location: index.php?login=success=.$mailuid");

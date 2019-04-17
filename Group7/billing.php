@@ -16,7 +16,7 @@
 	if (mysqli_num_rows($result) > 0) {
 		$row = mysqli_fetch_assoc($result);
 		$currentUserID = $row["UserID"];
-		//echo "\n Person id from Account table: " . $currentPersonID. "<br>";
+		echo "\n User id from Account table: " . $currentUserID. "<br>";
 		if ($currentUserID==NULL)//when it's null
 		{
 			echo " UserID is NULL!";
@@ -28,7 +28,7 @@
 			if (mysqli_num_rows($result1) > 0) {
 				$row = mysqli_fetch_assoc($result1);
 				$currentPaymentID = $row["PaymentInfo"];
-				echo "\n Person id from Account table: " . $currentPaymentID. "<br>";
+				echo "\n PaymentInfo id from User table: " . $currentPaymentID. "<br>";
 				if ($currentPaymentID==NULL)//when it's null
 				{
 					$cardNu="";
@@ -36,10 +36,16 @@
 					$eDate = "";
 					$cvv="";
 					$cardType = "";
+					
+					$Aname= "";
+					$street = "";
+					$city = "";
+					$state = "";
+					$zip = "";
 				}
 				else // if User ID is correct
 				{
-					$sql2 = "SELECT `CreditCardNumber`,`NameOnCard`,`ExpirationDate`,`SecurityCode`,`CardType` FROM `PaymentInfo` WHERE `PaymentInfoID`=$currentPaymentID";
+					$sql2 = "SELECT `CreditCardNumber`,`NameOnCard`,`ExpirationDate`,`SecurityCode`,`CardType`,`BillingAddress` FROM `PaymentInfo` WHERE `PaymentInfoID`=$currentPaymentID";
 					$result2 = mysqli_query($conn, $sql2);
 					if (mysqli_num_rows($result2) > 0) {
 						$row2 = mysqli_fetch_assoc($result2);
@@ -50,6 +56,29 @@
 						$eDate = $row2["ExpirationDate"];
 						$cvv=$row2["SecurityCode"];
 						$cardType = $row2["CardType"];
+						$currentBillingAddressID = $row2["BillingAddress"];
+
+						if ($currentBillingAddressID==NULL)//when it's null
+						{
+							$Aname= "";
+							$street = "";
+							$city = "";
+							$state = "";
+							$zip = "";
+						}
+						else
+						{
+							$sql4 = "SELECT `Name`,`Street`,`City`,`State`,`ZipCode` FROM `Address` WHERE `AddressID`=$currentBillingAddressID";
+							$result4 = mysqli_query($conn, $sql4);
+							if (mysqli_num_rows($result4) > 0) {
+								$row4 = mysqli_fetch_assoc($result4);
+								$Aname= $row4["Name"];;
+								$street = $row4["Street"];
+								$city = $row4["City"];
+								$state = $row4["State"];
+								$zip = $row4["ZipCode"];
+							}
+						}
 					}
 				}
 			}
@@ -103,16 +132,22 @@
 							<div class="row">
 								<div class="col-xs-3">
 									<label for="billingFirstNameInput">Name</label>
-									<input type="text" class="form-control" name="B-name" id="billingFirstNameInput" placeholder="Name" value= "<?php echo $name; ?>">
+									<input type="text" class="form-control" name="Bname" id="billingFirstNameInput" placeholder="Name" value= "<?php echo $name; ?>">
 								</div>
 							</div>
 						</div>
 						<h4>Billing Address</h4>
 						<div class="form-group" style="margin-left:2rem">
+								<label for="addressInput">Name</label>
+								<div class="row" style="margin-right:1rem">
+									<input type="text" class="form-control" name="Aname" id="addressName" placeholder="Name/Apt number/Company for this Address" value= "<?php echo $Aname; ?>">
+								</div>
+						</div>
+						<div class="form-group" style="margin-left:2rem">
 							<div class="row">
 								<div class="col-xs-3">
 									<label for="billingAddressInput">Address</label>
-									<input type="text" class="form-control" name="B-address" id="billingAddressInput" placeholder="Address">
+									<input type="text" class="form-control" name="Baddress" id="billingAddressInput" placeholder="Street" value= "<?php echo $street; ?>">
 								</div>
 							</div>
 						</div>
@@ -120,7 +155,7 @@
 							<div class="row">
 								<div class="col-xs-3">
 									<label for="billingCityInput">City</label>
-									<input type="text" class="form-control" name="B-city" id="billingCityInput" placeholder="City">
+									<input type="text" class="form-control" name="Bcity" id="billingCityInput" placeholder="City" value= "<?php echo $city; ?>">
 								</div>
 							</div>
 						</div>
@@ -128,7 +163,7 @@
 							<div class="row">
 								<div class="col-xs-3">
 									<label for="billingStateInput">State</label>
-									<input type="text" class="form-control" name="B-state" id="billingStateInput" placeholder="State">
+									<input type="text" class="form-control" name="Bstate" id="billingStateInput" placeholder="State" value= "<?php echo $state; ?>">
 								</div>
 							</div>
 						</div>
@@ -136,7 +171,7 @@
 							<div class="row">
 								<div class="col-xs-3">
 									<label for="billingZipInput">Zip Code</label>
-									<input type="text" class="form-control" name="B-zip" id="billingZipInput" placeholder="Zip Code">
+									<input type="text" class="form-control" name="Bzip" id="billingZipInput" placeholder="Zip Code" value= "<?php echo $zip; ?>">
 								</div>
 							</div>
 						</div>
