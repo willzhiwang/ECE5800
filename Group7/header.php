@@ -66,6 +66,11 @@ session_start();
     </div>
     </nav>
     </header>
+    <footer>
 
+    <nav class="navbar fixed-bottom bg-dark navbar-dark">
+
+    <a class="navbar-brand" href="aboutus.php">About US</a>
+</footer>
 </body>
 </html>

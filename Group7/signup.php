@@ -119,8 +119,8 @@
 										<label for="security1">Security Question 1</label>
 										<select name="question1" id="security1">
 											<option value="0">Select a security question...</option>
-											<option value="1">Example question 1</option>
-											<option value="2">Example question 2</option>
+											<option value="1">What is your maternal grandmother's maiden name?</option>
+											<option value="2">What was the name of your elementary school?</option>
 										</select>
 									</div>
 									<div class="col-xs-5" style="margin-left:2rem">
