@@ -1,99 +1,89 @@
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>group7</title>
+    <title>Group7</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <!-- frontend work to make it looks better 
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script> 
-    -->
 </head>
-</html>
+
 <?php
     require "header.php"
 ?>
-<html>
-
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
-  box-sizing: border-box;
-}
-
-#myInput {
-  background-image: url('/css/searchicon.png');
-  background-position: 10px 12px;
-  background-repeat: no-repeat;
-  width: 100%;
-  font-size: 16px;
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
-}
-
-#myUL {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-#myUL li a {
-  border: 1px solid #ddd;
-  margin-top: -1px; /* Prevent double borders */
-  background-color: #f6f6f6;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px;
-  color: black;
-  display: block
-}
-
-#myUL li a:hover:not(.header) {
-  background-color: #eee;
-}
-</style>
-</head>
 <body>
-
-<h2>Vanpool</h2>
-
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
-
-<ul id="myUL">
-  <li><a href="#">Iowa city </a></li>
-  <li><a href="#">CID airport</a></li>
-
-  <li><a href="#">Des Monies</a></li>
-</ul>
-
-<script>
-function myFunction() {
-    var input, filter, ul, li, a, i, txtValue;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    ul = document.getElementById("myUL");
-    li = ul.getElementsByTagName("li");
-    for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("a")[0];
-        txtValue = a.textContent || a.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "";
-        } else {
-            li[i].style.display = "none";
-        }
-    }
-}
-</script>
-
-</body>
-</html>
-</html>    
+	<main>
+	<div class="table-responsive">
+    <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">From</th>
+        <th scope="col">To</th>
+        <th scope="col">Departure Time</th>
+        <th scope="col">Arrival Time</th>
+        <!--th scope="col">Day of Week</th-->
+        <th scope="col">Route ID</th>
+        <th scope="col">FromAddress ID</th>
+        <th scope="col">ToAddress ID</th>
+      </tr>
+    </thead>
 <?php
-    require "footer.php"
-?>   
+    if (isset($_POST['search-submit']))
+    {
+        require 'configDB.php';
+
+        //require 'login.inc.php';
+        $from = $_POST['from'];
+        $to = $_POST['to'];
+
+        $sun = $_POST['sun'];
+        $mon = $_POST['mon'];
+        $tue = $_POST['tue'];
+        $wed = $_POST['wed'];
+        $thu = $_POST['thu'];
+        $fri = $_POST['fri'];
+        $sat = $_POST['sat'];
+
+
+        /*$arr = array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
+
+        //$search1 = "Monday, Tuesday, Wednesday, Thursday, Friday";
+        $search_arr = explode(", ", $search1);
+        $out1 = array("0","0","0","0","0","0","0");
+        foreach($search_arr as $value){
+            $sr = array_search($value, $arr);
+            $out1[$sr] = "1";
+        }
+*/
+
+        $sql = "SELECT Route.RouteID,Route.DepartureTime,Route.ArrivalTime, Route.FromAddress, Route.ToAddress, A1.AddressID, A2.AddressID, A1.Name, A2.Name
+                FROM Address AS A1
+                JOIN Address AS A2
+                INNER JOIN Route ON (A1.AddressID = Route.FromAddress) AND Route.ToAddress=A2.AddressID
+                WHERE A1.Name Like '$from' AND A2.Name Like '$to'
+                ";
+        $result = mysqli_query($conn, $sql) ;
+        echo"<tbody>";
+            while ($row = mysqli_fetch_array($result))
+            {
+                
+                echo "<tr>";
+                echo "<td>".$from."</td>";
+                echo "<td>".$to."</td>";
+                echo "<td>".$row['DepartureTime']."</td>";
+                echo "<td>".$row['ArrivalTime']."</td>";
+                echo "<td>".$row['RouteID']."</td>";
+                echo "<td>".$row['FromAddress']."</td>";
+                echo "<td>".$row['ToAddress']."</td>";
+
+                echo '<td><button type="submit" class="btn btn-lg btn-primary" name="bookticket-submit">Subscribe</button></td>';
+                //echo "<\tr>";
+            }
+        echo"</tbody>";
+        
+    }
+?>
+    </table>
+    </div>
+    </main>
+</body>
