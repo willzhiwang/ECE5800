@@ -19,7 +19,7 @@ if (isset($_POST['bookticket-submit']))
     {
         require 'configDB.php';
         $currentRoute = $_POST['bookticket-submit'];
-        //echo($currentRoute);
+        //echo("current select route: " .$currentRoute);
         
         /**************Find User ID*************/
         $currentAccountID=$_SESSION['userId'];
@@ -29,6 +29,7 @@ if (isset($_POST['bookticket-submit']))
         {
             $row = mysqli_fetch_assoc($result3);
             $currentUserID = $row["UserID"];
+        
         }
         else 
         {
@@ -47,6 +48,25 @@ if (isset($_POST['bookticket-submit']))
         }
         else{
 
+            /**************User with all routes**************/
+            $sql1 = "SELECT * From PassengerToRoutes WHERE UserID = $currentUserID";
+            $result1 = mysqli_query($conn, $sql1);
+            while ($row = mysqli_fetch_array($result1))
+            {
+                $findRouteID = $row['RouteID'];
+                echo "findRouteID: ".$findRouteID;
+                if ($findRouteID==$currentRoute)
+                {
+                    //header("Location: search.php?error=route_exists");
+                    echo ("<script>alert('Seats Full!')</script>");
+                    echo("<script>window.location = 'search.php';</script>");
+                    mysqli_rollback($conn);
+                    exit();
+                }
+            }
+
+            /*****************Seats Left********************/
+            //If the seats is full it won't be display in searching
             $sql = "SELECT SeatsLeft From Route WHERE RouteID = $currentRoute";
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) 
@@ -60,6 +80,7 @@ if (isset($_POST['bookticket-submit']))
                 }
                 else
                 {
+                    //echo "findRouteID: ".$findRouteID;
                     echo "current user:".$currentUserID."current route:".$currentRoute;
                     mysqli_stmt_bind_param($stmt2,"ii",$currentUserID,$currentRoute);
                     mysqli_stmt_execute($stmt2);

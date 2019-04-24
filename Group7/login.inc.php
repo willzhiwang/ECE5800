@@ -6,6 +6,11 @@
         $password = $_POST['pwd'];
         // All error messages when logging in - not many
         // check if any empty input
+        if (empty($password) &&  empty($mailuid))
+        {
+            header("Location: login.php?error=emptypwd&email");
+            exit();
+        }
         if (empty($mailuid) )
         {
             header("Location: login.php?error=emptyemail");

@@ -16,7 +16,7 @@
 	if (mysqli_num_rows($result) > 0) {
 		$row = mysqli_fetch_assoc($result);
 		$currentUserID = $row["UserID"];
-		echo "\n User id from Account table: " . $currentUserID. "<br>";
+		//echo "\n User id from Account table: " . $currentUserID. "<br>";
 		if ($currentUserID==NULL)//when it's null
 		{
 			echo " UserID is NULL!";
@@ -28,7 +28,7 @@
 			if (mysqli_num_rows($result1) > 0) {
 				$row = mysqli_fetch_assoc($result1);
 				$currentPaymentID = $row["PaymentInfo"];
-				echo "\n PaymentInfo id from User table: " . $currentPaymentID. "<br>";
+				//echo "\n PaymentInfo id from User table: " . $currentPaymentID. "<br>";
 				if ($currentPaymentID==NULL)//when it's null
 				{
 					$cardNu="";

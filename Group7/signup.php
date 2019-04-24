@@ -172,52 +172,55 @@ function securityQuestion3Change() {
 			<div class="container bg-white" style="width:800px;border-radius:25px;border-style:inset;border-width:large">
 				<section>
 					<h1 style="margin-left:20rem">Sign Up</h1>
-					<?php
-						if (isset($_GET['error']))
-						{
-							if ($_GET['error'] == "emptyfields")
-							{
-								echo '<small class="text-danger"> Fill in all fields! </small>';
-							}
-							else if ($_GET['error'] == "sqlerror")
-							{
-								echo '<small class="text-danger"> Sorry, something went wrong with our database. Please contact us for assistance. </small>';
-							}
-							else if ($_GET['error'] == "invalidmailuid")
-							{
-								echo '<small class="text-danger"> Invalid username and email! </small>';
-							}
-							else if ($_GET['error'] == "invalidmail")
-							{
-								echo '<small class="text-danger"> Invalid email! </small>';
-							}
-							else if ($_GET['error'] == "invaliduid")
-							{
-								echo '<small class="text-danger"> Invalid username! </small>';
-							}
-							else if ($_GET['error'] == "passwordcheck")
-							{
-								echo '<small class="text-danger"> Passwords do not match! </small>';
-							}
-							else if ($_GET['error'] == "usertaken")
-							{
-								echo '<small class="text-danger"> Username is already taken! </small>';
-							}                    
-							else if ($_GET['error'] == "emailtaken")
-							{
-								echo '<small class="text-danger"> email is already taken! </small>';
-							}
-					
-						}
-						else if (isset($_GET['signup']))
-						{
-							if ( $_GET['signup'] == "success") {
-                            echo '<small class="text-success"> Success! </small>';
-                            }
-						}
-					?>
 					<br>
 						<form action="signup.inc.php" method="post">
+						<div class="form-group" style="margin-left:2rem">
+							<?php
+								if (isset($_GET['error']))
+								{
+									if ($_GET['error'] == "emptyfields")
+									{
+										echo '<small class="text-danger"> Fill in all fields! </small>';
+									}
+									else if ($_GET['error'] == "sqlerror")
+									{
+										echo '<small class="text-danger"> Sorry, something went wrong with our database. Please contact us for assistance. </small>';
+									}
+										else if ($_GET['error'] == "invalidmailuid")
+									{
+										echo '<small class="text-danger"> Invalid username and email! </small>';
+									}
+									else if ($_GET['error'] == "invalidmail")
+									{
+										echo '<small class="text-danger"> Invalid email! </small>';
+									}
+									else if ($_GET['error'] == "invaliduid")
+									{
+										echo '<small class="text-danger"> Invalid username! </small>';
+									}
+									else if ($_GET['error'] == "passwordcheck")
+									{
+										echo '<small class="text-danger"> Passwords do not match! </small>';
+									}
+									else if ($_GET['error'] == "usertaken")
+									{
+										echo '<small class="text-danger"> Username is already taken! </small>';
+									}                    
+									else if ($_GET['error'] == "emailtaken")
+									{
+										echo '<small class="text-danger"> email is already taken! </small>';
+									}
+								}
+								else if (isset($_GET['signup']))
+								{
+									if ( $_GET['signup'] == "success") 
+									{
+                  		          		echo '<small class="text-success"> Success! </small>';
+                    		        }
+								}
+							?>
+							</div>
+
 							<div class="form-group" style="margin-left:2rem">
 								<label for="usernameInput">Username</label>
 								<div class="row">
@@ -226,6 +229,7 @@ function securityQuestion3Change() {
 									</div>
 								</div>
 							</div>
+
 							<div class="form-group" style="margin-left:2rem">
 								<label for="emailInput">Email</label>
 								<div class="row">
@@ -335,6 +339,3 @@ function securityQuestion3Change() {
 		</div>
 	</main>
 </body>
-<?php
-    require "footer.php"
-?>  
