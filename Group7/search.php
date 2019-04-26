@@ -25,6 +25,7 @@
         <th scope="col">Route ID</th>
         <!--th scope="col">FromAddress ID</th>
         <th scope="col">ToAddress ID</th-->
+        <th scope="col"> </th>
       </tr>
     </thead>
     <form action="bookticket.php" method="post">
@@ -92,8 +93,7 @@
         {
             if ($search_arr[$i] != NULL){
                 $out[$i] = "1";
-            }
-            
+            }  
         }
         $week = implode("",$out);
         echo "week days: ". $week ;
@@ -105,7 +105,6 @@
                 WHERE A1.Name Like '$from' AND A2.Name Like '$to' AND Route.SeatsLeft >0 AND Route.DaysofWeek LIKE '$week'
                 ";
         $result = mysqli_query($conn, $sql) ;
-        $arr;
         echo"<tbody>";
             while ($row = mysqli_fetch_array($result))
             {
@@ -121,10 +120,9 @@
                 //echo "<td>".$row['FromAddress']."</td>";
                 //echo "<td>".$row['ToAddress']."</td>";
 
-                echo '<td><button type="submit" class="btn btn-lg btn-primary" name="bookticket-submit" value='.$currentRoute.'>Reserve</button></td>';
-                //echo "<\tr>";
+                echo '<td><button type="submit" class="btn btn-primary" name="bookticket-submit" value='.$currentRoute.'>Reserve</button></td>';
             }
-        echo"</tbody>";
+        echo '</tr></tbody>';
         //echo $currentRoute;
         
     }

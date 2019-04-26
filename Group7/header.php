@@ -41,14 +41,59 @@ session_start();
 
     <ul class="navbar-nav ml-auto">
     <?php
-        if (isset($_SESSION['userId'])) //hide or show logout
+        require 'configDB.php'; 
+        $currentAccountID=$_SESSION['userId'];
+        if (isset($currentAccountID)) //hide or show logout
         {
+            $sql = "SELECT UserID From Account WHERE AccountID = $currentAccountID";
+            $result = mysqli_query($conn, $sql);
+            if (mysqli_num_rows($result) > 0) 
+            {
+                $row = mysqli_fetch_assoc($result);
+                $currentUserID = $row["UserID"];
+            }
+            else 
+            {
+                header("Location: header.php?error=sqlerror");
+                mysqli_rollback($conn);
+                exit();
+            }
+            $sql2 = "SELECT IsAdmin, IsDriver From User WHERE UserID = $currentUserID";
+            $result2 = mysqli_query($conn, $sql2);
+            if (mysqli_num_rows($result2) > 0) 
+            {
+                $row = mysqli_fetch_assoc($result2);
+                $admin = $row["IsAdmin"];
+                $driver = $row["IsDriver"];
+            }
+            else 
+            {
+                header("Location: header.php?error=sql2error");
+                mysqli_rollback($conn);
+                exit();
+            }
+            if ($admin == 1)
+            {
+                $_SESSION['userType']= "admin";
+                $userSetting= "Manage Rides";
+            }
+            else if ($driver ==1)
+            {
+                $_SESSION['userType']= "driver";
+                $userSetting= "My Drive";
+            }
+            else 
+            {
+                $_SESSION['userType']= "passanger";
+                $userSetting= "My Ride";
+            }
+
             echo '
             <div class="dropdown dropleft float-right">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> Settings </button>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="account.php">My Account Setting</a>
-              <a class="dropdown-item" href="rides.php">My Rides</a>
+              <a class="dropdown-item" href="rides.php">'.$userSetting.'</a>
               <a class="dropdown-item" href="billing.php">My Billing Setting</a>
             </div>
             </div>
