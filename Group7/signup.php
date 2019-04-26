@@ -328,7 +328,7 @@ function securityQuestion3Change() {
 								</div>
 							</div>
 							<div class="form-group">
-								<button type="submit" class="btn btn-lg btn-primary" name="signup-submit">Sign Up</button>
+								<button type="submit" class="btn btn-lg btn-primary btn-block" name="signup-submit">Sign Up</button>
 							</div>
 							<br>
 						</form>

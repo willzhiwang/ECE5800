@@ -176,7 +176,7 @@
 							</div>
 						</div>
 						<div class="form-group">
-								<button type="submit" class="btn btn-lg btn-primary" name="billing-submit">Save</button>
+								<button type="submit" class="btn btn-lg btn-info btn-block" name="billing-submit">Save</button>
 						</div>
 					</form>
 				</section>

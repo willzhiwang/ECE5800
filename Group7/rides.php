@@ -7,10 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
+</html>
 <?php
     require "header.php";
     require 'configDB.php';
-    ?>
+?>
 
 <?php
 
@@ -99,9 +100,13 @@
             }
         echo '</tr></tbody></div></main></body>';
         ;
-
-        echo '<td><button type="submit" class="btn btn-info" name="viewVehicles-submit">View all Vehicles</button></td>';
-        echo '<td><button type="submit" class="btn btn-info" name="viewDrivers-submit">View all Drivers</button></td>';
+        echo '<form action="viewvehicles.php" method="post">
+        <td><button type="submit" class="btn btn-info" name="viewVehicles-submit">View all Vehicles</button></td>
+        </form>';
+        echo '
+        <form action="viewdrivers.php" method="post">
+        <td><button type="submit" class="btn btn-info" name="viewDrivers-submit">View all Drivers</button></td>
+        </form>';
 
     }
     //When driver

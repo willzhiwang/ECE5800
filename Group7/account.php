@@ -148,8 +148,8 @@
 							</div>
 
 
-							<div class="form-group">
-								<button type="submit" class="btn btn-lg btn-primary" name="account-submit">Save</button>
+							<div class="form-group" style="margin-left:2rem">
+								<button type="submit" class="btn btn-lg btn-info btn-block" name="account-submit">Save</button>
 							</div>
 							<br>
 						</form>
