@@ -66,6 +66,7 @@ CREATE TABLE `Group7Vanpool`.`User` (
 `IsAdmin` BOOLEAN NOT NULL ,
 `Balance` DECIMAL(12,2) NOT NULL , 
 `PaymentInfo` INT NULL , 
+`LastPurchasedMonthly` DATETIME NULL , 
 PRIMARY KEY (`UserID`),
 FOREIGN KEY (`PaymentInfo`) REFERENCES `PaymentInfo`(`PaymentInfoID`)
 ) 
