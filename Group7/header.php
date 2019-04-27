@@ -42,7 +42,11 @@ session_start();
     <ul class="navbar-nav ml-auto">
     <?php
         require 'configDB.php'; 
+        if (isset($_SESSION['userId']))
+        {
         $currentAccountID=$_SESSION['userId'];
+        }
+        //$currentAccountID=$_SESSION['userId'];
         if (isset($currentAccountID)) //hide or show logout
         {
             $sql = "SELECT UserID From Account WHERE AccountID = $currentAccountID";
