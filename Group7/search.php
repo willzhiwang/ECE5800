@@ -39,13 +39,16 @@
         if (isset($_POST['from']))
         {
             $from = $_POST['from'];
-
         }
         if (isset($_POST['to']))
         {
             $to = $_POST['to'];
-
         }
+        if (isset($_POST['depTime']))
+        {
+            $depTime = $_POST['depTime'];
+        }
+
         $sun=$mon=$tue=$wed=$thu=$fri=$sat=NULL;
         
         if (isset($_POST['sun']))
@@ -103,7 +106,9 @@
                 JOIN Address AS A2
                 INNER JOIN Route ON (A1.AddressID = Route.FromAddress) AND Route.ToAddress=A2.AddressID
                 WHERE A1.Name Like '$from' AND A2.Name Like '$to' AND Route.SeatsLeft >0 AND Route.DaysofWeek LIKE '$week'
-                ";
+                AND ADDTIME('$depTime','-00:15:00') <= Route.DepartureTime 
+                AND route.DepartureTime <= ADDTIME('$depTime','00:15:00')
+                ORDER BY ABS(TIMEDIFF(route.DepartureTime,'$depTime')) ASC";
         $result = mysqli_query($conn, $sql) ;
         echo"<tbody>";
             while ($row = mysqli_fetch_array($result))

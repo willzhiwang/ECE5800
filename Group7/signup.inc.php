@@ -12,24 +12,14 @@
         $password = $_POST['pwd'];
         $passwordRepeat = $_POST['pwd-r'];
         $isDriver = $_POST['isDriver'];
+    
         $question1 = $_POST['question1']+1;
-        $answer1 = $_POST['answer1']+1;
-        
-        if ($_POST['question2'] != 0){
-            $question2 = $_POST['question2']+1;
-            $answer2 = $_POST['answer2']+1;
-        }else{
-            $question2 = NULL;
-            $answer2 = NULL;
-        }
-        
-        if ($_POST['question3'] != 0){
-            $question3 = $_POST['question3']+1;
-            $answer3 = $_POST['answer3']+1;
-        }else{
-            $question3 = NULL;
-            $answer3 = NULL;
-        }
+        $answer1 = $_POST['answer1'];
+        $question2 = $_POST['question2']+1;
+        $answer2 = $_POST['answer2'];
+        $question3 = $_POST['question3']+1;
+        $answer3 = $_POST['answer3'];
+       
 
         // All error messages when create an account
         //check if any empty input
@@ -71,7 +61,7 @@
             //check if email is taken
             //TODO: make sure it's case insensitive
             if(!mysqli_stmt_prepare($stmt0,$sql0)){
-                header("Location: signup.php?error=sqlerror0");
+                header("Location: signup.php?error=sqlerror");
                 exit();
             }
             else{
@@ -101,23 +91,29 @@
                     //We start a transaction so that if one query succeeds
                     //  but the next fails, the first query has no effect
                     //  (That way we don't have a User entry with no Account)
+
+                    //TODO: 
                     if (mysqli_begin_transaction($conn))
                     {
                         //First we make the User entry
-                        $sql3 = "INSERT INTO User (`IsDriver`, `IsAdmin`, `Balance`) VALUES (?,?,?)";
+                        $sql3 = "INSERT INTO User (`IsDriver`, `IsAdmin`, `Balance`,`LastPurchasedMonthly`) VALUES (?,?,?,?)";
                         $stmt3 = mysqli_stmt_init($conn);
                         if (!mysqli_stmt_prepare($stmt3,$sql3))
                         {
-                            header("Location: signup.php?error=sqlerror3");
+                            header("Location: signup.php?error=sqlerror");
                             mysqli_rollback($conn);
                             exit();
                         }
                         else{
                             $isAdmin = 0;
                             $balance = 0.00;
-                            mysqli_stmt_bind_param($stmt3, "iid",$isDriver,$isAdmin,$balance);
+                            mysqli_stmt_bind_param($stmt3, "iids",$isDriver,$isAdmin,$balance);
                             
-                            mysqli_stmt_execute($stmt3);
+                            if (!mysqli_stmt_execute($stmt3)){
+                                header("Location: signup.php?error=sqlerror");
+                                mysqli_rollback($conn);
+                                exit();                               
+                            }
                         }
 
                         //We store the ID for the new User entry
@@ -129,7 +125,7 @@
                         $stmt2 = mysqli_stmt_init($conn);
                         if (!mysqli_stmt_prepare($stmt2,$sql2))
                         {
-                            header("Location: signup.php?error=sqlerror2");
+                            header("Location: signup.php?error=sqlerror");
                             mysqli_rollback($conn);
                             exit();
                         }
