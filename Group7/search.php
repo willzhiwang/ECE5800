@@ -101,6 +101,9 @@
         $week = implode("",$out);
         echo "week days: ". $week ;
 
+        //TODO: be more "lenient" about searching by days of week.
+        //e.g. if the user searches for Mon Wed Fri,
+        //they should also see routes that go on Mon Tue Wed Thu Fri.
         $sql = "SELECT Route.RouteID,Route.DepartureTime,Route.ArrivalTime, Route.FromAddress, Route.ToAddress, Route.DaysofWeek, A1.AddressID, A2.AddressID, A1.Name, A2.Name
                 FROM Address AS A1
                 JOIN Address AS A2
