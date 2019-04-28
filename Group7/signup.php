@@ -267,6 +267,7 @@ function securityQuestion3Change() {
 									I am a driver
 								</label>
 							</div>
+							<h5>Security Questions (optional)</h5>
 							<div class="form-group" style="margin-left:1rem">
 								<div class="row">
 									<div class="col-xs-5">

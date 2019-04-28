@@ -85,32 +85,8 @@
 							</div>
 							<div class="form-group" style="margin-left:2rem">
 								<label for="stateInput">Departure Time of the day</label>
-								<select class="selectpicker show-menu-arrow  form-control">
-									<option>0:00 am</option>
-  									<option>1:00 am</option>
-  									<option>2:00 am</option>
-  									<option>3:00 am</option>
-									<option>4:00 am</option>
-									<option>5:00 am</option>
-									<option>6:00 am</option>
-									<option>7:00 am</option>
-  									<option>8:00 am</option>
-  									<option>9:00 am</option>
-									<option>10:00 am</option>
-									<option>11:00 am</option>
-									<option>12:00 pm</option>
-									<option>1:00 pm</option>
-  									<option>2:00 pm</option>
-  									<option>3:00 pm</option>
-									<option>4:00 pm</option>
-									<option>5:00 pm</option>
-									<option>6:00 pm</option>
-									<option>7:00 pm</option>
-  									<option>8:00 pm</option>
-  									<option>9:00 pm</option>
-									<option>10:00 pm</option>
-									<option>11:00 pm</option>
-								</select>
+								<input type="time" class="form-control" id="depTimeInput" name="depTime">
+									
 							</div>
 							<ul class="nav nav-pills flex-column">
 								<li class="nav-item">
