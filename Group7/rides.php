@@ -68,7 +68,6 @@
             <th scope="col">MileDistance</th>
             <th scope="col">Seats Left</th>
             <th scope="col">Days of Week</th>
-            <th scope="col"> </th>
           </tr>
         </thead>';
 
@@ -157,8 +156,6 @@
                 echo "<td>".$row['MileDistance']."</td>";
                 echo "<td>".$row['SeatsLeft']."</td>";
                 echo "<td>".$row['DaysofWeek']."</td>";
-
-                echo '<td><button type="submit" class="btn btn-danger" name="delete-submit" value='.$currentRoute.'>Remove</button></td>';
             }
         echo '</tr></tbody></div></main></body>';
         ;

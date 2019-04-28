@@ -15,10 +15,17 @@
 <?php
     require "header.php"
 ?>
-<!--html lang="en"-->
-<html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
 <body>
-<main>
 
 <div class="container">
 <?php
@@ -39,7 +46,7 @@ if (isset($_GET['error']))
 ?>
   <h2>Add Vehicle</h2>
   <p>Please fill out the following information to add a vehicle</p>
-  <form action="AddVehicle.inc.php" method="post">
+  <form action="/AddVehicle.inc.php" method="post">
     <div class="form-group">
       <label for="licPlateInput">License Plate:</label>
       <input type="text" class="form-control" id="licPlateInput" name="licPlate">
@@ -67,6 +74,12 @@ if (isset($_GET['error']))
     <button type="submit" name="AddVehicle-submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
-</main>
+
 </body>
 </html>
+
+
+    
+<?php
+    require "footer.php"
+?>   

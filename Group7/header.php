@@ -33,14 +33,20 @@ session_start();
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav"> 
 
-    <li class="nav-item"> <a class="nav-link" style="width:160px" href = "AddRoute.php">Add Route</a></li>
-    <li class="nav-item"> <a class="nav-link" style="width:160px" href = "AddVehicle.php">Add Vehicle</a></li>
+    <li class="nav-item"> <a class="nav-link" style="width:70px" href = "Map.php">Map</a></li>
+    <li class="nav-item"> <a class="nav-link" style="width:160px" href = "costandsave.php">Cost and Savings</a></li>
+    <li class="nav-item"> <a class="nav-link" style="width:130px" href = "Fromto.php">From and To</a></li>
+    <li class="nav-item"> <a class="nav-link" style="width:100px" href = "search.php">Search</a></li>
     </ul>
 
     <ul class="navbar-nav ml-auto">
     <?php
         require 'configDB.php'; 
+        if (isset($_SESSION['userId']))
+        {
         $currentAccountID=$_SESSION['userId'];
+        }
+        //$currentAccountID=$_SESSION['userId'];
         if (isset($currentAccountID)) //hide or show logout
         {
             $sql = "SELECT UserID From Account WHERE AccountID = $currentAccountID";
@@ -114,6 +120,6 @@ session_start();
     <nav class="navbar fixed-bottom bg-dark navbar-dark">
 
     <a class="navbar-brand" href="aboutus.php">About US</a>
-    </footer>
+</footer>
 </body>
 </html>

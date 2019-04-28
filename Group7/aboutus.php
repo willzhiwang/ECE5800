@@ -20,14 +20,23 @@
 <body>
 	
     <main>
-		<div class="container bg-white" style="width:800px;border-radius:25px;border-style:inset;border-width:large">
 		    <h2 style="margin-left:18rem">About Us</h2>
 				<br>
-				<img src="https://parkers-images.bauersecure.com/pagefiles/275474/750x500/vw-transporter-2019-21.jpg" class="mx-auto d-block">
-				<p style="margin-top:1rem">We are a great vanpool company which will provide the best service to you for a cheap price. Please book a ticket to try our service. </p>
+				<img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/2017-03-07_Geneva_Motor_Show_1177.JPG" class="rounded" alt="Cinque Terre" width="450" height="265" style="margin-left:10px">
+				<p style="margin-top:1rem">We are a vanpool company in Iowa City</p>
+				<h3>Your Account</h3>
 				<p></p>
 				<ul class="nav nav-pills flex-column">
 					<li class="nav-item">
+						<?php
+							if(isset($_SESSION['userId']))
+							{
+							  echo '<p class="login-status"> You are logged in </p>';
+							}
+							else{
+							  echo '<p class="login-status"> Please login </p>';
+							}
+						 ?>
 					</li>
 				</ul>
 				<hr class="d-sm-none">
@@ -38,3 +47,6 @@
     </main>
 </body>
 </html>
+<?php
+    require "footer.php"
+?> 

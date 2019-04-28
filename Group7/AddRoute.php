@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>    
+<head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>group7</title>
@@ -15,12 +15,21 @@
 <?php
     require "header.php"
 ?>
-<html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
 <body>
-  <main>
-    <div class="container">
-      <?php
-      if (isset($_GET['error']))
+
+<div class="container">
+<?php
+if (isset($_GET['error']))
 						{
 							if ($_GET['error'] == "emptyfields")
 							{
@@ -37,21 +46,21 @@
                 echo '<small class="text-danger"> An internal error occurred; please contact us for assistance. </small>';
               }
             }
-        ?>
-        <h2>Add Route</h2>
+?>
+  <h2>Add Route</h2>
   <!-- TODO: replace ID inputs with a drop-down menu. In the far future,
    a way to search by name would probably be more efficient.-->
-          <form action="AddRoute.inc.php" method="post">
-            <div class="form-group">
-              <label for="usr">Vehicle used (ID):</label>
-              <input type="number" class="form-control" id="vehicleidInput" name="vehicleid">
-            </div>
-            <div class="form-group">
-              <label for="usr">Driver (ID):</label>
-              <input type="number" class="form-control" id="driveridInput" name="driverid">
-            </div>
-            Departs From...
-            <div class="form-group" style="margin-left:2rem">
+  <form action="/addroute.inc.php" method="post">
+    <div class="form-group">
+      <label for="usr">Vehicle used (ID):</label>
+      <input type="number" class="form-control" id="vehicleidInput" name="vehicleid">
+    </div>
+    <div class="form-group">
+      <label for="usr">Driver (ID):</label>
+      <input type="number" class="form-control" id="driveridInput" name="driverid">
+    </div>
+    Departs From...
+    <div class="form-group" style="margin-left:2rem">
       
 							<label for="addressNameFrom">Location Name</label>
 								<div class="row" style="margin-right:1rem">
@@ -92,13 +101,13 @@
 							</div>
 
               Goes To...
-      <div class="form-group" style="margin-left:2rem">
-    
+    <div class="form-group" style="margin-left:2rem">
+      
 							<label for="addressNameTo">Location Name</label>
 								<div class="row" style="margin-right:1rem">
 									<input type="text" class="form-control" name="AnameTo" id="addressNameTo" maxlength="61" placeholder="Name/Apt number/Company for this Address">
 								</div>
-		  </div>
+							</div>
 							<div class="form-group" style="margin-left:2rem">
 								<label for="streetInputTo">Street</label>
 								<div class="row" style="margin-right:1rem">
@@ -130,8 +139,7 @@
 										<input type="text" class="form-control" name="zipTo" id="zipCodeInputTo" maxlength="10" placeholder="Zip Code">
 									</div>
 								</div>
-					</div>
-
+							</div>          
     <div class="form-group">
       <label for="usr">Departure time:</label>
       <input type="time" class="form-control" id="depTimeInput" name="depTime">
@@ -145,47 +153,46 @@
       <input type="text" class="form-control" id="distanceInput" name="distance">
     </div>
     Runs On: 
-    
-      <div class="form-group">
-        <div class="form-check-inline">
+    <br>
+    <div class="form-check-inline">
         <label class="form-check-label">
             <input type="checkbox" class="form-check-input" name="daysChecked[]" value="Sun">Sun 
         </label> 
-       
+        <br>
         <label class="form-check-label">
             <input type="checkbox" class="form-check-input" name="daysChecked[]" value="Mon">Mon 
         </label> 
+        <br>
         <label class="form-check-label">
             <input type="checkbox" class="form-check-input" name="daysChecked[]" value="Tue">Tues 
         </label> 
-        
+        <br>
         <label class="form-check-label">
             <input type="checkbox" class="form-check-input" name="daysChecked[]" value="Wed">Wed 
-          </label> 
-          <label class="form-check-label">
+        </label> 
+        <br>
+        <label class="form-check-label">
             <input type="checkbox" class="form-check-input" name="daysChecked[]" value="Thu">Thurs 
-          </label> 
-         
-          <label class="form-check-label">
+        </label> 
+        <br>
+        <label class="form-check-label">
             <input type="checkbox" class="form-check-input" name="daysChecked[]" value="Fri">Fri 
-          </label> 
-          
-          <label class="form-check-label">
+        </label> 
+        <br>
+        <label class="form-check-label">
             <input type="checkbox" class="form-check-input" name="daysChecked[]" value="Sat">Sat 
-          </label>
+        </label>
         </div>
+    <br> 
+    <button type="submit" class="btn btn-primary" name="AddRoute-submit">Submit</button>
+  </form>
+</div>
 
-        <div class="form-group">
-        <button type="submit" class="btn btn-primary" name="AddRoute-submit">Submit</button>
-        </div>
-        </div>
-    
-      </form>
-
-      <br>
-      <br>
-      </div>
-    </main>
-  </body>
+</body>
 </html>
 
+
+    
+<?php
+    require "footer.php"
+?>   

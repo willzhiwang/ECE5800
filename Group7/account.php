@@ -74,6 +74,8 @@
 
 <body>
 	<main>
+		<div class="container-fluid" style="background-image: linear-gradient(rgb(49,182,246),rgb(115,232,255)">
+		<br>
 		<br>
 			<div class="container bg-white" style="width:800px;border-radius:25px;border-style:inset;border-width:large">
 				<section>
