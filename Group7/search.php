@@ -39,16 +39,13 @@
         if (isset($_POST['from']))
         {
             $from = $_POST['from'];
+
         }
         if (isset($_POST['to']))
         {
             $to = $_POST['to'];
-        }
-        if (isset($_POST['depTime']))
-        {
-            $depTime = $_POST['depTime'];
-        }
 
+        }
         $sun=$mon=$tue=$wed=$thu=$fri=$sat=NULL;
         
         if (isset($_POST['sun']))
@@ -101,17 +98,12 @@
         $week = implode("",$out);
         echo "week days: ". $week ;
 
-        //TODO: be more "lenient" about searching by days of week.
-        //e.g. if the user searches for Mon Wed Fri,
-        //they should also see routes that go on Mon Tue Wed Thu Fri.
         $sql = "SELECT Route.RouteID,Route.DepartureTime,Route.ArrivalTime, Route.FromAddress, Route.ToAddress, Route.DaysofWeek, A1.AddressID, A2.AddressID, A1.Name, A2.Name
                 FROM Address AS A1
                 JOIN Address AS A2
                 INNER JOIN Route ON (A1.AddressID = Route.FromAddress) AND Route.ToAddress=A2.AddressID
                 WHERE A1.Name Like '$from' AND A2.Name Like '$to' AND Route.SeatsLeft >0 AND Route.DaysofWeek LIKE '$week'
-                AND ADDTIME('$depTime','-00:15:00') <= Route.DepartureTime 
-                AND route.DepartureTime <= ADDTIME('$depTime','00:15:00')
-                ORDER BY ABS(TIMEDIFF(route.DepartureTime,'$depTime')) ASC";
+                ";
         $result = mysqli_query($conn, $sql) ;
         echo"<tbody>";
             while ($row = mysqli_fetch_array($result))
