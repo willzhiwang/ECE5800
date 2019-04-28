@@ -9,7 +9,8 @@
 </head>
 
 <?php
-    require "header.php"
+    require "header.php";
+    require "configDB.php";
 ?>
 <body>
 	<main>
@@ -32,10 +33,6 @@
 <?php
     if (isset($_POST['search-submit']))
     {
-        require 'configDB.php';
-
-        //require 'login.inc.php';
-
         if (isset($_POST['from']))
         {
             $from = $_POST['from'];
@@ -50,7 +47,6 @@
         }
 
         $sun=$mon=$tue=$wed=$thu=$fri=$sat=NULL;
-        
         if (isset($_POST['sun']))
         {
             $sun = $_POST['sun'];
@@ -85,7 +81,6 @@
         {
             $sat = $_POST['sat'];
         }
-
         $search1 = "$sun, $mon, $tue, $wed, $thu, $fri, $sat";
         //echo "search1: ". $search1;
         $search_arr = explode(", ", $search1);
@@ -99,7 +94,7 @@
             }  
         }
         $week = implode("",$out);
-        echo "week days: ". $week ;
+        //echo "week days: ". $week ;
 
         //TODO: be more "lenient" about searching by days of week.
         //e.g. if the user searches for Mon Wed Fri,
@@ -132,7 +127,6 @@
             }
         echo '</tr></tbody>';
         //echo $currentRoute;
-        
     }
 ?>
     </form>

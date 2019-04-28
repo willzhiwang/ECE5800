@@ -45,6 +45,7 @@ require 'configDB.php';
             <th scope="col">Model</th>
             <th scope="col">Color</th>
             <th scope="col">MaxCapacity</th>
+            <th scope="col"></th>
           </tr>
         </thead>';
 

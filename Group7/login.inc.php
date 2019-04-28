@@ -53,6 +53,8 @@
                         // add user is admin session
                         $_SESSION['userId'] = $row['AccountID'];
                         $_SESSION['userUid'] = $row['Username'];
+                        $_SESSION['UserID']=$row["UserID"];
+                        $userid= $_SESSION['UserID'];
                         header("Location: index.php?login=success=.$mailuid");
                     }
                     else 

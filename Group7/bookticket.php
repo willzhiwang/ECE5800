@@ -29,6 +29,26 @@ if (isset($_POST['bookticket-submit']))
         {
             $row = mysqli_fetch_assoc($result3);
             $currentUserID = $row["UserID"];
+            //find Payment info
+            $sql5 = "SELECT PaymentInfo From User WHERE UserID = $currentUserID";
+            $result5 = mysqli_query($conn, $sql5);
+            if (mysqli_num_rows($result5) > 0) 
+            {
+                $row = mysqli_fetch_assoc($result5);
+                $payment = $row["PaymentInfo"];
+                if ($payment == NULL) // when payment is null info not filled
+                {
+                    header("Location: search.php?error=needPay");
+                    mysqli_rollback($conn);
+                    exit();
+                }
+            }
+            else 
+            {
+                header("Location: search.php?error=sqlerror5");
+                mysqli_rollback($conn);
+                exit();
+            }
         
         }
         else 
@@ -37,6 +57,28 @@ if (isset($_POST['bookticket-submit']))
             mysqli_rollback($conn);
             exit();
         }
+        //check if user's all information are filled
+        //get person ID
+        $sql4 = "SELECT PersonID From Account WHERE AccountID = $currentAccountID";
+        $result4 = mysqli_query($conn, $sql4);
+        if (mysqli_num_rows($result4) > 0) 
+        {
+            $row = mysqli_fetch_assoc($result4);
+            $currentPersonID = $row["PersonID"];
+            if ($currentPersonID == NULL) // when person id is null info not filled
+            {
+                header("Location: search.php?error=needAccountSetting");
+                mysqli_rollback($conn);
+                exit();
+            }
+        }
+        else 
+        {
+            header("Location: search.php?error=sqlerror4");
+            mysqli_rollback($conn);
+            exit();
+        }
+
         /***************Passenger to routes*************/
         $sql2 = "INSERT INTO PassengerToRoutes (UserID, RouteID) VALUES (?,?)";
         $stmt2 = mysqli_stmt_init($conn);

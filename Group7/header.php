@@ -18,7 +18,9 @@ session_start();
     <script src="main.js"></script>
     -->
 </head>
-
+<?php
+require 'configDB.php'; 
+?>
 <body>
     <header>
 
@@ -32,17 +34,12 @@ session_start();
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav"> 
-
-    <li class="nav-item"> <a class="nav-link" style="width:160px" href = "AddRoute.php">Add Route</a></li>
-    <li class="nav-item"> <a class="nav-link" style="width:160px" href = "AddVehicle.php">Add Vehicle</a></li>
-    </ul>
-
-    <ul class="navbar-nav ml-auto">
+    
     <?php
-        require 'configDB.php'; 
-        $currentAccountID=$_SESSION['userId'];
-        if (isset($currentAccountID)) //hide or show logout
+        
+        if (isset($_SESSION['userId'])) //hide or show logout
         {
+            $currentAccountID=$_SESSION['userId'];
             $sql = "SELECT UserID From Account WHERE AccountID = $currentAccountID";
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) 
@@ -74,6 +71,10 @@ session_start();
             {
                 $_SESSION['userType']= "admin";
                 $userSetting= "Manage Rides";
+                echo'
+                <li class="nav-item"> <a class="nav-link" style="width:160px" href = "AddRoute.php">Add Route</a></li>
+                <li class="nav-item"> <a class="nav-link" style="width:160px" href = "AddVehicle.php">Add Vehicle</a></li>
+                ';
             }
             else if ($driver ==1)
             {
@@ -84,9 +85,12 @@ session_start();
             {
                 $_SESSION['userType']= "passanger";
                 $userSetting= "My Ride";
+                
             }
 
             echo '
+            </ul>
+            <ul class="navbar-nav ml-auto">
             <div class="dropdown dropleft float-right">
             <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"> Settings </button>
             <div class="dropdown-menu">
@@ -100,7 +104,10 @@ session_start();
             </form>
             ';
 } else {
-    echo '<li class="nav-item"><a class="nav-link" href="login.php">Log in</a></li>
+    echo '
+    </ul>
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a class="nav-link" href="login.php">Log in</a></li>
             <li class="nav-item"><a class="nav-link" href="signup.php">Sign Up</a></li>';
 }
 ?>

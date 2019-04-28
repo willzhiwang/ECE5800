@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 </html>
+
+
 <?php
     require "header.php";
     require 'configDB.php';
@@ -16,21 +18,6 @@
 <?php
 
     $currentAccountID=$_SESSION['userId'];
-    $sql = "SELECT UserID From Account WHERE AccountID = $currentAccountID";
-    $result = mysqli_query($conn, $sql);
-    if (mysqli_num_rows($result) > 0) 
-    {
-        $row = mysqli_fetch_assoc($result);
-        $currentUserID = $row["UserID"];
-    }
-    else 
-    {
-        header("Location: search.php?error=sqlerror");
-        mysqli_rollback($conn);
-        exit();
-    }
-    //echo "User ID: ".$currentUserID ;
-    //Find IsAdmin and IsDriver
     $sql2 = "SELECT IsAdmin, IsDriver From User WHERE UserID = $currentUserID";
     $result2 = mysqli_query($conn, $sql2);
     if (mysqli_num_rows($result2) > 0) 
@@ -50,6 +37,7 @@
     //when admin is 1
     if ($admin == 1)
     {
+        $_SESSION['userType'] = "admin";
         echo "<h3>welcome, Administrator</h3>";
         echo'
         <body>
@@ -68,6 +56,8 @@
             <th scope="col">MileDistance</th>
             <th scope="col">Seats Left</th>
             <th scope="col">Days of Week</th>
+            <th scope="col"></th>
+
           </tr>
         </thead>';
 
@@ -111,6 +101,7 @@
     //When driver
     else if ($driver ==1)
     {
+        $_SESSION['userType'] = "driver";
         echo "<h3>welcome, Driver</h3>";
         echo'
         <body>
@@ -164,6 +155,7 @@
     //passenger
     else 
     {
+        $_SESSION['userType'] = "passanger";
         echo "<h3>welcome, Passanger</h3>";
         echo'
         <body>
@@ -180,7 +172,9 @@
             <th scope="col">Day of Week</th>
             <th scope="col"> </th>
           </tr>
-        </thead>';
+        </thead>
+        <form action="rides.inc.php" method="post">
+        ';
 
         $sqlPassenger = "SELECT PassengerToRoutes.UserID, Route.RouteID,Route.DepartureTime,Route.ArrivalTime, Route.FromAddress, Route.ToAddress, Route.DaysofWeek, Route.MileDistance ,Route.SeatsLeft,A1.AddressID, A2.AddressID, A1.Name, A2.Name
         FROM Address AS A1
@@ -206,7 +200,7 @@
 
                 echo '<td><button type="submit" class="btn btn-danger" name="delete-submit" value='.$currentRoute.'>Remove</button></td>';
             }
-        echo '</tr></tbody></div></main></body>';
+        echo '</tr></tbody></form></div></main></body>';
         ;
     }
 
