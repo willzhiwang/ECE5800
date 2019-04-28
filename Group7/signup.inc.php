@@ -12,14 +12,24 @@
         $password = $_POST['pwd'];
         $passwordRepeat = $_POST['pwd-r'];
         $isDriver = $_POST['isDriver'];
-    
         $question1 = $_POST['question1']+1;
-        $answer1 = $_POST['answer1'];
-        $question2 = $_POST['question2']+1;
-        $answer2 = $_POST['answer2'];
-        $question3 = $_POST['question3']+1;
-        $answer3 = $_POST['answer3'];
-       
+        $answer1 = $_POST['answer1']+1;
+        
+        if ($_POST['question2'] != 0){
+            $question2 = $_POST['question2']+1;
+            $answer2 = $_POST['answer2']+1;
+        }else{
+            $question2 = NULL;
+            $answer2 = NULL;
+        }
+        
+        if ($_POST['question3'] != 0){
+            $question3 = $_POST['question3']+1;
+            $answer3 = $_POST['answer3']+1;
+        }else{
+            $question3 = NULL;
+            $answer3 = NULL;
+        }
 
         // All error messages when create an account
         //check if any empty input

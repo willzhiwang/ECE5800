@@ -9,81 +9,10 @@
 </head>
 </html>
 <?php
-require "header.php";
-require 'configDB.php';
+    require "header.php";
+    require 'configDB.php';
+    if (isset($_POST['viewVehicles-submit']))
+    {
+        
+    }
 ?>
-
-<body>
-	<main>
-		<br>
-		<br>
-			<div class="container bg-white" style="width:1300px;border-radius:25px;border-style:inset;border-width:large">
-				<section>
-					<h3 style="margin-left:19rem">All Vehicles</h3>
-					<br>
-						<form action="rides.php" method="post">
-							<div class="form-group" style="margin-left:2rem">
-								<div class="row">
-
-								<div class="form-group">
-							  		<button class="btn btn-primary" type="submit" name="search-submit">Back</button>
-						  			</div>
-                                </div>	
-                    <?php
-                        echo'
-    <body>
-        <main>
-        <div class="table-responsive">
-        <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">UserID</th>
-            <th scope="col">VehicleID</th>
-            <th scope="col">LicensePlate</th>
-            <th scope="col">Year</th>
-            <th scope="col">Make</th>
-            <th scope="col">Model</th>
-            <th scope="col">Color</th>
-            <th scope="col">MaxCapacity</th>
-          </tr>
-        </thead>';
-
-        $sqlAdmin = "SELECT Vehicle.OwnerUser, Vehicle.VehicleID, Vehicle.LicensePlate, Vehicle.Year, Vehicle.Make, 
-        Vehicle.Model, Vehicle.Color, Vehicle.MaxCapacity
-        FROM Vehicle
-        ";
-        $tableResults = mysqli_query($conn, $sqlAdmin);
-
-        echo"<tbody>";
-            while ($row = mysqli_fetch_array($tableResults))
-            {
-                //echo " ".$currentRoute;
-                $currentVehicle=$row['VehicleID'];
-                echo "<tr>";
-                echo "<td>".$row['OwnerUser']."</td>";
-                echo "<td>".$row['VehicleID']."</td>";
-                echo "<td>".$row['LicensePlate']."</td>";
-                echo "<td>".$row['Year']."</td>";
-                echo "<td>".$row['Make']."</td>";
-                echo "<td>".$row['Model']."</td>";
-                echo "<td>".$row['Color']."</td>";
-                echo "<td>".$row['MaxCapacity']."</td>";
-                //echo "<td>".$row['PhoneNumber']."</td>";
-                echo '<td><button type="submit" class="btn btn-danger" name="deleteVehicle-submit" value='.$currentVehicle.'>Remove</button></td>';
-            }
-        echo '</tr></tbody></div></main></body>';
-        ;
-    ?>    
-</form>	
-			
-				<hr class="d-sm-none">
-							<br>
-						</form>
-					<br>
-				</section>
-			</div>
-		<br>
-		<br>
-		</div>
-	</main>
-</body>
