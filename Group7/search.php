@@ -14,6 +14,8 @@
 ?>
 <body>
 	<main>
+    <div class="container bg-white" style="width:1400px;border-radius:25px;border-style:inset;border-width:large">
+    <section>
 	<div class="table-responsive">
     <table class="table">
     <thead>
@@ -105,8 +107,8 @@
                 INNER JOIN Route ON (A1.AddressID = Route.FromAddress) AND Route.ToAddress=A2.AddressID
                 WHERE A1.Name Like '$from' AND A2.Name Like '$to' AND Route.SeatsLeft >0 AND Route.DaysofWeek LIKE '$week'
                 AND ADDTIME('$depTime','-00:15:00') <= Route.DepartureTime 
-                AND route.DepartureTime <= ADDTIME('$depTime','00:15:00')
-                ORDER BY ABS(TIMEDIFF(route.DepartureTime,'$depTime')) ASC";
+                AND Route.DepartureTime <= ADDTIME('$depTime','00:15:00')
+                ORDER BY ABS(TIMEDIFF(Route.DepartureTime,'$depTime')) ASC";
         $result = mysqli_query($conn, $sql) ;
         echo"<tbody>";
             while ($row = mysqli_fetch_array($result))
@@ -128,7 +130,30 @@
         echo '</tr></tbody>';
         //echo $currentRoute;
     }
+
+    echo'<div class="form-group" style="margin-left:26rem">';
+				
+		if (isset($_GET['error']))
+		{
+            if ($_GET['error'] == "needPay")
+            {
+                echo '<large class="text-danger"> Fill in Your Payment in Settings! </large>';
+            }
+            else 
+            {
+                echo '<large class="text-danger"> Please contact us! </large>';
+            }
+        }
+        else if (isset($_GET['search'])=="success" )
+        {
+            echo '<large class="text-success"> Success! </large>';
+        }
+
+echo'</div>'									
+											
 ?>
+    </section>
+                                    </div>
     </form>
     </table>
     </div>

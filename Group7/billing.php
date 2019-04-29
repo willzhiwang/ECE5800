@@ -93,7 +93,32 @@
 					<h1 style="margin-left:15rem">Billing Settings</h1>
 					<br>
 					<form action="billing.inc.php" method="post">
-						<h4>Payment</h4>
+						<div class="form-group" style="margin-left:3rem">
+							<?php 
+								if (isset($_GET['error']))
+								{
+											
+									if ($_GET['error'] == "emptypaymentaddress")
+									{
+										echo '<large class="text-danger"> Fill in all Payment Address info! </large>';
+									}
+									else if ($_GET['error'] == "emptypayment")
+									{
+										echo '<large class="text-danger"> Fill in all Payment info! </large>';
+									}
+									else 
+									{												
+										echo '<large class="text-danger"> Please contact us! </large>';
+									}
+								}
+								else if (isset($_GET['billing']) == "success")
+								{
+									echo '<large class="text-success"> Saved! </large>';
+								}
+							?>
+						</div>
+						<h4 style="margin-left:2rem">Payment</h4>
+						
 						<div class="form-group" style="margin-left:2rem">
 							<div class="row">
 								<div class="col-xs-3">
@@ -134,7 +159,7 @@
 								</div>
 							</div>
 						</div>
-						<h4>Billing Address</h4>
+						<h4 style="margin-left:2rem">Billing Address</h4>
 						<div class="form-group" style="margin-left:2rem">
 								<label for="addressInput">Name</label>
 								<div class="row" style="margin-right:1rem">

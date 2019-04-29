@@ -96,11 +96,11 @@ if (isset($_POST['bookticket-submit']))
             while ($row = mysqli_fetch_array($result1))
             {
                 $findRouteID = $row['RouteID'];
-                echo "findRouteID: ".$findRouteID;
+                //echo "findRouteID: ".$findRouteID;
                 if ($findRouteID==$currentRoute)
                 {
                     //header("Location: search.php?error=route_exists");
-                    echo ("<script>alert('Seats Full!')</script>");
+                    echo ("<script>alert('You have already reserved this route!')</script>");
                     echo("<script>window.location = 'search.php';</script>");
                     mysqli_rollback($conn);
                     exit();
@@ -123,7 +123,7 @@ if (isset($_POST['bookticket-submit']))
                 else
                 {
                     //echo "findRouteID: ".$findRouteID;
-                    echo "current user:".$currentUserID."current route:".$currentRoute;
+                    //echo "current user:".$currentUserID."current route:".$currentRoute;
                     mysqli_stmt_bind_param($stmt2,"ii",$currentUserID,$currentRoute);
                     mysqli_stmt_execute($stmt2);
 
@@ -138,7 +138,7 @@ if (isset($_POST['bookticket-submit']))
                     exit();
                     }
                     mysqli_stmt_execute($stmt);
-                    //header("Location: account.php?account=success");
+                    header("Location: search.php?search=success");
                     exit();
                     mysqli_stmt_close($stmt);
                 }

@@ -27,12 +27,12 @@
 
         // All error messages when create an account
         //check if any empty input
-        if (empty($street)||empty($city)||empty($state)||empty($zip)||empty($name) )
+        if (empty($street)||empty($city)||empty($state)||empty($zip) )
         {
             header("Location: billing.php?error=emptypaymentaddress");
             exit();
         }
-        if (empty($cardNu)||empty($cvv)||empty($eDate)||empty($cardType) )
+        if (empty($cardNu)||empty($cvv)||empty($eDate)||empty($cardType) ||empty($name))
         {
             header("Location: billing.php?error=emptypayment");
             exit();
@@ -64,8 +64,8 @@
                             $stmt = mysqli_stmt_init($conn);
                             if (!mysqli_stmt_prepare($stmt,$sql5))
                             {
-                                //header("Location: billing.php?error=sqlerror");
-                                echo "\n sql5 error ";
+                                header("Location: billing.php?error=sqlerror");
+                                //echo "\n sql5 error ";
                                 exit();
                             }
                             else{
@@ -81,7 +81,7 @@
                             $stmt = mysqli_stmt_init($conn);
                             if (!mysqli_stmt_prepare($stmt,$sql2))
                             {
-                                //header("Location: billing.php?error=sqlerror");
+                                header("Location: billing.php?error=sqlerror");
                                 echo "\n sql 2 error ";
                                 exit();
                             }
@@ -95,14 +95,14 @@
                                 $stmt3 = mysqli_stmt_init($conn);
                                 if (!mysqli_stmt_prepare($stmt3,$sql3))
                                 {
-                                    //header("Location: billing.php?error=sqlerror3");
+                                    header("Location: billing.php?error=sqlerror3");
                                     echo "sql3 is Error";
                                     mysqli_rollback($conn);
                                     exit();
                                 }
                                 
                                 mysqli_stmt_execute($stmt3);
-                                header("Location: billing.php?account=success");
+                                header("Location: billing.php?billing=success");
 
                                 exit();
                             } 
@@ -142,7 +142,7 @@
                                 mysqli_rollback($conn);
                                 exit();
                             }
-                            header("Location: billing.php?account=success");
+                            header("Location: billing.php?billing=success");
                             mysqli_stmt_execute($stmt);
                             exit();
                         }

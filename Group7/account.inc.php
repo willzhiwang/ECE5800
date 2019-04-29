@@ -20,7 +20,7 @@
         $phone = $_POST['phone'];
 
         $currentID=$_SESSION['userId'];
-        echo "\nCurrent loggedin user id: " . $currentID. "<br>";
+        //echo "\nCurrent loggedin user id: " . $currentID. "<br>";
         // find the current login Account ID
         $sql2 = "SELECT `PersonID` FROM `Account` WHERE `AccountID`=$currentID";
         $result = mysqli_query($conn, $sql2);
@@ -44,7 +44,7 @@
             {
                 $row = mysqli_fetch_assoc($result);
                 $currentPersonID = $row["PersonID"];
-                echo "\n Person ID from Account table: " . $currentPersonID. "<br>";
+                //echo "\n Person ID from Account table: " . $currentPersonID. "<br>";
 
                 if ($currentPersonID==NULL)//when Person ID is null
                 {
@@ -81,7 +81,7 @@
                         if (!mysqli_stmt_prepare($stmt,$sql3))
                         {
                             header("Location: account.php?error=sqlerror3");
-                            echo "sql3 is Error";
+                            //echo "sql3 is Error";
                             mysqli_rollback($conn);
                             exit();
                         }
@@ -94,14 +94,14 @@
                     //echo "\n Person ID from Account table3: " . $currentPersonID. "<br>";
                     //Make sure check the type !!! use 'variable' for list of char!!!
 
-                    echo "\nCurrent Person id: " . $currentPersonID. "<br>";
+                    //echo "\nCurrent Person id: " . $currentPersonID. "<br>";
                     $sql1 = "SELECT `Address` FROM `Person` WHERE `PersonID`=$currentPersonID";
                     $result1 = mysqli_query($conn, $sql1);
                     if (mysqli_num_rows($result1) > 0) {
                         $row = mysqli_fetch_assoc($result1);
                         $currentAddressID = $row["Address"];
                     }
-                    echo "\nCurrent Address id: " . $currentAddressID. "<br>";
+                    //echo "\nCurrent Address id: " . $currentAddressID. "<br>";
 
 
                     $sql5 = "UPDATE `Address` SET `Name`= '$billingname',`Street`='$street',`City`='$city',`State`='$state',`ZipCode`='$zip' WHERE `AddressID`=$currentAddressID";
@@ -130,7 +130,7 @@
                         exit();
                     }
                     mysqli_stmt_execute($stmt4);
-                    //header("Location: account.php?account=success");
+                    header("Location: account.php?account=success");
                     exit();
                     mysqli_stmt_close($stmt4);
                 }

@@ -83,6 +83,31 @@
 					<br>
 						<form action="account.inc.php" method="post">
 							<div class="form-group" style="margin-left:2rem">
+
+							<?php 
+								if (isset($_GET['error']))
+								{
+											
+									if ($_GET['error'] == "emptyPersonFields")
+									{
+										echo '<large class="text-danger"> Fill in all person info! </large>';
+									}
+									else if ($_GET['error'] == "emptyAddressFields")
+									{
+										echo '<large class="text-danger"> Fill in all address info! </large>';
+									}
+									else 
+									{												
+										echo '<large class="text-danger"> Please contact us! </large>';
+									}
+								}
+								else if (isset($_GET['account']) == "success")
+								{
+									echo '<large class="text-success"> Saved! </large>';
+								}
+								?>
+							</div>
+							<div class="form-group" style="margin-left:2rem">
 								<div class="row">
 									<div class="col-xs-3">
 										<label for="firstNameInput">First Name</label>
