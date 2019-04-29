@@ -20,12 +20,13 @@
 		<div class="container-fluid" style="background-image: linear-gradient(rgb(49,182,246),rgb(115,232,255)">
 		<br>
 		<br>
-			<div class="container bg-white" style="width:800px;height:800px;border-radius:25px;border-style:inset;border-width:large">
+			<div class="container bg-white" style="width:50%;height:800px;border-radius:25px;border-style:inset;border-width:large">
 				<section>
-					<h1 style="margin-left:20rem">Login</h1>
+				<br>
+					<h1 style="margin-left:40%">Login</h1>
 					<br>
 						<form action="login.inc.php" method="post">
-							<div class="form-group" style="margin-left:18rem">
+							<div class="form-group" style="margin-left:35%">
 								<label for="emailinput">Email or Username</label>
 								<div class="row">
 									<div class="col-xs-3">
@@ -33,16 +34,15 @@
 									</div>
 								</div>
 							</div>
-							<div class="form-group" style="margin-left:18rem">
+							<div class="form-group" style="margin-left:35%">
 								<label for="passwordInput">Password</label>
 								<div class="row">
 									<div class="col-xs-3">
 										<input type="password" class="form-control" name="pwd" id="passwordInput" placeholder="Password">
 									</div>
-
 								</div>
 							</div>
-							<div class="form-group" style="margin-left:18rem">
+							<div class="form-group">
 							<?php
 										if (isset($_GET['error']))
 										{
@@ -75,7 +75,7 @@
 							?>
 							</div>
 
-							<div class="form-group" style="margin-left:20rem">
+							<div class="form-group" style="margin-left:45%">
 								<button type="submit" class="btn btn-lg btn-primary" name="login-submit">Login</button>
 							</div>
 							
@@ -85,7 +85,10 @@
 			</div>
 		<br>
 		<br>
+		<br>
+		<br>
 		</div>
 	</main>
 </body>
 </html>
+
