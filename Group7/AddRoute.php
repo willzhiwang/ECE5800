@@ -45,7 +45,7 @@
     $array_drivers = array();
     if($tableResults) {
       while($row = mysqli_fetch_array($tableResults)) {
-        $array_drivers = $row;
+        $array_drivers[] = $row;
       }
     } else {
       echo "Couldn't issue the database query<br>";
@@ -239,8 +239,7 @@ window.onload = function() {
   }
 
   for(var i = 0; i < driverInput.length; i++) {
-    driverStrings[i] = driverInput[i][5] + " " + driverInput[i][6];
-    window.alert(driverStrings[i]);
+    driverStrings[i] = driverInput[i][4] + " (" + driverInput[i][5] + " " + driverInput[i][6] + ")";
   }
 
   var optionSelectVehicle = document.getElementById("vehicleInput");
