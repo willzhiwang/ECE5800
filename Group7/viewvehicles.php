@@ -28,11 +28,13 @@ require 'configDB.php';
 								<div class="form-group">
 							  		<button class="btn btn-primary" type="submit" name="search-submit">Back</button>
 						  			</div>
-                                </div>	
+                                </div>
+                                </form>	
                     <?php
                         echo'
     <body>
         <main>
+        <form action="deleteVehicle.php" method="post">
         <div class="table-responsive">
         <table class="table">
         <thead>
@@ -54,7 +56,6 @@ require 'configDB.php';
         FROM Vehicle
         ";
         $tableResults = mysqli_query($conn, $sqlAdmin);
-
         echo"<tbody>";
             while ($row = mysqli_fetch_array($tableResults))
             {
@@ -72,14 +73,13 @@ require 'configDB.php';
                 //echo "<td>".$row['PhoneNumber']."</td>";
                 echo '<td><button type="submit" class="btn btn-danger" name="deleteVehicle-submit" value='.$currentVehicle.'>Remove</button></td>';
             }
-        echo '</tr></tbody></div></main></body>';
+        echo '</tr></tbody></div></form></main></body>';
         ;
     ?>    
 </form>	
 			
 				<hr class="d-sm-none">
 							<br>
-						</form>
 					<br>
 				</section>
 			</div>

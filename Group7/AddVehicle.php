@@ -66,6 +66,8 @@ if (isset($_GET['error']))
     </div>
     <button type="submit" name="AddVehicle-submit" class="btn btn-primary">Submit</button>
   </form>
+  <br>
+  <br>
 </div>
 </main>
 </body>
