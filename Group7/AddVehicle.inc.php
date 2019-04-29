@@ -28,7 +28,7 @@
         {
             if (mysqli_begin_transaction($conn))
                 {
-                $sql0="INSERT INTO `vehicle`(`LicensePlate`, `Year`, `Make`, `Model`, `Color`, `MaxCapacity`) VALUES (?,?,?,?,?,?);";
+                $sql0="INSERT INTO `Vehicle`(`LicensePlate`, `Year`, `Make`, `Model`, `Color`, `MaxCapacity`) VALUES (?,?,?,?,?,?);";
                 $stmt0 = mysqli_stmt_init($conn);
                 if(!mysqli_stmt_prepare($stmt0,$sql0)){
                     header("Location: AddVehicle.php?error=sqlerror0");

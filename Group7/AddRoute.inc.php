@@ -116,7 +116,7 @@
 
                 */
 
-                $sql1="INSERT INTO `address`(`Name`, `Street`, `City`, `State`, `ZipCode`) VALUES (?,?,?,?,?);";
+                $sql1="INSERT INTO `Address`(`Name`, `Street`, `City`, `State`, `ZipCode`) VALUES (?,?,?,?,?);";
                 $stmt1 = mysqli_stmt_init($conn);
                 if(!mysqli_stmt_prepare($stmt1,$sql1)){
                     header("Location: AddRoute.php?error=sqlerror2");
@@ -187,7 +187,7 @@
 
                 */
 
-                $sql2="INSERT INTO `address`(`Name`, `Street`, `City`, `State`, `ZipCode`) VALUES (?,?,?,?,?);";
+                $sql2="INSERT INTO `Address`(`Name`, `Street`, `City`, `State`, `ZipCode`) VALUES (?,?,?,?,?);";
                 $stmt2 = mysqli_stmt_init($conn);
                 if(!mysqli_stmt_prepare($stmt2,$sql2)){
                     header("Location: AddRoute.php?error=sqlerror7");
@@ -288,7 +288,7 @@
 
                 
 
-                $sqlfinal = "INSERT INTO `route`(`Vehicle`, `FromAddress`, `ToAddress`, `DepartureTime`, `ArrivalTime`, `MileDistance`, `SeatsLeft`, `DaysOfWeek`) VALUES (?,?,?,?,?,?,?,?)";
+                $sqlfinal = "INSERT INTO `Route`(`Vehicle`, `FromAddress`, `ToAddress`, `DepartureTime`, `ArrivalTime`, `MileDistance`, `SeatsLeft`, `DaysOfWeek`) VALUES (?,?,?,?,?,?,?,?)";
                 $stmtfinal = mysqli_stmt_init($conn);
                 if(!mysqli_stmt_prepare($stmtfinal,$sqlfinal)){
                     header("Location: AddRoute.php?error=sqlerror11");
