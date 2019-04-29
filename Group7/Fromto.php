@@ -19,9 +19,9 @@
 		<div class="container-fluid" style="background-image: linear-gradient(rgb(49,182,246),rgb(115,232,255)">
 		<br>
 		<br>
-			<div class="container bg-white" style="width:800px;height:800px;border-radius:25px;border-style:inset;border-width:large">
+			<div class="container bg-white" style="width:50%;height:800px;border-radius:25px;border-style:inset;border-width:large">
 				<section>
-					<h1 style="margin-left:18rem">From and To</h1>
+					<h1 style="margin-left:35%">From and To</h1>
 					<br>
 					<table class="table table-bordered">
 						<thead>
@@ -53,10 +53,9 @@
 			</div>
 		<br>
 		<br>
+		<br>
+		<br>
 		</div>
 	</main>
 </body>
-</html>
-<?php
-    require "footer.php"
-?>   
+</html>  
