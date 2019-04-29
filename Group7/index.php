@@ -55,6 +55,10 @@
 							<div class="form-group" style="margin-left:2rem">
 								<label for="cityInput">Day of the week</label>
 								<div class="form-check">
+   									<input type="checkbox" class="form-check-input" name="sun" value="Sun" id="sun" checked>
+    								<label class="form-check-label" for="sun">Sunday</label>
+  								</div>
+								<div class="form-check">
    									<input type="checkbox" class="form-check-input" name="mon" value="Mon" id="mon" checked>
     								<label class="form-check-label" for="mon">Monday</label>
   								</div>
@@ -77,10 +81,6 @@
 								  <div class="form-check">
    									<input type="checkbox" class="form-check-input" name="sat" value="Sat" id="sat" checked>
     								<label class="form-check-label" for="sat">Saturday</label>
-  								</div>
-								  <div class="form-check">
-   									<input type="checkbox" class="form-check-input" name="sun" value="Sun" id="sun" checked>
-    								<label class="form-check-label" for="sun">Sunday</label>
   								</div>
 							</div>
 							<div class="form-group" style="margin-left:2rem">

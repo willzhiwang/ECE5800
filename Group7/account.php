@@ -159,7 +159,7 @@
 								<label for="dateOfBirthInput">Date of Birth</label>
 								<div class="row">
 									<div class="col-xs-3">
-										<input type="text" class="form-control" name="dateofbirth" id="dateOfBirthInput" placeholder="Date of Birth" value= "<?php echo $birthdate; ?>">
+										<input type="date" class="form-control" name="dateofbirth" id="dateOfBirthInput" placeholder="Date of Birth" value= "<?php echo $birthdate; ?>">
 									</div>
 								</div>
 							</div>

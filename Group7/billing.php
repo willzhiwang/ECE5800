@@ -147,7 +147,7 @@
 							<div class="row">
 								<div class="col-xs-3">
 									<label for="expMonthInput">Expiration Date</label>
-									<input type="text" class="form-control" name="eDate" id="expDateInput" placeholder="Expiration Date" value= "<?php echo $eDate; ?>">
+									<input type="month" class="form-control" name="eDate" id="expDateInput" placeholder="Expiration Date" value= "<?php echo $eDate; ?>">
 								</div>
 							</div>
 						</div>

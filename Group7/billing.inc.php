@@ -86,7 +86,7 @@
                                 exit();
                             }
                             else{
-                                mysqli_stmt_bind_param($stmt, "ssssii",$cardNu,$name,$eDate,$cvv,$cardType,$currentAddressID);
+                                mysqli_stmt_bind_param($stmt, "sssssi",$cardNu,$name,$eDate,$cvv,$cardType,$currentAddressID);
                                 mysqli_stmt_execute($stmt);
 
                                 $AutoPaymentID = mysqli_insert_id($conn);
@@ -133,7 +133,7 @@
                             if($statement == false) {
                                 die("<pre>".mysqli_error($conn).PHP_EOL.$query."</pre>");
                             }*/
-                            $sql6 = "UPDATE `PaymentInfo` SET `CreditCardNumber`= '$cardNu',`NameOnCard`='$name',`ExpirationDate`='$eDate',`SecurityCode`='$cvv',`CardType`=$cardType WHERE `PaymentInfoID`=$currentPaymentID";
+                            $sql6 = "UPDATE `PaymentInfo` SET `CreditCardNumber`= '$cardNu',`NameOnCard`='$name',`ExpirationDate`='$eDate',`SecurityCode`='$cvv',`CardType`='$cardType' WHERE `PaymentInfoID`=$currentPaymentID";
 
                             if(!mysqli_stmt_prepare($stmt,$sql6))
                             {
