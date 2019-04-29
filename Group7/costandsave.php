@@ -53,10 +53,9 @@
 			</div>
 		<br>
 		<br>
+		<br>
+		<br>
 		</div>
 	</main>
 </body>
 </html>
-<?php
-    require "footer.php"
-?> 
