@@ -36,7 +36,7 @@
                     exit();
                 }
                 else{
-                    mysqli_stmt_bind_param($stmt0, "sssssi",$licPlate,$make,$year,$model,$color,$capacity);
+                    mysqli_stmt_bind_param($stmt0, "sssssi",$licPlate,$year,$make,$model,$color,$capacity);
                     if(mysqli_stmt_execute($stmt0)){
                         header("Location: AddVehicle.php?create=success");
                         mysqli_commit($conn);
