@@ -36,10 +36,9 @@ CREATE TABLE `Group7Vanpool`.`PaymentInfo` (
 `NameOnCard` VARCHAR(255) NOT NULL , 
 `ExpirationDate` VARCHAR(255) NOT NULL , 
 `SecurityCode` VARCHAR(255) NOT NULL , 
-`CardType` INT NOT NULL , 
+`CardType` VARCHAR(31) NOT NULL , 
 `BillingAddress` INT NOT NULL , 
 PRIMARY KEY (`PaymentInfoID`),
-FOREIGN KEY (`CardType`) REFERENCES `CardType`(`CardTypeID`),
 FOREIGN KEY (`BillingAddress`) REFERENCES `Address`(`AddressID`)
 )
 ENGINE = InnoDB;
