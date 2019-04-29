@@ -84,7 +84,7 @@
                 echo "<tr>";
                 echo "<td>".$row['RouteID']."</td>";
                 echo "<td>".$row['UserID']."</td>";
-                echo "<td>".$row[10]."</td>";
+                echo "<td>".$row[11]."</td>";
                 echo "<td>".$row['Name']."</td>";
                 echo "<td>".$row['DepartureTime']."</td>";
                 echo "<td>".$row['ArrivalTime']."</td>";
