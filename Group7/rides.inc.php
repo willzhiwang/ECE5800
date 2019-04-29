@@ -33,7 +33,7 @@
             mysqli_stmt_execute($stmt);
             //echo ("<script>alert('Remove Success!')</script>");
             //echo("<script>window.location = 'rides.php';</script>");
-            header("Location: rides.php?success");
+            header("Location: rides.php?rides=success");
         }
 
         if ($user = "admin")

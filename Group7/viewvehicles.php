@@ -27,29 +27,45 @@ require 'configDB.php';
 
 								<div class="form-group">
 							  		<button class="btn btn-primary" type="submit" name="search-submit">Back</button>
-						  			</div>
+                                  </div>
+                                  
+                                <div class="form-group" style="margin-left:2rem">
+                                  <?php 
+                                  if (isset($_GET['error']))
+                                  {
+                                    												
+                                    echo '<large class="text-danger"> Please contact us! </large>';
+                                    
+                                  }
+                                  else if (isset($_GET['vehicles']) == "success")
+                                  {
+                                      echo '<large class="text-success"> Success! </large>';
+                                  }
+                                  ?>
                                 </div>
-                                </form>	
+                                </div>
+                            </div>  
+                        </form>	
                     <?php
-                        echo'
-    <body>
-        <main>
-        <form action="deleteVehicle.php" method="post">
-        <div class="table-responsive">
-        <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">UserID</th>
-            <th scope="col">VehicleID</th>
-            <th scope="col">LicensePlate</th>
-            <th scope="col">Year</th>
-            <th scope="col">Make</th>
-            <th scope="col">Model</th>
-            <th scope="col">Color</th>
-            <th scope="col">MaxCapacity</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>';
+                    echo'
+                    <body>
+                    <main>
+                    <form action="deleteVehicle.php" method="post">
+                        <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">UserID</th>
+                                <th scope="col">VehicleID</th>
+                                <th scope="col">LicensePlate</th>
+                                <th scope="col">Year</th>
+                                <th scope="col">Make</th>
+                                <th scope="col">Model</th>
+                                <th scope="col">Color</th>
+                               <th scope="col">MaxCapacity</th>
+                                <th scope="col"></th>
+                              </tr>
+                    </thead>';
 
         $sqlAdmin = "SELECT Vehicle.OwnerUser, Vehicle.VehicleID, Vehicle.LicensePlate, Vehicle.Year, Vehicle.Make, 
         Vehicle.Model, Vehicle.Color, Vehicle.MaxCapacity
@@ -79,7 +95,7 @@ require 'configDB.php';
 </form>	
 			
 				<hr class="d-sm-none">
-							<br>
+					<br>
 					<br>
 				</section>
 			</div>

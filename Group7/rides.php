@@ -16,7 +16,14 @@
 ?>
 
 <?php
-
+    if (isset($_GET['error']))
+    {											
+        echo '<large class="text-danger"> Please contact us! </large>';
+    }
+    else if (isset($_GET['rides']) == "success")
+    {
+    echo '<large class="text-success"> Success! </large>';
+    }
     $currentAccountID=$_SESSION['userId'];
     $sql2 = "SELECT IsAdmin, IsDriver From User WHERE UserID = $currentUserID";
     $result2 = mysqli_query($conn, $sql2);

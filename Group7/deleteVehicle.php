@@ -8,10 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <?php
-    //require "header.php";
-    //require "search.php";
-    include "viewvehicles.php";
-
+    require "header.php";    
 ?>
 <body>
 <?php
@@ -21,7 +18,6 @@ if (isset($_POST['deleteVehicle-submit']))
         $currentVehicle = $_POST['deleteVehicle-submit'];
 
         $sql = "DELETE From Vehicle WHERE VehicleID = $currentVehicle";
-
         $stmt = mysqli_stmt_init($conn);
 
         if (!mysqli_stmt_prepare($stmt,$sql))
@@ -33,8 +29,11 @@ if (isset($_POST['deleteVehicle-submit']))
             header("Location: viewvehicles.php?error=sqlerror");
             exit();            
         }
-
+        
+            mysqli_stmt_execute($stmt);
+            header("Location: viewvehicles.php?vehicles=success");
+        
         mysqli_stmt_close($stmt);
-        //header("Location: viewvehicles.php");
-        }
+        mysqli_close($conn);
+    }
 ?>
