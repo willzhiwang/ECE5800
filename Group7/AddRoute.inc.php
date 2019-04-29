@@ -7,17 +7,17 @@
     {
         require 'configDB.php';
 
-        $vehicleID = $_POST['vehicleid'];
-        $driverID = $_POST['driverid'];
+        $vehicleID = $_POST['vehicleid']+1;
+        $driverID = $_POST['driverid']+1;
         $addressNameFrom = $_POST['AnameFrom'];
         $addressStreetFrom = $_POST['streetFrom'];
         $cityFrom = $_POST['cityFrom'];
-        $stateFrom = $_POST['stateFrom'];
+        $stateFrom = $_POST['stateFrom']+1;
         $zipFrom = $_POST['zipFrom'];
         $addressNameTo = $_POST['AnameTo'];
         $addressStreetTo = $_POST['streetTo'];
         $cityTo = $_POST['cityTo'];
-        $stateTo = $_POST['stateTo'];
+        $stateTo = $_POST['stateTo']+1;
         $zipTo = $_POST['zipTo'];
         $depTime = $_POST['depTime'];
         $arrTime = $_POST['arrTime'];
