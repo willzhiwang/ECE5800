@@ -20,11 +20,14 @@
 <body>
 	
     <main>
-		<div class="container bg-white" style="width:800px;border-radius:25px;border-style:inset;border-width:large">
-		    <h2 style="margin-left:18rem">About Us</h2>
+	<div class="container-fluid" style="background-image: linear-gradient(rgb(49,182,246),rgb(115,232,255)">
+		<br>
+		<br>
+		<div class="container bg-white" style="width:50%;height:100%;border-radius:25px;border-style:inset;border-width:large">
+		    <h2 style="margin-left:45%">About Us</h2>
 				<br>
-				<img src="https://parkers-images.bauersecure.com/pagefiles/275474/750x500/vw-transporter-2019-21.jpg" class="mx-auto d-block">
-				<p style="margin-top:1rem">We are a great vanpool company which will provide the best service to you for a cheap price. Please book a ticket to try our service. </p>
+				<img src="https://parkers-images.bauersecure.com/pagefiles/275474/750x500/vw-transporter-2019-21.jpg" class="mx-auto d-block" style="margin-left:5%;width:100%;">
+				<p style="margin-top:5%">We are a great vanpool company which will provide the best service to you for a cheap price. Please book a ticket to try our service. </p>
 				<p></p>
 				<ul class="nav nav-pills flex-column">
 					<li class="nav-item">
@@ -35,6 +38,9 @@
 		<br>
 		<br>
 		</div>
+	<br>
+	<br>
+	</div>
     </main>
 </body>
 </html>
