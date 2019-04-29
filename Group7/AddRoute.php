@@ -36,6 +36,11 @@
               }else{
                 echo '<small class="text-danger"> An internal error occurred; please contact us for assistance. </small>';
               }
+            }else if (isset($_GET['create']))
+            {
+              if ( $_GET['create'] == "success") {
+                echo '<small class="text-success"> Route successfully added! </small>';
+              }
             }
         ?>
         <h2>Add Route</h2>
