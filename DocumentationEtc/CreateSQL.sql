@@ -1,4 +1,3 @@
-
 /*
 Not 100% sure where exactly to put this.
 Let me know if there are any errors.
@@ -68,7 +67,7 @@ CREATE TABLE `Group7Vanpool`.`User` (
 `PaymentInfo` INT NULL , 
 `LastPurchasedMonthly` DATETIME NULL , 
 PRIMARY KEY (`UserID`),
-FOREIGN KEY (`PaymentInfo`) REFERENCES `PaymentInfo`(`PaymentInfoID`)
+FOREIGN KEY (`PaymentInfo`) REFERENCES `PaymentInfo`(`PaymentInfoID`) ON DELETE SET NULL
 ) 
 ENGINE = InnoDB;
 
@@ -80,7 +79,7 @@ CREATE TABLE `Group7Vanpool`.`Person` (
 `PhoneNumber` VARCHAR(16) NULL ,
 `Address` INT NULL , 
 PRIMARY KEY (`PersonID`),
-FOREIGN KEY (`Address`) REFERENCES `Address`(`AddressID`)
+FOREIGN KEY (`Address`) REFERENCES `Address`(`AddressID`) ON DELETE SET NULL
 )
 ENGINE = InnoDB;
 
@@ -116,7 +115,7 @@ CREATE TABLE `Group7Vanpool`.`Vehicle` (
 `Color` VARCHAR(15) NOT NULL , 
 `MaxCapacity` INT NOT NULL ,
 PRIMARY KEY (`VehicleID`),
-FOREIGN KEY (`OwnerUser`) REFERENCES `User`(`UserID`)
+FOREIGN KEY (`OwnerUser`) REFERENCES `User`(`UserID`) ON DELETE SET NULL
 ) 
 ENGINE = InnoDB;
 
@@ -134,9 +133,9 @@ CREATE TABLE `Group7Vanpool`.`Route` (
   0101010 means Monday, Wednesday, Friday.*/
 `DaysOfWeek` VARCHAR(7) NOT NULL,
 PRIMARY KEY (`RouteID`),
-FOREIGN KEY (`Vehicle`) REFERENCES `Vehicle`(`VehicleID`),
-FOREIGN KEY (`FromAddress`) REFERENCES `Address`(`AddressID`),
-FOREIGN KEY (`ToAddress`) REFERENCES `Address`(`AddressID`)
+FOREIGN KEY (`Vehicle`) REFERENCES `Vehicle`(`VehicleID`) ON DELETE CASCADE,
+FOREIGN KEY (`FromAddress`) REFERENCES `Address`(`AddressID`) ON DELETE CASCADE,
+FOREIGN KEY (`ToAddress`) REFERENCES `Address`(`AddressID`) ON DELETE CASCADE
 )
 ENGINE = InnoDB;
 
@@ -144,8 +143,8 @@ CREATE TABLE `Group7Vanpool`.`PassengerToRoutes` (
 `UserID` INT NOT NULL , 
 `RouteID` INT NOT NULL , 
 PRIMARY KEY (`UserID`, `RouteID`) ,
-FOREIGN KEY (`UserID`) REFERENCES `User`(`UserID`),
-FOREIGN KEY (`RouteID`) REFERENCES `Route`(`RouteID`)
+FOREIGN KEY (`UserID`) REFERENCES `User`(`UserID`) ON DELETE CASCADE,
+FOREIGN KEY (`RouteID`) REFERENCES `Route`(`RouteID`) ON DELETE CASCADE
 )
 ENGINE = InnoDB;
 
@@ -153,7 +152,7 @@ CREATE TABLE `Group7Vanpool`.`DriverToRoutes` (
 `UserID` INT NOT NULL , 
 `RouteID` INT NOT NULL , 
 PRIMARY KEY (`UserID`, `RouteID`) ,
-FOREIGN KEY (`UserID`) REFERENCES `User`(`UserID`),
-FOREIGN KEY (`RouteID`) REFERENCES `Route`(`RouteID`)
+FOREIGN KEY (`UserID`) REFERENCES `User`(`UserID`) ON DELETE CASCADE,
+FOREIGN KEY (`RouteID`) REFERENCES `Route`(`RouteID`) ON DELETE CASCADE
 )
 ENGINE = InnoDB;
