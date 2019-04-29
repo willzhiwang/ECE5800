@@ -13,11 +13,12 @@
 ?>
 <body>
 	<main>
+	<div class="container-fluid" style="background-image: linear-gradient(rgb(49,182,246),rgb(115,232,255)">
 		<br>
 		<br>
-			<div class="container bg-white" style="width:800px;border-radius:25px;border-style:inset;border-width:large">
+		<div class="container bg-white" style="width:50%;border-radius:25px;border-style:inset;border-width:large">
 				<section>
-					<h1 style="margin-left:15rem">Van Pool Service</h1>
+					<h1 style="margin-left:30%">Van Pool Service</h1>
 					<br>
 						<form action="search.php" method="post">
 							<div class="form-group" style="margin-left:2rem">
@@ -50,14 +51,9 @@
 											<option>restaurant</option>
 										</select-->
 								</div>	
-								
 							</div>
 							<div class="form-group" style="margin-left:2rem">
 								<label for="cityInput">Day of the week</label>
-								<div class="form-check">
-   									<input type="checkbox" class="form-check-input" name="sun" value="Sun" id="sun" checked>
-    								<label class="form-check-label" for="sun">Sunday</label>
-  								</div>
 								<div class="form-check">
    									<input type="checkbox" class="form-check-input" name="mon" value="Mon" id="mon" checked>
     								<label class="form-check-label" for="mon">Monday</label>
@@ -82,11 +78,39 @@
    									<input type="checkbox" class="form-check-input" name="sat" value="Sat" id="sat" checked>
     								<label class="form-check-label" for="sat">Saturday</label>
   								</div>
+								  <div class="form-check">
+   									<input type="checkbox" class="form-check-input" name="sun" value="Sun" id="sun" checked>
+    								<label class="form-check-label" for="sun">Sunday</label>
+  								</div>
 							</div>
 							<div class="form-group" style="margin-left:2rem">
 								<label for="stateInput">Departure Time of the day</label>
-								<input type="time" class="form-control" id="depTimeInput" name="depTime">
-									
+								<select class="selectpicker show-menu-arrow  form-control">
+									<option>0:00 am</option>
+  									<option>1:00 am</option>
+  									<option>2:00 am</option>
+  									<option>3:00 am</option>
+									<option>4:00 am</option>
+									<option>5:00 am</option>
+									<option>6:00 am</option>
+									<option>7:00 am</option>
+  									<option>8:00 am</option>
+  									<option>9:00 am</option>
+									<option>10:00 am</option>
+									<option>11:00 am</option>
+									<option>12:00 pm</option>
+									<option>1:00 pm</option>
+  									<option>2:00 pm</option>
+  									<option>3:00 pm</option>
+									<option>4:00 pm</option>
+									<option>5:00 pm</option>
+									<option>6:00 pm</option>
+									<option>7:00 pm</option>
+  									<option>8:00 pm</option>
+  									<option>9:00 pm</option>
+									<option>10:00 pm</option>
+									<option>11:00 pm</option>
+								</select>
 							</div>
 							<ul class="nav nav-pills flex-column">
 								<li class="nav-item">
@@ -107,7 +131,7 @@
 							</ul>
 
 
-				<hr class="d-sm-none">
+							<hr class="d-sm-none">
 							<br>
 						</form>
 					<br>
@@ -115,8 +139,16 @@
 			</div>
 		<br>
 		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
 		</div>
 	</main>
 </body>
 </html>
-
