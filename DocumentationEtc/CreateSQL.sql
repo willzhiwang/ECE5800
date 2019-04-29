@@ -9,16 +9,79 @@ CREATE DATABASE `Group7Vanpool`;
 
 USE `Group7Vanpool`;
 
-CREATE TABLE `Group7Vanpool`.`Address` ( 
-`AddressID` INT NOT NULL AUTO_INCREMENT , 
-`Name` VARCHAR(61) NULL,
-`Street` VARCHAR(127) NOT NULL , 
-`City` VARCHAR(31) NOT NULL , 
-`State` VARCHAR(2) NOT NULL , 
-`ZipCode` VARCHAR(10) NOT NULL ,  
-PRIMARY KEY (`AddressID`)
+
+CREATE TABLE `Group7Vanpool`.`States` (
+`StateID` INT NOT NULL AUTO_INCREMENT ,
+`StateAbbrev` VARCHAR(2) NOT NULL ,
+`StateName` VARCHAR(50) NOT NULL ,
+PRIMARY KEY (`StateID`)
 )
 ENGINE = InnoDB;
+
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("AL", "Alabama");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("AK", "Alaska");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("AZ", "Arizona");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("AR", "Arkansas");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("CA", "California");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("CO", "Colorado");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("CT", "Connecticut");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("DE", "Delaware");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("FL", "Florida");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("GA", "Georgia");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("HI", "Hawaii");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("ID", "Idaho");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("IL", "Illinois");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("IN", "Indiana");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("IA", "Iowa");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("KS", "Kansas");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("KY", "Kentucky");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("LA", "Louisiana");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("ME", "Maine");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("MD", "Maryland");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("MA", "Massachusetts");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("MI", "Michigan");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("MN", "Minnesota");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("MS", "Mississippi");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("MO", "Missouri");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("MT", "Montana");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("NE", "Nebraska");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("NV", "Nevada");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("NH", "New Hampshire");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("NJ", "New Jersey");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("NM", "New Mexico");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("NY", "New York");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("NC", "North Carolina");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("ND", "North Dakota");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("OH", "Ohio");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("OK", "Oklahoma");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("OR", "Oregon");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("PA", "Pennsylvania");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("RI", "Rhode Island");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("SC", "South Carolina");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("SD", "South Dakota");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("TN", "Tennessee");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("TX", "Texas");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("UT", "Utah");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("VT", "Vermont");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("VA", "Virginia");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("WA", "Washington");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("WV", "West Virginia");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("WI", "Wisconsin");
+INSERT INTO `Group7Vanpool`.`States`(`StateAbbrev`,`StateName`) VALUES ("WY", "Wyoming");
+
+
+CREATE TABLE `Group7Vanpool`.`Address` (
+`AddressID` INT NOT NULL AUTO_INCREMENT ,
+`Name` VARCHAR(61) NULL,
+`Street` VARCHAR(127) NOT NULL ,
+`City` VARCHAR(31) NOT NULL ,
+`State` INT NOT NULL ,
+`ZipCode` VARCHAR(10) NOT NULL , 
+PRIMARY KEY (`AddressID`),
+FOREIGN KEY (`State`) REFERENCES `States`(`StateID`)
+)
+ENGINE = InnoDB;
+
 
 CREATE TABLE `Group7Vanpool`.`CardType` ( 
 `CardTypeID` INT NOT NULL AUTO_INCREMENT , 
@@ -29,6 +92,8 @@ ENGINE = InnoDB;
 
 INSERT INTO `Group7Vanpool`.`CardType`(`CardName`) VALUES ("Mastercard");
 INSERT INTO `Group7Vanpool`.`CardType`(`CardName`) VALUES ("Visa");
+
+
 
 CREATE TABLE `Group7Vanpool`.`PaymentInfo` (
 `PaymentInfoID` INT NOT NULL AUTO_INCREMENT , 
