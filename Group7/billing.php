@@ -87,13 +87,15 @@
 ?>
 <body>
 	<main>
-		<br>
-			<div class="container bg-white" style="width:800px;border-radius:25px;border-style:inset;border-width:large">
+		<div class="container-fluid" style="background-image: linear-gradient(rgb(49,182,246),rgb(115,232,255)">
+			<br>
+			<br>
+			<div class="container bg-white" style="width:50%;border-radius:25px;border-style:inset;border-width:large">
 				<section>
-					<h1 style="margin-left:15rem">Billing Settings</h1>
+					<h1 style="margin-left:30%">Billing Settings</h1>
 					<br>
 					<form action="billing.inc.php" method="post">
-						<div class="form-group" style="margin-left:3rem">
+						<div class="form-group" style="margin-left:5%">
 							<?php 
 								if (isset($_GET['error']))
 								{
@@ -117,9 +119,9 @@
 								}
 							?>
 						</div>
-						<h4 style="margin-left:2rem">Payment</h4>
+						<h4 style="margin-left:2%;font-weight:bold;">Payment</h4>
 						
-						<div class="form-group" style="margin-left:2rem">
+						<div class="form-group" style="margin-left:5%">
 							<div class="row">
 								<div class="col-xs-3">
 									<label for="creditCardInput">Credit Card Number</label>
@@ -127,7 +129,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="form-group" style="margin-left:2rem">
+						<div class="form-group" style="margin-left:5%">
 							<div class="row">
 								<div class="col-xs-3">
 									<label for="cvvInput">CCV</label>
@@ -135,7 +137,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="form-group" style="margin-left:2rem">
+						<div class="form-group" style="margin-left:5%">
 							<div class="row">
 								<div class="col-xs-3">
 									<label for="cvvInput">Card Type</label>
@@ -143,15 +145,15 @@
 								</div>
 							</div>
 						</div>
-						<div class="form-group" style="margin-left:2rem">
+						<div class="form-group" style="margin-left:5%">
 							<div class="row">
 								<div class="col-xs-3">
 									<label for="expMonthInput">Expiration Date</label>
-									<input type="month" class="form-control" name="eDate" id="expDateInput" placeholder="Expiration Date" value= "<?php echo $eDate; ?>">
+									<input type="text" class="form-control" name="eDate" id="expDateInput" placeholder="Expiration Date" value= "<?php echo $eDate; ?>">
 								</div>
 							</div>
 						</div>
-						<div class="form-group" style="margin-left:2rem">
+						<div class="form-group" style="margin-left:5%">
 							<div class="row">
 								<div class="col-xs-3">
 									<label for="billingFirstNameInput">Name</label>
@@ -159,14 +161,14 @@
 								</div>
 							</div>
 						</div>
-						<h4 style="margin-left:2rem">Billing Address</h4>
-						<div class="form-group" style="margin-left:2rem">
+						<h4 style="margin-left:2%;font-weight:bold;">Billing Address</h4>
+						<div class="form-group" style="margin-left:5%">
 								<label for="addressInput">Name</label>
-								<div class="row" style="margin-right:1rem">
-									<input type="text" class="form-control" name="Aname" id="addressName" placeholder="Name/Apt number/Company for this Address" value= "<?php echo $Aname; ?>">
+								<div class="row">
+									<input type="text" class="form-control" name="Aname" id="addressName" placeholder="Name/Apt number/Company for this Address" value= "<?php echo $Aname; ?>" style="margin-right:5%">
 								</div>
 						</div>
-						<div class="form-group" style="margin-left:2rem">
+						<div class="form-group" style="margin-left:5%">
 							<div class="row">
 								<div class="col-xs-3">
 									<label for="billingAddressInput">Address</label>
@@ -174,7 +176,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="form-group" style="margin-left:2rem">
+						<div class="form-group" style="margin-left:5%">
 							<div class="row">
 								<div class="col-xs-3">
 									<label for="billingCityInput">City</label>
@@ -182,7 +184,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="form-group" style="margin-left:2rem">
+						<div class="form-group" style="margin-left:5%">
 							<div class="row">
 								<div class="col-xs-3">
 									<label for="billingStateInput">State</label>
@@ -190,7 +192,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="form-group" style="margin-left:2rem">
+						<div class="form-group" style="margin-left:5%">
 							<div class="row">
 								<div class="col-xs-3">
 									<label for="billingZipInput">Zip Code</label>
@@ -206,6 +208,9 @@
 			</div>
 		<br>
 		<br>
+		<br>
+		<br>
 		</div>
 	</main>
 </body>
+</html>
