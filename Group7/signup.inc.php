@@ -107,7 +107,8 @@
                         else{
                             $isAdmin = 0;
                             $balance = 0.00;
-                            mysqli_stmt_bind_param($stmt3, "iids",$isDriver,$isAdmin,$balance);
+                            $lastdate = "2000-01-01 00:00:00";
+                            mysqli_stmt_bind_param($stmt3, "iids",$isDriver,$isAdmin,$balance,$lastdate);
                             
                             if (!mysqli_stmt_execute($stmt3)){
                                 header("Location: signup.php?error=sqlerror");
