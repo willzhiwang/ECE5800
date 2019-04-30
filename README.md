@@ -1,5 +1,7 @@
+Contributors:
 Zhi Wang: JStheBest or zwang198 (I used my hawkid in GitKaren so that I didn't commit as JStheBest most of time)
 Zeyuan Ru: 6ru or rulaoban
+
 
 Download XAMPP https://www.apachefriends.org/index.html \
 This should get you php and apache \
