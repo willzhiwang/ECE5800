@@ -1,5 +1,5 @@
 Contributors:
-Zhi Wang: JStheBest or zwang198 (I used my hawkid in GitKaren so that I didn't commit as JStheBest most of time)
+Zhi Wang: JStheBest or zwang198 (I used my hawkid in GitKaren so that I didn't commit as JStheBest most of time)\
 Zeyuan Ru: 6ru or rulaoban
 
 
