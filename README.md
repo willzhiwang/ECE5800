@@ -1,9 +1,12 @@
+Zhi Wang: JStheBest or zwang198 (I used my hawkid in GitKaren so that I didn't commit as JStheBest most of time)
+Zeyuan Ru: 6ru or rulaoban
+
 Download XAMPP https://www.apachefriends.org/index.html \
 This should get you php and apache \
 run mysql and apache in "Services" on your decvice\
 go to your http://localhost/ to load your php 
 
-Database: I saved my database in localhost,root,(no password),loginsystem \
+Database: Copy the the code from .sql file in documentation folder \
 then I created a table called users\
 In your own server you may want these values the same
 
