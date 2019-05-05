@@ -7,8 +7,8 @@
     {
         require 'configDB.php';
 
-        $vehicleID = $_POST['vehicleid']+1;
-        $driverID = $_POST['driverid']+1;
+        $vehicleID = $_POST['vehicleid'];
+        $driverID = $_POST['driverid'];
         $addressNameFrom = $_POST['AnameFrom'];
         $addressStreetFrom = $_POST['streetFrom'];
         $cityFrom = $_POST['cityFrom'];

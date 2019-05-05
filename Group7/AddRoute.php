@@ -248,12 +248,14 @@ window.onload = function() {
   for(var i = 0; i < vehicleStrings.length; i++) {
     var tempOption = document.createElement("option");
     tempOption.text = vehicleStrings[i];
+    tempOption.value = vehicleInput[i][0];
     optionSelectVehicle.add(tempOption);
   }
 
   for(var i = 0; i < driverInput.length; i++) {
     var tempOption = document.createElement("option");
     tempOption.text = driverStrings[i];
+    tempOption.value = driverInput[i][0]
     optionSelectDriver.add(tempOption);
   }
 
@@ -312,8 +314,7 @@ function onToStateChange() {
             }
         ?>
         <h2 style="margin-left:40%">Add Route</h2>
-  <!-- TODO: replace ID inputs with a drop-down menu. In the far future,
-   a way to search by name would probably be more efficient.-->
+
           <form action="AddRoute.inc.php" method="post">
           <div class="form-group" style="margin-left:5%">
             <p style="font-weight:bold">Select a Vehicle</p>
