@@ -85,6 +85,9 @@ require 'configDB.php';
             {
                 $_SESSION['userType']= "passanger";
                 $userSetting= "My Ride";
+                echo'
+                <li class="nav-item"> <a class="nav-link" style="width:160px" href = "costandsave.php">Subscribe</a></li>
+                ';
                 
             }
 
