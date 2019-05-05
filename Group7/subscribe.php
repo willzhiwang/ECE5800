@@ -32,7 +32,9 @@
                 </table>
 				</section>
 				<br>
+				<form action="subscribe.inc.php" method="post">
 				<div class="form-group">
+				<button type="submit" class="btn btn-lg btn-info btn-block" name="subscribe-submit">subscribe</button>
 				</form>
 			</div>
 			</div>
