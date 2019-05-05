@@ -53,7 +53,6 @@
 				<br>
 				<form action="subscribe.php" method="post">
 				<div class="form-group">
-				<button type="submit" class="btn btn-lg btn-info btn-block" name="subscribe">subscribe</button>
 				</form>
 			</div>
 			</div>
