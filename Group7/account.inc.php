@@ -13,7 +13,7 @@
         $billingname= $_POST['Aname'];
         $street = $_POST['address'];
         $city = $_POST['city'];
-        $state = $_POST['state'];
+        $state = $_POST['state']+1;
         $zip = $_POST['zip'];
 
         $birthdate = $_POST['dateofbirth'];
