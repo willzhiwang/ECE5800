@@ -25,16 +25,18 @@
 					<br>
 					<table class="table table-hover">
                     <?php
-                        echo "Subscribe on " . date("d/m/Y") . "<br><br>";
-                        echo "Your will have subscription until ".date('d/m/Y', strtotime('+1 months'));
+                        date_default_timezone_set("America/New_York");
+                        echo "Subscribe on " . date("Y-m-d H:i:s") . "<br><br>";
+                        $subdate= date('Y-m-d H:i:s', strtotime('+1 months'));
+                        echo "Your will have subscription until ".$subdate ;
+                        //echo $subdate;
                     ?>
-                    
                 </table>
 				</section>
 				<br>
 				<form action="subscribe.inc.php" method="post">
 				<div class="form-group">
-				<button type="submit" class="btn btn-lg btn-info btn-block" name="subscribe-submit">subscribe</button>
+				<button type="submit" class="btn btn-lg btn-info btn-block" name="subscribe-submit" value=<?php echo $subdate;?> >subscribe</button>
 				</form>
 			</div>
 			</div>

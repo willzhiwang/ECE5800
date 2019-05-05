@@ -51,10 +51,45 @@
 					</table>
 				</section>
 				<br>
-				<form action="subscribe.php" method="post">
-				<div class="form-group">
-				<button type="submit" class="btn btn-lg btn-info btn-block" name="subscribe">Go to subscribe</button>
-				</form>
+				<?php
+				if(isset($_SESSION['UserID']))
+				{
+					$currentUserID=$_SESSION['UserID'];			
+					$sql2 = "SELECT `PaymentInfo` FROM `User` WHERE `UserID`=$currentUserID";
+					$result2 = mysqli_query($conn, $sql2);
+					if (mysqli_num_rows($result2) > 0) 
+					{
+						$row = mysqli_fetch_assoc($result2);
+						$paymentID = $row["PaymentInfo"];
+						if($paymentID == NULL)
+						{
+						echo '<p class="text-danger"> Please fill out your payment info in settings </p>';
+						}
+						else//if paymentinfo filled
+						{
+							$sql = "SELECT `LastPurchasedMonthly` FROM `User` WHERE UserID=$currentUserID";
+							$result = mysqli_query($conn, $sql);
+						
+							if (mysqli_num_rows($result) > 0) {
+							$row = mysqli_fetch_assoc($result);
+							$sub = $row["LastPurchasedMonthly"];
+							}
+            	echo "You have subscription until: " .$sub;      
+							echo '<br><br><br>';
+							echo '
+							<form action="subscribe.php" method="post">
+							<div class="form-group">
+							<button type="submit" class="btn btn-lg btn-info btn-block" name="subscribe">Go to subscribe</button>
+							</form>
+						';
+						}
+					}
+				}
+				else{
+				 echo '<p class="text-danger"> Please fill out your account and payment info in settings </p>';
+				}
+				?>
+
 			</div>
 			</div>
 
