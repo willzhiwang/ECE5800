@@ -15,7 +15,7 @@
         $billingname = $_POST['Aname'];
         $street = $_POST['Baddress'];
         $city = $_POST['Bcity'];
-        $state = $_POST['Bstate'];
+        $state = $_POST['Bstate']+1;
         $zip = $_POST['Bzip'];
         //$eMonth = $_POST['eMonth'];
         //$eYear = $_POST['eYear'];

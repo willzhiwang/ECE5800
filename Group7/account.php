@@ -49,7 +49,7 @@
 					$Aname= "";
 					$street = "";
 					$city = "";
-					$state = "";
+					$state = "0";
 					$zip = "";
 				}
 				else
@@ -143,7 +143,60 @@
 								<label for="stateInput">State</label>
 								<div class="row">
 									<div class="col-xs-3">
-										<input type="text" class="form-control" name="state" id="stateInput" placeholder="State" value= "<?php echo $state; ?>">
+									<select name="state" id="stateInput" style="margin-top:10%" onchange="onFromStateChange()" selected="<?php echo $state; ?>">
+										<!-- TODO: populate from database instead of hard-coding -->
+										<!-- TODO: properly start drop-down on previously selected state-->
+										<option id="stateFromOption0" value="0">AL</option>
+										<option id="stateFromOption1" value="1">AK</option>
+										<option id="stateFromOption2" value="2">AZ</option>
+										<option id="stateFromOption3" value="3">AR</option>
+										<option id="stateFromOption4" value="4">CA</option>
+										<option id="stateFromOption5" value="5">CO</option>
+										<option id="stateFromOption6" value="6">CT</option>
+										<option id="stateFromOption7" value="7">DE</option>
+										<option id="stateFromOption8" value="8">FL</option>
+										<option id="stateFromOption9" value="9">GA</option>
+										<option id="stateFromOption10" value="10">HI</option>
+										<option id="stateFromOption11" value="11">ID</option>
+										<option id="stateFromOption12" value="12">IL</option>
+										<option id="stateFromOption13" value="13">IN</option>
+										<option id="stateFromOption14" value="14">IA</option>
+										<option id="stateFromOption15" value="15">KS</option>
+										<option id="stateFromOption16" value="16">KY</option>
+										<option id="stateFromOption17" value="17">LA</option>
+										<option id="stateFromOption18" value="18">ME</option>
+										<option id="stateFromOption19" value="19">MD</option>
+										<option id="stateFromOption20" value="20">MA</option>
+										<option id="stateFromOption21" value="21">MI</option>
+										<option id="stateFromOption22" value="22">MN</option>
+										<option id="stateFromOption23" value="23">MS</option>
+										<option id="stateFromOption24" value="24">MO</option>
+										<option id="stateFromOption25" value="25">MT</option>
+										<option id="stateFromOption26" value="26">NE</option>
+										<option id="stateFromOption27" value="27">NV</option>
+										<option id="stateFromOption28" value="28">NH</option>
+										<option id="stateFromOption29" value="29">NJ</option>
+										<option id="stateFromOption30" value="30">NM</option>
+										<option id="stateFromOption31" value="31">NY</option>
+										<option id="stateFromOption32" value="32">NC</option>
+										<option id="stateFromOption33" value="33">ND</option>
+										<option id="stateFromOption34" value="34">OH</option>
+										<option id="stateFromOption35" value="35">OK</option>
+										<option id="stateFromOption36" value="36">OR</option>
+										<option id="stateFromOption37" value="37">PA</option>
+										<option id="stateFromOption38" value="38">RI</option>
+										<option id="stateFromOption39" value="39">SC</option>
+										<option id="stateFromOption40" value="40">SD</option>
+										<option id="stateFromOption41" value="41">TN</option>
+										<option id="stateFromOption42" value="42">TX</option>
+										<option id="stateFromOption43" value="43">UT</option>
+										<option id="stateFromOption44" value="44">VT</option>
+										<option id="stateFromOption45" value="45">VA</option>
+										<option id="stateFromOption46" value="46">WA</option>
+										<option id="stateFromOption47" value="47">WV</option>
+										<option id="stateFromOption48" value="48">WI</option>
+										<option id="stateFromOption49" value="49">WY</option>
+									</select>
 									</div>
 								</div>
 							</div>
