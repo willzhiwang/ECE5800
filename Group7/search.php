@@ -142,6 +142,10 @@
                                 {
                                     echo '<large class="text-danger"> Fill in Your Payment in Settings! </large>';
                                 }
+                                else if ($_GET['error'] == "needAccountSetting")
+                                {
+                                    echo '<large class="text-danger"> Fill in Your Account in Settings! </large>';
+                                }
                                 else 
                                 {
                                     echo '<large class="text-danger"> Please contact us! </large>';

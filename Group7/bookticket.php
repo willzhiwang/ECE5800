@@ -8,10 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <?php
-    //require "header.php";
-    //require "search.php";
-    include "search.php";
-
+    require "header.php";
 ?>
 <body>
 <?php
