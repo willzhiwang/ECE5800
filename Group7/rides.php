@@ -163,7 +163,7 @@
     else 
     {
         $_SESSION['userType'] = "passanger";
-        echo "<h3>welcome, Passanger</h3>";
+        echo "<h3>welcome, Passenger</h3>";
         echo'
         <body>
         <main>
