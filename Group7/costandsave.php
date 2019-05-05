@@ -12,7 +12,8 @@
     -->
 </head>
 <?php
-    require "header.php"
+		require "header.php"
+	
 ?>
 <body>
 	<main>
@@ -52,6 +53,14 @@
 				</section>
 				<br>
 				<?php
+					if (isset($_GET['subscribe']))
+					{
+						if ( $_GET['subscribe'] == "success") 
+						{
+							echo '<large class="text-success"> Success! </large> <br>';
+						}
+					}
+				
 				if(isset($_SESSION['UserID']))
 				{
 					$currentUserID=$_SESSION['UserID'];			
@@ -84,6 +93,7 @@
 						';
 						}
 					}
+
 				}
 				else{
 				 echo '<p class="text-danger"> Please fill out your account and payment info in settings </p>';

@@ -20,6 +20,6 @@
             exit();
         }
         mysqli_stmt_execute($stmt);
-        header("Location: costandsave.php?=success");
+        header("Location: costandsave.php?subscribe=success");
     } 
 ?>
