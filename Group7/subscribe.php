@@ -21,7 +21,7 @@
 		<br>
 			<div class="container bg-white" style="width:50%;height:800px;border-radius:25px;border-style:inset;border-width:large">
 				<section>
-					<h1 style="margin-left:35%">Recept</h1>
+					<h1 style="margin-left:35%">Receipt</h1>
 					<br>
 					<table class="table table-hover">
 					<?php
@@ -52,10 +52,10 @@
 							}
 							else 
 							{
-								echo "You now have Subscribe until ".$myFormatForView. "<br><br>";
+								echo "Your current subscription ends on ".$myFormatForView. ".<br><br>";
 								$subdate= date('Y-m-d H:i:s', strtotime('+1 months',$time));
 							}
-							echo "Your will have subscription until ".$subdate."<br><br>" ;
+							echo "By purchasing, you will have full access to our rides until ".$subdate.".<br><br>" ;
 							echo "Total Amount: $5.99";
 						}
                         //echo $subdate;
