@@ -91,7 +91,8 @@
                 echo "<td>".$row['MileDistance']."</td>";
                 echo "<td>".$row['SeatsLeft']."</td>";
                 echo "<td>".$row['DaysofWeek']."</td>";
-
+                
+                //TODO: adding the route remove functionality.
                 echo '<td><button type="submit" class="btn btn-danger" name="delete-submit" value='.$currentRoute.'>Remove</button></td>';
             }
         echo '</tr></tbody></div></main></body>';
