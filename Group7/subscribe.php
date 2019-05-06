@@ -24,11 +24,40 @@
 					<h1 style="margin-left:35%">Recept</h1>
 					<br>
 					<table class="table table-hover">
-                    <?php
-                        date_default_timezone_set("America/New_York");
-                        echo "Subscribe on " . date("Y-m-d H:i:s") . "<br><br>";
-                        $subdate= date('Y-m-d H:i:s', strtotime('+1 months'));
-                        echo "Your will have subscription until ".$subdate ;
+					<?php
+						$currentUserID=$_SESSION['UserID'];
+						$sql = "SELECT `LastPurchasedMonthly` FROM `User` WHERE `UserID`=$currentUserID";
+						$result = mysqli_query($conn, $sql);
+						if (mysqli_num_rows($result) > 0) 
+						{
+							$row = mysqli_fetch_assoc($result);
+							$sqltime = $row["LastPurchasedMonthly"];
+							$time=strtotime($sqltime);
+							$myFormatForView = date("Y-m-d H:i:s", $time);
+							//$lastPurchase = date( 'Y-m-d H:i:s', strtotime($row["LastPurchasedMonthly"],'Y-m-d H:i:s') );
+							//echo "----------". $myFormatForView;
+							date_default_timezone_set("America/Chicago");
+							$today = date("Y-m-d H:i:s");
+							if ($myFormatForView== "2000-01-01 00:00:00")
+							{
+								echo "First Time Subscribe";
+								echo "Subscribe on " . date("Y-m-d H:i:s") . "<br><br>";
+								$subdate= date('Y-m-d H:i:s', strtotime('+1 months'));
+								
+							}	
+							else if ($myFormatForView< $today )
+							{
+								echo "Subscribe on " . date("Y-m-d H:i:s") . "<br><br>";
+								$subdate= date('Y-m-d H:i:s', strtotime('+1 months'));
+							}
+							else 
+							{
+								echo "You now have Subscribe until ".$myFormatForView. "<br><br>";
+								$subdate= date('Y-m-d H:i:s', strtotime('+1 months',$time));
+							}
+							echo "Your will have subscription until ".$subdate."<br><br>" ;
+							echo "Total Amount: $5.99";
+						}
                         //echo $subdate;
                     ?>
                 </table>
