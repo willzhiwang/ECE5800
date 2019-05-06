@@ -27,26 +27,27 @@
 					<table class="table table-bordered">
 						<thead>
 						  <tr style="background-color: #29B6F6">
-							<th style="text-align:center;color:#FFFFFF">Original</th>
+							<th style="text-align:center;color:#FFFFFF">Monthly Gas Spending</th>
 							<th style="text-align:center;color:#FFFFFF">Our Price</th>
 							<th style="text-align:center;color:#FFFFFF">Savings</th>
 						  </tr>
 						</thead>
 						<tbody>
+						<!-- TODO: make monthly subscription cost variable.-->
 						  <tr>
-							<td style="text-align:center">$15</td>
-							<td style="text-align:center">$10</td>
-							<td style="text-align:center">$5</td>
+							<td style="text-align:center">$50.00</td>
+							<td style="text-align:center">$5.99</td>
+							<td style="text-align:center">$44.01</td>
 						  </tr>
 						  <tr style="background-color: #f2f2f2">
-							<td style="text-align:center">$25</td>
-							<td style="text-align:center">$5</td>
-							<td style="text-align:center">$20</td>
+							<td style="text-align:center">$100.00</td>
+							<td style="text-align:center">$5.99</td>
+							<td style="text-align:center">$94.01</td>
 						  </tr>
 						  <tr>
-							<td style="text-align:center">$66</td>
-							<td style="text-align:center">$60</td>
-							<td style="text-align:center">$6</td>
+							<td style="text-align:center">$200.00</td>
+							<td style="text-align:center">$5.99</td>
+							<td style="text-align:center">$194.01</td>
 						  </tr>
 						</tbody>
 					</table>
