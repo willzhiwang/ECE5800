@@ -9,7 +9,7 @@ Phillip DuRose: PhillyDu
 Download XAMPP https://www.apachefriends.org/index.html \
 This should get you php and apache \
 run mysql and apache in "Services" on your decvice\
-go to your http://localhost/ to load your php 
+go to your http://localhost/ to load your php, example: http://localhost:8080/Group7/
 
 Database: Use the the code CreateSQL.sql file from "DocumentationEtc" folder to create database 
 
