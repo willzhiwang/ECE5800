@@ -11,7 +11,7 @@ This should get you php and apache \
 run mysql and apache in "Services" on your decvice\
 go to your http://localhost/ to load your php 
 
-Database: Use the the code CreateSQL.sql file from "DocumentationEtc" folder to create database \
+Database: Use the the code CreateSQL.sql file from "DocumentationEtc" folder to create database 
 
 \
 Developed:\
