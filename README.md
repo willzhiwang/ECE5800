@@ -18,18 +18,15 @@ Evertime a user created will be a increment userid starts from 1, can be used in
 Password saved in database is already hashed using php method
 \
 
-TODO List: \
-General:\
-more Frontend features, makes it awesome;\
-Backend: Manage Route delete buttons\
 \
 Developed:\
 Login,SignUp and Logout (able to hide each other after logged in or logged out);\
-Header and Footer;\
+Header and Footer; (for different users)\
 Account and Payment Settings;\
 My Ride(passanger), My drive(driver), Manage Routes(admin), View Vehicle, View Drivers;\
 Add Route and Vehicle;\
 Search;\
 About us;\
 google map(need to pay)\
+Subscribe\
 forntend features
